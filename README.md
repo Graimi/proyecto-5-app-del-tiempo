@@ -63,3 +63,58 @@ navigator.geolocation.getCurrentPosition((position) => {
 </ul>
 <br>
 
+## Pasos
+<ol>
+<li> [] HTML </li>
+[] Metadatos <br>
+[] Código redactado en REACT <br>
+
+<li> [] CSS </li>
+[] General <br>
+[] Componentes <br>
+[] Pages <br>
+[] root limpio <br>
+[] Propiedades de acuerdo al root <br>
+[] Medias queries <br>
+
+<li> [] REACT </li>
+[] General <br>
+[] Componentes <br>
+[] Pages <br>
+[] React Router <br>
+[] Investigar hooks <br>
+[] Aplicar un setRef al nombre de búsqueda <br>
+[] Ver si aplicar useMemo o reactMemo al nombre de la ciudad cuando este no cambia <br>
+
+<li> [] Componentes finalizados y comentados </li>
+[] Card <br>
+[] Footer <br>
+[] Main <br>
+[] Navbar <br>
+[] Title <br>
+[] <br>
+
+<li> [] Pages finalizadas y comentadas </li>
+[] Yesterday <br>
+[] Current <br>
+[] Forecast <br>
+[] ¿Other cities? <br>
+
+<li> [] Diseño </li>
+[] Iconos estados <br>
+[] Background estados <br>
+[] Ver en https://openweathermap.org/weather-conditions los códigos de los estados para elegir los iconos y background <br>
+[] Hay que almacenar un estado con el estado del día (lluvioso, soleado…) para añadir el icono propio, crear un array con además de este icono una foto para el fondo de la página <br>
+[] Ver si añadir algún mapa o no https://openweathermap.org/api/weathermaps <br>
+
+<li> [] General </li>
+[] Ver si usar api call 3.0 o la básica <br>
+[] En la previsión a 5 días ver si la api te da opción de seleccionar otro día o solo hace forecast <br>
+[] Las cinco ciudades que mencionan, ¿por qué hay que añadirlas? no es mejor búsqueda libre? <br>
+[] Carpetas organizadas <br>
+[] Componentes separados <br>
+[] Código comentado <br>
+[] Data comentado y repasado <br>
+[] Repasar app, main e index <br>
+[] README final <br>
+</ol>
