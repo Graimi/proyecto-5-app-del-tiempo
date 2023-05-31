@@ -1,0 +1,11 @@
+   .card {
+    display: flex;
+    flex-direction: row;
+    /* Color de fondo semi-transparente */
+    background-color: rgba(255, 255, 255, 0.2); 
+    /* Aplicar un desenfoque al fondo */
+    backdrop-filter: blur(10px); 
+    border-radius: 10px;
+    padding: 20px;
+  }
+

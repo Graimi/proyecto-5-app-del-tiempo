@@ -4,8 +4,10 @@ import Card from './components/Cards/Card';
 
 function App() {
   return (
-    <div>
-      <Card />
+    <div className="app">
+      <Card prop="Yesterday" />
+      <Card prop="Current" />
+      <Card prop="Forecast" />
     </div>
   );
 }

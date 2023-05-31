@@ -10,6 +10,4 @@ function Background() {
   body.style.backgroundImage = `url(${backgroundUrl})`;
 }
 
-Background();
-
 export default Background;
