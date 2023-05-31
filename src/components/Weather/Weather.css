@@ -1,0 +1,14 @@
+.wt {
+    display: flex;
+    flex-direction: column;
+}
+
+.wt-temp {
+    display: flex;
+    flex-direction: row;
+}
+
+.wt-temp-info {
+    display: flex;
+    flex-direction: column;
+}
