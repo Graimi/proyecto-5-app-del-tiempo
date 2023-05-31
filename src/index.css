@@ -1,69 +1,191 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* COLOR PALETTE */
+  --pf-color-beige: #ece0c6;
+  --pf-color-brown-light: #c2ae91;
+  --pf-color-brown-medium: #8d6453;
+  --pf-color-brown-dark: #684638;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* GRADIENTS */
+  --pf-gradient-white: linear-gradient(to right bottom, #ffffffb3, #ffffff4d);
+  --pf-gradient-beige: linear-gradient(to right bottom, #ffffffb3, var(--pf-color-beige));
+  --pf-gradient-brown: linear-gradient(
+    to right bottom,
+    var(--pf-color-beige),
+    var(--pf-color-brown-light)
+  );
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  /* TYPOGRAPHY TYPE */
+  --pf-typography-heading: 'Roboto Condensed', sans-serif;
+  --pf-typography-body: 'Ubuntu', sans-serif;
+
+  /* FONT SIZE */
+  --pf-typography-h1: 48px;
+  --pf-typography-h2: 25px;
+  --pf-typography-h3: 20px;
+  --pf-typography-p: 16px;
+
+  /* IMG SIZE */
+  --pf-img-big: 64px;
+  --pf-img-medium: 40px;
+  --pf-img-small: 32px;
+  --pf-img-mini: 24px;
+
+  /* LEADING */
+  --pf-typography-h1-leading: 1.2;
+  --pf-typography-h2-leading: 1.2;
+  --pf-typography-h3-leading: 1.3;
+  --pf-typography-p-leading: 1.5;
+
+  /* MARGIN */
+  --pf-margin-container: 15px;
+  --pf-margin-cta: 20px;
+
+  /* PADDING */
+  --pf-padding-container: 30px;
+  --pf-padding-card: 20px;
+  --pf-padding-list: 15px;
+  --pf-padding-title: 12px;
+  --pf-padding-cta: 10px;
+
+  /* GAP */
+  --pf-gap-flex: 20px;
+  --pf-gap-cta: 12px;
+  --pf-gap-card: 10px;
+
+  /* BORDER RADIUS */
+  --pf-radius-container: 32px;
+  --pf-radius-card: 20px;
+  --pf-radius-img: 5px;
+  --pf-radius-input: 20px;
+
+  /* BORDER WIDTH */
+  --pf-border-width-card: 2px;
+
+  /* BORDER STYLE */
+  --pf-border-card-style: var(--pf-border-width-card) solid var(--pf-color-brown-light);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-body {
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-family: var(--pf-typography-heading);
+  color: var(--pf-color-brown-dark);
+  font-weight: 700;
+  font-size: var(--pf-typography-h1);
+  opacity: 0.8;
+  text-transform: uppercase;
+  line-height: var(--pf-typography-h1-leading);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+h2 {
+  font-family: var(--pf-typography-body);
+  color: var(--pf-color-brown-medium);
+  font-size: var(--pf-typography-h2);
+  font-weight: 400;
+  opacity: 0.8;
+  line-height: var(--pf-typography-h2-leading);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+h3 {
+  font-family: var(--pf-typography-heading);
+  color: var(--pf-color-brown-dark);
+  font-size: var(--pf-typography-h3);
+  font-weight: 600;
+  opacity: 0.8;
+  line-height: var(--pf-typography-h3-leading);
+}
+
+p {
+  font-family: var(--pf-typography-body);
+  color: var(--pf-color-brown-medium);
+  font-size: var(--pf-typography-p);
+  font-weight: 400;
+  opacity: 0.8;
+  line-height: var(--pf-typography-p-leading);
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'],
+li {
+  list-style: none;
+  text-decoration: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  /* Centramos el contenido del body */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Establecemos el background y le damos estilos */
+  /* background-image: url(https://res.cloudinary.com/dwsffp1eq/image/upload/v1682619324/Portfolio/mapa_topogr%C3%A1fico_szmnvw.svg); */
+  background-size: cover;
+  background-position: 50% 50%;
+  background-attachment: fixed;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  list-style: none;
+  text-decoration: none;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -76,6 +76,7 @@ navigator.geolocation.getCurrentPosition((position) => {
 [] root limpio <br>
 [] Propiedades de acuerdo al root <br>
 [] Medias queries <br>
+[] <br>
 
 <li> [] REACT </li>
 [] General <br>
@@ -85,6 +86,9 @@ navigator.geolocation.getCurrentPosition((position) => {
 [] Investigar hooks <br>
 [] Aplicar un setRef al nombre de búsqueda <br>
 [] Ver si aplicar useMemo o reactMemo al nombre de la ciudad cuando este no cambia <br>
+[] Añadir lazy/suspense a las cards que no se usan <br>
+[] Añadir filter y ver si añadir useContext para vincular y mejorar la carga de los estados del tiempo en relación a los iconos y background<br>
+[] <br>
 
 <li> [] Componentes finalizados y comentados </li>
 [] Card <br>
@@ -99,6 +103,7 @@ navigator.geolocation.getCurrentPosition((position) => {
 [] Current <br>
 [] Forecast <br>
 [] ¿Other cities? <br>
+[] <br>
 
 <li> [] Diseño </li>
 [] Iconos estados <br>
@@ -106,11 +111,14 @@ navigator.geolocation.getCurrentPosition((position) => {
 [] Ver en https://openweathermap.org/weather-conditions los códigos de los estados para elegir los iconos y background <br>
 [] Hay que almacenar un estado con el estado del día (lluvioso, soleado…) para añadir el icono propio, crear un array con además de este icono una foto para el fondo de la página <br>
 [] Ver si añadir algún mapa o no https://openweathermap.org/api/weathermaps <br>
+[] Código para glass efect https://codepen.io/Graimi/pen/QWZjrJp <br>
+[] Código para letras transparentes https://codepen.io/theseventh/pen/LYVqMYb <br>
 
 <li> [] General </li>
 [] Ver si usar api call 3.0 o la básica <br>
 [] En la previsión a 5 días ver si la api te da opción de seleccionar otro día o solo hace forecast <br>
 [] Las cinco ciudades que mencionan, ¿por qué hay que añadirlas? no es mejor búsqueda libre? <br>
+[] <br>
 [] Carpetas organizadas <br>
 [] Componentes separados <br>
 [] Código comentado <br>
@@ -118,3 +126,5 @@ navigator.geolocation.getCurrentPosition((position) => {
 [] Repasar app, main e index <br>
 [] README final <br>
 </ol>
+
+Las cinco ciudades que mencionan, ¿por qué hay que añadirlas? no es mejor búsqueda libre? 
