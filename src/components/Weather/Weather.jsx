@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-// import Api, { weatherURL } from '../../services/Api';
+import Api2, { ApiKey } from '../../services/Api2';
 import './Weather.css';
-import Api, { ApiKey } from '../../services/Api';
 
-function Weather() {
+function Weather({ url }) {
   //   const [latitude, setLatitude] = useState(null);
   //   const [longitude, setLongitude] = useState(null);
-
   //   useEffect(() => {
   //     // Verificar si el navegador es compatible con la geolocalización
   //     if (navigator.geolocation) {
@@ -25,11 +23,8 @@ function Weather() {
   //     //   VER CUANDO RECARGAR
   //   }, []);
 
-  //   // Almacenamos en una constante la URL de Open Weather dedicada al tiempo presente y predicciones
   //   const weatherURL = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&units=metric&lang=es&appid=${ApiKey}`;
-
   //   const yestaerdayUnix = Math.floor(Date.now() / 1000) - 24 * 60 * 60;
-
   //   // Almacenamos en una constante la URL de Open Weather dedicada al tiempo pasado
   //   const historicalURL = `https://api.openweathermap.org/data/3.0/onecall/timemachine?lat=${latitude}&lon=${longitude}&dt=${yestaerdayUnix}&units=metric&lang=es&appid=${ApiKey}`;
 
@@ -42,7 +37,7 @@ function Weather() {
 
   //   useEffect(() => {
   //     // Llamamos a la función Api
-  //     Api(weatherURL)
+  //     Api(url === 'current' ? weatherURL : historicalURL)
   //       // Obtenemos la info de la api del rover curiosity
   //       .then((data) => setApiData(data))
   //       // Si aparece un error damos valor positivo al state
@@ -52,9 +47,9 @@ function Weather() {
   //     // Esta info es importante que se actualice cada vez que se cambia la fecha
   //   }, [latitude, longitude]);
 
+  //   console.log(url);
+
   //   console.log(apiData);
-  //   console.log(apiDataError);
-  //   console.log(apiDataLoading);
 
   //   return (
   //     <div className="wt">
@@ -64,15 +59,14 @@ function Weather() {
   //       </article>
   //       <article className="wt-temp">
   //         Icon
-  //         <p>{apiData?.current.weather[0].description}</p>
+  //         <p>{apiData.current?.weather[0].description}</p>
   //         <div className="wt-temp-info">
-  //           <h2>{Math.floor(apiData?.current.temp)}º</h2>
+  //           <h2>{apiData?.lat}º</h2>
   //           <p>Feels like 23º</p>
   //         </div>
   //       </article>
   //     </div>
   //   );
-
   return (
     <div className="wt">
       <article className="wt-location-date">
@@ -80,12 +74,72 @@ function Weather() {
         <h3>31/05/2023</h3>
       </article>
       <article className="wt-temp">
-        Icon
-        <p>Description</p>
-        <div className="wt-temp-info">
+        <div>
+          <img
+            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685614879/App%20Tiempo/icons/nubes_klahhd.png"
+            alt="cloud"
+            className="wt-temp-icon"
+          />
+          <p>Description</p>
+        </div>
+        <div className="wt-temp-celsius">
           <h2>25º</h2>
           <p>Feels like 23º</p>
         </div>
+      </article>
+      <article className="wt-temp-max-min">
+        <h2>18º</h2>
+        <h2 className="wt-temp-difference">-2</h2>
+        <h2>25º</h2>
+        <h2 className="wt-temp-difference">+3</h2>
+      </article>
+      <article className="wt-weather">
+        <div className="wt-weather-info wind">
+          <img
+            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685614879/App%20Tiempo/icons/nubes_klahhd.png"
+            alt="cloud"
+            className="wt-sunrise-sunset-icon"
+          />
+          <p>1000</p>
+        </div>
+        <div className="wt-weather-info humidity danger">
+          <img
+            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685614879/App%20Tiempo/icons/nubes_klahhd.png"
+            alt="cloud"
+            className="wt-sunrise-sunset-icon"
+          />
+          <p>1000</p>
+        </div>
+        <div className="wt-weather-info raining">
+          <img
+            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685614879/App%20Tiempo/icons/nubes_klahhd.png"
+            alt="cloud"
+            className="wt-sunrise-sunset-icon"
+          />
+          <p>1000</p>
+        </div>
+        <div className="wt-weather-info polution">
+          <img
+            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685614879/App%20Tiempo/icons/nubes_klahhd.png"
+            alt="cloud"
+            className="wt-sunrise-sunset-icon"
+          />
+          <p>1000</p>
+        </div>
+      </article>
+      <article className="wt-sunrise-sunset">
+        <img
+          src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685614879/App%20Tiempo/icons/nubes_klahhd.png"
+          alt="cloud"
+          className="wt-sunrise-sunset-icon"
+        />
+        <h2>7:00</h2>
+        <h2>21:00</h2>
+        <img
+          src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685614879/App%20Tiempo/icons/nubes_klahhd.png"
+          alt="cloud"
+          className="wt-sunrise-sunset-icon"
+        />
       </article>
     </div>
   );

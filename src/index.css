@@ -1,68 +1,69 @@
 :root {
   /* COLOR PALETTE */
-  --pf-color-beige: #ece0c6;
-  --pf-color-brown-light: #c2ae91;
-  --pf-color-brown-medium: #8d6453;
-  --pf-color-brown-dark: #684638;
+  --wt-color-beige: #ece0c6;
+  --wt-color-brown-light: #c2ae91;
+  --wt-color-brown-medium: #f5f5f5;
+  --wt-color-primary: #e0e0e0;
+  --wt-color-accent: #ffffff;
 
   /* GRADIENTS */
-  --pf-gradient-white: linear-gradient(to right bottom, #ffffffb3, #ffffff4d);
-  --pf-gradient-beige: linear-gradient(to right bottom, #ffffffb3, var(--pf-color-beige));
-  --pf-gradient-brown: linear-gradient(
+  --wt-gradient-white: linear-gradient(to right bottom, #ffffffb3, #ffffff4d);
+  --wt-gradient-beige: linear-gradient(to right bottom, #ffffffb3, var(--wt-color-beige));
+  --wt-gradient-brown: linear-gradient(
     to right bottom,
-    var(--pf-color-beige),
-    var(--pf-color-brown-light)
+    var(--wt-color-beige),
+    var(--wt-color-brown-light)
   );
 
   /* TYPOGRAPHY TYPE */
-  --pf-typography-heading: 'Roboto Condensed', sans-serif;
-  --pf-typography-body: 'Ubuntu', sans-serif;
+  --wt-typography-heading: 'Sen', sans-serif;
+  --wt-typography-body: 'Albert Sans', sans-serif;
 
   /* FONT SIZE */
-  --pf-typography-h1: 48px;
-  --pf-typography-h2: 25px;
-  --pf-typography-h3: 20px;
-  --pf-typography-p: 16px;
+  --wt-typography-h1: 48px;
+  --wt-typography-h2: 25px;
+  --wt-typography-h3: 20px;
+  --wt-typography-p: 16px;
 
   /* IMG SIZE */
-  --pf-img-big: 64px;
-  --pf-img-medium: 40px;
-  --pf-img-small: 32px;
-  --pf-img-mini: 24px;
+  --wt-img-big: 64px;
+  --wt-img-medium: 40px;
+  --wt-img-small: 32px;
+  --wt-img-mini: 24px;
 
   /* LEADING */
-  --pf-typography-h1-leading: 1.2;
-  --pf-typography-h2-leading: 1.2;
-  --pf-typography-h3-leading: 1.3;
-  --pf-typography-p-leading: 1.5;
+  --wt-typography-h1-leading: 1.2;
+  --wt-typography-h2-leading: 1.2;
+  --wt-typography-h3-leading: 1.3;
+  --wt-typography-p-leading: 1.5;
 
   /* MARGIN */
-  --pf-margin-container: 15px;
-  --pf-margin-cta: 20px;
+  --wt-margin-container: 15px;
+  --wt-margin-cta: 20px;
 
   /* PADDING */
-  --pf-padding-container: 30px;
-  --pf-padding-card: 20px;
-  --pf-padding-list: 15px;
-  --pf-padding-title: 12px;
-  --pf-padding-cta: 10px;
+  --wt-padding-container: 30px;
+  --wt-padding-card: 20px;
+  --wt-padding-list: 15px;
+  --wt-padding-title: 12px;
+  --wt-padding-cta: 10px;
 
   /* GAP */
-  --pf-gap-flex: 20px;
-  --pf-gap-cta: 12px;
-  --pf-gap-card: 10px;
+  --wt-gap-flex: 20px;
+  --wt-gap-cta: 12px;
+  --wt-gap-card: 10px;
 
   /* BORDER RADIUS */
-  --pf-radius-container: 32px;
-  --pf-radius-card: 20px;
-  --pf-radius-img: 5px;
-  --pf-radius-input: 20px;
+  --wt-radius-container: 32px;
+  --wt-radius-card: 20px;
+  --wt-radius-img: 5px;
+  --wt-radius-input: 20px;
 
   /* BORDER WIDTH */
-  --pf-border-width-card: 2px;
+  --wt-border-width-card: 2px;
 
   /* BORDER STYLE */
-  --pf-border-card-style: var(--pf-border-width-card) solid var(--pf-color-brown-light);
+  --wt-border-card-style: var(--wt-border-width-card) solid var(--wt-color-brown-light);
 }
 
 /* Box sizing rules */
@@ -87,40 +88,63 @@ dd {
 }
 
 h1 {
-  font-family: var(--pf-typography-heading);
-  color: var(--pf-color-brown-dark);
+  font-family: var(--wt-typography-heading);
+  color: var(--wt-color-primary);
   font-weight: 700;
-  font-size: var(--pf-typography-h1);
-  opacity: 0.8;
+  font-size: var(--wt-typography-h1);
+  /* opacity: 0.8; */
   text-transform: uppercase;
-  line-height: var(--pf-typography-h1-leading);
+  line-height: var(--wt-typography-h1-leading);
+}
+h1 {
+  /* position: absolute; */
+  /* top: 50%; */
+  /* transform: translateY(-50%); */
+  /* left: 0; */
+  /* right: 0; */
+  /* margin: auto; */
+  /* z-index: 99; */
+  /* color: white; */
+  /* text-align: center;
+  font-size: 2.6em;
+  pointer-events: none; */
+}
+
+h1,
+h2,
+h3,
+p {
+  mix-blend-mode: overlay;
+  /* text-shadow: 1px 1px 1px rgb(0, 0, 0); */
+  /* text-shadow: #a0a0a0 1px 1px 1px; */
+  /* z-index:-2; */
 }
 
 h2 {
-  font-family: var(--pf-typography-body);
-  color: var(--pf-color-brown-medium);
-  font-size: var(--pf-typography-h2);
+  font-family: var(--wt-typography-body);
+  color: var(--wt-color-brown-medium);
+  font-size: var(--wt-typography-h2);
   font-weight: 400;
   opacity: 0.8;
-  line-height: var(--pf-typography-h2-leading);
+  line-height: var(--wt-typography-h2-leading);
 }
 
 h3 {
-  font-family: var(--pf-typography-heading);
-  color: var(--pf-color-brown-dark);
-  font-size: var(--pf-typography-h3);
+  font-family: var(--wt-typography-heading);
+  color: var(--wt-color-primary);
+  font-size: var(--wt-typography-h3);
   font-weight: 600;
   opacity: 0.8;
-  line-height: var(--pf-typography-h3-leading);
+  line-height: var(--wt-typography-h3-leading);
 }
 
 p {
-  font-family: var(--pf-typography-body);
-  color: var(--pf-color-brown-medium);
-  font-size: var(--pf-typography-p);
+  font-family: var(--wt-typography-body);
+  color: var(--wt-color-brown-medium);
+  font-size: var(--wt-typography-p);
   font-weight: 400;
   opacity: 0.8;
-  line-height: var(--pf-typography-p-leading);
+  line-height: var(--wt-typography-p-leading);
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -146,10 +170,11 @@ body {
   align-items: center;
   justify-content: center;
   /* Establecemos el background y le damos estilos */
-  /* background-image: url(https://res.cloudinary.com/dwsffp1eq/image/upload/v1682619324/Portfolio/mapa_topogr%C3%A1fico_szmnvw.svg); */
   background-size: cover;
   background-position: 50% 50%;
   background-attachment: fixed;
+  /* backdrop-filter: blur(1.5px); */
+  /* backdrop-filter: contrast(60%); */
 }
 
 /* A elements that don't have a class get default styles */

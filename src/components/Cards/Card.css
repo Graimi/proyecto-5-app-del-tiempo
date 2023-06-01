@@ -2,10 +2,11 @@
     display: flex;
     flex-direction: row;
     /* Color de fondo semi-transparente */
-    background-color: rgba(255, 255, 255, 0.2); 
+    background-color: #86868648; 
     /* Aplicar un desenfoque al fondo */
-    backdrop-filter: blur(10px); 
+    backdrop-filter: blur(8px); 
     border-radius: 10px;
     padding: 20px;
+    /* z-index: -1; */
   }
 
