@@ -2,8 +2,10 @@
   /* COLOR PALETTE */
   --wt-color-beige: #ece0c6;
   --wt-color-brown-light: #c2ae91;
+  --wt-color-brown-medium: #050505;
+  --wt-color-primary: #000000;
   --wt-color-brown-medium: #f5f5f5;
-  --wt-color-primary: #e0e0e0;
+  --wt-color-primary: #bdbdbd;
   --wt-color-accent: #ffffff;
 
   /* GRADIENTS */
@@ -115,6 +117,9 @@ h2,
 h3,
 p {
   mix-blend-mode: overlay;
+  /* mix-blend-mode: soft-light; */
+  /* mix-blend-mode: multiply; */
+
   /* text-shadow: 1px 1px 1px rgb(0, 0, 0); */
   /* text-shadow: #a0a0a0 1px 1px 1px; */
   /* z-index:-2; */

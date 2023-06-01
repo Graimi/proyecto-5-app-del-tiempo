@@ -61,6 +61,8 @@ function Api({ weather }) {
     // Esta info es importante que se actualice cada vez que se cambia la fecha
   }, [latitude, longitude]);
 
+  console.log(apiData);
+
   return weather === 'current' ? <Current apiData={apiData} /> : <Historical apiData={apiData} />;
 
   //   return (

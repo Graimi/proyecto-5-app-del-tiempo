@@ -7,6 +7,6 @@
     backdrop-filter: blur(8px); 
     border-radius: 10px;
     padding: 20px;
-    /* z-index: -1; */
+    max-width: 250px;
   }
 

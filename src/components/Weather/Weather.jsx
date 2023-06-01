@@ -80,11 +80,11 @@ function Weather({ url }) {
             alt="cloud"
             className="wt-temp-icon"
           />
-          <p>Description</p>
         </div>
         <div className="wt-temp-celsius">
           <h2>25º</h2>
           <p>Feels like 23º</p>
+          <p>Description</p>
         </div>
       </article>
       <article className="wt-temp-max-min">
@@ -100,7 +100,7 @@ function Weather({ url }) {
             alt="cloud"
             className="wt-sunrise-sunset-icon"
           />
-          <p>1000</p>
+          <p>wind</p>
         </div>
         <div className="wt-weather-info humidity danger">
           <img
@@ -108,15 +108,23 @@ function Weather({ url }) {
             alt="cloud"
             className="wt-sunrise-sunset-icon"
           />
-          <p>1000</p>
+          <p>humidity</p>
         </div>
-        <div className="wt-weather-info raining">
+        <div className="wt-weather-info humidity raining">
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685614879/App%20Tiempo/icons/nubes_klahhd.png"
             alt="cloud"
             className="wt-sunrise-sunset-icon"
           />
-          <p>1000</p>
+          <p>raining</p>
+        </div>
+        <div className="wt-weather-info cloudiness">
+          <img
+            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685614879/App%20Tiempo/icons/nubes_klahhd.png"
+            alt="cloud"
+            className="wt-sunrise-sunset-icon"
+          />
+          <p>cloudiness</p>
         </div>
         <div className="wt-weather-info polution">
           <img
@@ -124,7 +132,31 @@ function Weather({ url }) {
             alt="cloud"
             className="wt-sunrise-sunset-icon"
           />
-          <p>1000</p>
+          <p>polution</p>
+        </div>
+        <div className="wt-weather-info polution">
+          <img
+            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685614879/App%20Tiempo/icons/nubes_klahhd.png"
+            alt="cloud"
+            className="wt-sunrise-sunset-icon"
+          />
+          <p>uvi</p>
+        </div>
+        <div className="wt-weather-info polution">
+          <img
+            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685614879/App%20Tiempo/icons/nubes_klahhd.png"
+            alt="cloud"
+            className="wt-sunrise-sunset-icon"
+          />
+          <p>pressure</p>
+        </div>
+        <div className="wt-weather-info polution">
+          <img
+            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685614879/App%20Tiempo/icons/nubes_klahhd.png"
+            alt="cloud"
+            className="wt-sunrise-sunset-icon"
+          />
+          <p>visibility</p>
         </div>
       </article>
       <article className="wt-sunrise-sunset">
