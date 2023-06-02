@@ -84,14 +84,14 @@ function Weather({ url }) {
         <div className="wt-temp-celsius">
           <h2>25º</h2>
           <p>Feels like 23º</p>
-          <p>Description</p>
+          {/* <p>Description</p> */}
         </div>
       </article>
       <article className="wt-temp-max-min">
-        <h2>18º</h2>
-        <h2 className="wt-temp-difference">-2</h2>
-        <h2>25º</h2>
-        <h2 className="wt-temp-difference">+3</h2>
+        <h3>18º</h3>
+        <h3 className="wt-temp-difference">-2</h3>
+        <h3>25º</h3>
+        <h3 className="wt-temp-difference">+3</h3>
       </article>
       <article className="wt-weather">
         <div className="wt-weather-info wind">
@@ -165,8 +165,8 @@ function Weather({ url }) {
           alt="cloud"
           className="wt-sunrise-sunset-icon"
         />
-        <h2>7:00</h2>
-        <h2>21:00</h2>
+        <h3>7:00</h3>
+        <h3>21:00</h3>
         <img
           src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685614879/App%20Tiempo/icons/nubes_klahhd.png"
           alt="cloud"

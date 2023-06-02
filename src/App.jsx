@@ -3,6 +3,7 @@ import './App.css';
 import Card from './components/Cards/Card';
 import Weather from './components/Weather/Weather';
 import Api from './services/Api';
+import InvisibleCard from './components/InvisibleCard/InvisibleCard';
 // import { weatherURL } from './services/Api';
 
 function App() {
@@ -10,9 +11,9 @@ function App() {
     <div className="app">
       {/* <Card prop={<Api weather="yesterday" />} /> */}
       {/* <Card prop={<Api weather="current" />} /> */}
-      <Weather url="current" />
-      <Card prop={<Weather url="current" />} />
-      <Card prop="Forecast" />
+      <InvisibleCard prop={<Weather url="current" />} />
+      {/* <Card prop={<Weather url="current" />} /> */}
+      {/* <Card prop="Forecast" /> */}
     </div>
   );
 }

@@ -1,7 +1,8 @@
 .wt {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 10px;
   text-align: center;
 }
 
@@ -43,8 +44,7 @@
 }
 
 .danger {
-  background-color: rgba(255, 0, 0, 0.178);
-  color: aliceblue;
+  background-color: var(--wt-color-danger);
 }
 
 .wt-sunrise-sunset {
