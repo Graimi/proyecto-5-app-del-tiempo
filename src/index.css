@@ -5,7 +5,7 @@
   --wt-color-primary: #ffffff;
   --wt-color-safe: #00ff153a;
   --wt-color-caution: #ffe60046;
-  --wt-color-danger: #ff00002d;
+  --wt-color-danger: #ff000065;
   --wt-color-green: #00ff15;
   --wt-color-red: #ff0000;
 
@@ -150,7 +150,7 @@ body {
   /* Establecemos el background y le damos estilos */
   background-size: cover;
   background-position: 50% 50%;
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
   /* backdrop-filter: blur(1.5px); */
   /* backdrop-filter: contrast(60%); */
 }

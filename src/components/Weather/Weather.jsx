@@ -118,7 +118,7 @@ function Weather({ url }) {
           />
           <p>raining</p>
         </div>
-        <div className="wt-weather-info cloudiness">
+        <div className="wt-weather-info cloudiness safe">
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685614879/App%20Tiempo/icons/nubes_klahhd.png"
             alt="cloud"
@@ -134,7 +134,7 @@ function Weather({ url }) {
           />
           <p>polution</p>
         </div>
-        <div className="wt-weather-info polution">
+        <div className="wt-weather-info uvi">
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685614879/App%20Tiempo/icons/nubes_klahhd.png"
             alt="cloud"
@@ -142,7 +142,7 @@ function Weather({ url }) {
           />
           <p>uvi</p>
         </div>
-        <div className="wt-weather-info polution">
+        <div className="wt-weather-info pressure caution">
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685614879/App%20Tiempo/icons/nubes_klahhd.png"
             alt="cloud"
@@ -150,7 +150,7 @@ function Weather({ url }) {
           />
           <p>pressure</p>
         </div>
-        <div className="wt-weather-info polution">
+        <div className="wt-weather-info visibility">
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685614879/App%20Tiempo/icons/nubes_klahhd.png"
             alt="cloud"

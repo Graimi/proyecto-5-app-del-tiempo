@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 10px;
+  gap: 15px;
   text-align: center;
 }
 
@@ -45,6 +45,14 @@
 
 .danger {
   background-color: var(--wt-color-danger);
+}
+
+.caution {
+  background-color: var(--wt-color-caution);
+}
+
+.safe {
+  background-color: var(--wt-color-safe);
 }
 
 .wt-sunrise-sunset {
