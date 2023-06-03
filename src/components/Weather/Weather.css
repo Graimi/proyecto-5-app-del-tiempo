@@ -14,6 +14,8 @@
 
 .wt-temp-icon {
   width: 70px;
+  opacity: 0.7;
+  /* background-color: rgba(0, 0, 0, 0.5); */
 }
 
 .wt-temp-celsius {
@@ -21,26 +23,60 @@
   flex-direction: column;
 }
 
+.wt-temp-celsius p {
+  font-weight: 700;
+}
+
+.wt-temp-max-min-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .wt-temp-max-min {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  text-shadow: 1px;
+  font-weight: 700;
+}
+
+.wt-temp-max-min h3 {
+  text-shadow: 1px;
+}
+
+.wt-temp-difference {
+  color: red;
+  text-shadow: 1px;
+  font-weight: 700;
 }
 
 .wt-weather {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .wt-weather-info {
-    display: flex;
-    justify-content: space-evenly;
-    width: 80px;
-    border-radius: 10px;
-    background-color: #86868696;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80px;
+  height: 30px;
+  /* gap: 5px; */
+  /* padding: 5px; */
+  margin: auto;
+  border-radius: 10px;
+  /* background-color: #b6b6b670; */
+  box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226);
+
+  /* backdrop-filter: blur(50px); */
+}
+
+.wt-weather-info p {
+  text-align: right;
 }
 
 .danger {
@@ -55,13 +91,26 @@
   background-color: var(--wt-color-safe);
 }
 
+.wt-sunrise-sunset-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226); */
+  /* backdrop-filter: blur(100px); */
+}
+
 .wt-sunrise-sunset {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.wt-sunrise-sunset h3 {
+  font-size: 20px;
 }
 
 .wt-sunrise-sunset-icon {
-    width: 24px;
-    height: 24px;
-  }
+  width: 32px;
+  height: 32px;
+}
