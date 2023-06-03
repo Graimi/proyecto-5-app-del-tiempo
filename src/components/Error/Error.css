@@ -1,0 +1,11 @@
+.wt-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.wt-error-img {
+    width: 100px;
+}

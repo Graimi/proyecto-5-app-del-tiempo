@@ -10,9 +10,7 @@ function App() {
   return (
     <div className="app">
       {/* <Card prop={<Api weather="yesterday" />} /> */}
-      {/* <Card prop={<Api weather="current" />} /> */}
-      <InvisibleCard prop={<Weather url="current" />} />
-      <InvisibleCard prop={<Weather url="current" />} />
+      <InvisibleCard prop={<Api weather="current" />} />
       <InvisibleCard prop={<Weather url="current" />} />
       {/* <Card prop={<Weather url="current" />} /> */}
       {/* <Card prop="Forecast" /> */}

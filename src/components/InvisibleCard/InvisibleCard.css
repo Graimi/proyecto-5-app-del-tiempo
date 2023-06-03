@@ -6,7 +6,7 @@
     /* align-content: space-between; */
 /* justify-content: space-between; */
     /* Color de fondo semi-transparente */
-    /* background-color: #86868648;  */
+    background-color: #86868631; 
     /* Aplicar un desenfoque al fondo */
     /* backdrop-filter: blur(8px);  */
     /* border: 1px white solid; */
@@ -14,6 +14,6 @@
     padding: 20px;
     max-width: 250px;
     /* height: 400px; */
-    box-shadow: 0 0 10px 3px rgba(43, 42, 42, 0.3);
+    box-shadow: 0 0 30px 1px rgba(43, 42, 42, 0.3);
     margin: 15px;
   }

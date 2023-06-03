@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Current from '../components/Current/Current';
 import Historical from '../components/Historical/Historical';
+import Error from '../components/Error/Error';
 
 function Api({ weather }) {
   const [latitude, setLatitude] = useState(null);
@@ -63,15 +64,21 @@ function Api({ weather }) {
 
   console.log(apiData);
 
-  return weather === 'current' ? <Current apiData={apiData} /> : <Historical apiData={apiData} />;
+  // Invocamos el template de error si la api está saturada
+  if (apiDataError) {
+    return <Error />;
+  }
 
-  //   return (
-  //     <div className="wt">
-  //       <h1>Cáceres</h1>
-  //       <h3>31/05/2023</h3>
-  //       <p>{apiData.current?.weather[0].description}</p>
-  //     </div>
-  //   );
+  // Invocamos el template de loading si la api no se ha cargado todavía
+  // if (apiDataLoading) {
+  //   return <Loading />;
+  // }
+
+  return weather === 'current' && apiData.daily && apiData.daily.length > 0 ? (
+    <Current prop={apiData} />
+  ) : (
+    <Historical apiData={apiData} />
+  );
 }
 
 export default Api;

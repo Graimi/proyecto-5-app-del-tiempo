@@ -1,7 +1,7 @@
 .wt {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   gap: 15px;
   text-align: center;
 }
@@ -9,7 +9,7 @@
 .wt-temp {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .wt-temp-icon {
@@ -21,6 +21,11 @@
 .wt-temp-celsius {
   display: flex;
   flex-direction: column;
+  text-align: right;
+}
+
+.wt-temp-celsius h2 {
+  font-size: var(--wt-typography-h1);
 }
 
 .wt-temp-celsius p {
@@ -30,7 +35,7 @@
 .wt-temp-max-min-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .wt-temp-max-min {
@@ -54,7 +59,7 @@
 .wt-weather {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
 }
@@ -63,10 +68,10 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 80px;
-  height: 30px;
+  width: 75px;
+  height: 45px;
   /* gap: 5px; */
-  /* padding: 5px; */
+  padding: 5px;
   margin: auto;
   border-radius: 10px;
   /* background-color: #b6b6b670; */
@@ -94,7 +99,7 @@
 .wt-sunrise-sunset-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   /* box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226); */
   /* backdrop-filter: blur(100px); */
 }

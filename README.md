@@ -73,6 +73,7 @@ navigator.geolocation.getCurrentPosition((position) => {
 [] General <br>
 [] Componentes <br>
 [] Pages <br>
+[] Cards info rounded <br>
 [] root limpio <br>
 [] Propiedades de acuerdo al root <br>
 [] Medias queries <br>
@@ -98,10 +99,11 @@ navigator.geolocation.getCurrentPosition((position) => {
 [] Title <br>
 [] <br>
 
-<li> [] Pages finalizadas y comentadas </li>
+<li> [] Pages & apis finalizadas y comentadas </li>
 [] Yesterday <br>
 [] Current <br>
 [] Forecast <br>
+[] pollution <br>
 [] ¿Other cities? <br>
 [] <br>
 
