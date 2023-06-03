@@ -75,12 +75,22 @@ function Api({ weather }) {
     return <Loader />;
   }
 
-  return weather === 'current' ? (
-    // && apiData.daily && apiData.daily.length > 0
-    <Current prop={apiData} />
-  ) : (
-    <Historical apiData={apiData} />
-  );
+  // Añadimos el switch con los diferentes resultados posibles
+  switch (weather) {
+    case 'current':
+      return apiData.daily && apiData.daily.length > 0 ? <Current prop={apiData} /> : <Loader />;
+    case 'yesterday':
+      return apiData.data && apiData.data.length > 0 ? (
+        <Historical apiData={apiData} />
+      ) : (
+        <Loader />
+      );
+    case 'forecast':
+      // Ver que añadir cuando lo tengamos
+      return <h1>Forecast</h1>;
+    default:
+      return <Error />;
+  }
 }
 
 export default Api;
