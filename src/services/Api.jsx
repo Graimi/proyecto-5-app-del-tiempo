@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Current from '../components/Current/Current';
 import Historical from '../components/Historical/Historical';
 import Error from '../components/Error/Error';
+import Loader from '../components/Loader/Loader';
 
 function Api({ weather }) {
   const [latitude, setLatitude] = useState(null);
@@ -70,11 +71,12 @@ function Api({ weather }) {
   }
 
   // Invocamos el template de loading si la api no se ha cargado todavía
-  // if (apiDataLoading) {
-  //   return <Loading />;
-  // }
+  if (apiDataLoading) {
+    return <Loader />;
+  }
 
-  return weather === 'current' && apiData.daily && apiData.daily.length > 0 ? (
+  return weather === 'current' ? (
+    // && apiData.daily && apiData.daily.length > 0
     <Current prop={apiData} />
   ) : (
     <Historical apiData={apiData} />

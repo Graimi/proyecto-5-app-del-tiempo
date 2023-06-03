@@ -7,8 +7,8 @@ function Current({ prop }) {
       <h3>31/05/2023</h3>
       <p>{prop.description}</p>
       <p>{prop.raining}</p>
-      {/* <p>{apiData.current?.weather[0].description}</p>
-      <p>{apiData?.daily[0].pop}</p> */}
+      <p>{prop.current?.weather[0].description}</p>
+      <p>{prop?.daily[0].pop}</p>
     </div>
   ) : (
     <h1>Loading</h1>
