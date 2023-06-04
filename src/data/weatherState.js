@@ -25,7 +25,15 @@ const historical = {
       visibility: 10000,
       wind_deg: 277,
       wind_gust: 2.32,
-      wind_speed: 1.77
+      wind_speed: 1.77,
+      weather: [
+        {
+          id: 800,
+          main: 'Clear',
+          description: 'clear sky',
+          icon: '01d'
+        }
+      ]
     }
   ]
 };
@@ -102,9 +110,3 @@ const current = {
     }
   ]
 };
-
-console.log(current.current.weather[0].description);
-
-console.log(historical.data[0].temp);
-
-console.log(historical['data'][0]['dt']);

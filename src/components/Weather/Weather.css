@@ -1,9 +1,16 @@
+/* Añadimos esta clase para quitar la visualización de aquellos elementos que deseemos */
+.none {
+  display: none !important;
+}
+
 .wt {
   display: flex;
   flex-direction: column;
+justify-content: center;
   /* justify-content: space-between; */
   gap: 15px;
   text-align: center;
+  height: min-content;
 }
 
 .wt-temp {
@@ -84,10 +91,6 @@
 .wt-weather-info p {
   text-align: right;
 }
-
-/* .raining {
-  display: flex
-} */
 
 .danger {
   background-color: var(--wt-color-danger);

@@ -7,6 +7,7 @@ function Weather(props) {
   // 0-+90 m/s - wind (<=50 51-60 61-70 71+)
   // uv (<=3 >3&&<=6 >6&&<=9 >9)
   const {
+    display,
     city,
     timestamp,
     icon,
@@ -14,9 +15,7 @@ function Weather(props) {
     temp,
     feeling,
     min,
-    minDifference,
     max,
-    maxDifference,
     wind,
     humidity,
     polution,
@@ -44,12 +43,10 @@ function Weather(props) {
       </article>
       <article className="wt-temp-max-min-container">
         <div className="wt-temp-max-min">
-          <h3>{min}º</h3>
-          <h3 className="wt-temp-difference">{minDifference}</h3>
+          <h3>min {min}º</h3>
         </div>
         <div className="wt-temp-max-min">
-          <h3>{max}º</h3>
-          <h3 className="wt-temp-difference">{maxDifference}</h3>
+          <h3>{max}º max</h3>
         </div>
       </article>
       <article className="wt-weather">
@@ -59,7 +56,7 @@ function Weather(props) {
             alt="wind"
             className="wt-sunrise-sunset-icon"
           />
-          <p>{wind} m/s</p>
+          <p>{wind}m/s</p>
         </div>
         <div className="wt-weather-info humidity danger">
           <img
@@ -69,15 +66,15 @@ function Weather(props) {
           />
           <p>{humidity}%</p>
         </div>
-        <div className="wt-weather-info polution caution">
+        <div className={`wt-weather-info polution caution ${display}`}>
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685786807/App%20Tiempo/icons/icons8-pollution-64_2_jjzhjy.png"
             alt="pollution"
             className="wt-sunrise-sunset-icon"
           />
-          <p>{polution}</p>
+          <p>{polution}/5</p>
         </div>
-        <div className="wt-weather-info raining danger">
+        <div className={`wt-weather-info raining danger ${display}`}>
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788117/App%20Tiempo/icons/icons8-rainy-weather-64_nreo9p.png"
             alt="raining"

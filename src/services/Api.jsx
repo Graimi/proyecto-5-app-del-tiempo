@@ -5,6 +5,7 @@ import Error from '../components/Error/Error';
 import Loader from '../components/Loader/Loader';
 import Weather from '../components/Weather/Weather';
 import moment from 'moment/moment';
+import weatherIcons from '../data/weatherIcons';
 
 function Api({ weather }) {
   const [latitude, setLatitude] = useState(null);
@@ -30,20 +31,15 @@ function Api({ weather }) {
   // Almacenamos en una constante nuestra API Key
   const ApiKey = 'cb658f072db01ec164fb8a14cc6d9da9';
 
+  // Almacenamos en una constante la URL de Open Weather dedicada al tiempo presente y futuro
   const weatherURL = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&units=metric&lang=es&appid=${ApiKey}`;
+
   const yestaerdayUnix = Math.floor(Date.now() / 1000) - 24 * 60 * 60;
   // Almacenamos en una constante la URL de Open Weather dedicada al tiempo pasado
   const historicalURL = `https://api.openweathermap.org/data/3.0/onecall/timemachine?lat=${latitude}&lon=${longitude}&dt=${yestaerdayUnix}&units=metric&lang=es&appid=${ApiKey}`;
 
-  async function ApiFetch() {
-    try {
-      const response = await fetch(weather === 'current' ? weatherURL : historicalURL);
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      return error;
-    }
-  }
+  // Almacenamos en una constante la URL de Open Weather dedicada a la contaminación
+  const pollutionURL = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${ApiKey}`;
 
   // Seteamos la info de la api apiData
   const [apiData, setApiData] = useState({});
@@ -52,10 +48,21 @@ function Api({ weather }) {
   // Seteamos que hasta que se cargue la info de la api aparezca la ventana de loading
   const [apiDataLoading, setApiDataLoading] = useState(true);
 
+  async function ApiFetch(url) {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  // Creamos el template para llamar a las apis
   useEffect(() => {
     setApiDataLoading(true);
     // Llamamos a la función Api
-    ApiFetch()
+    ApiFetch(weather === 'current' ? weatherURL : historicalURL)
       // Obtenemos la info de la api
       .then((data) => setApiData(data))
       // Si aparece un error damos valor positivo al state
@@ -67,6 +74,20 @@ function Api({ weather }) {
 
   console.log(apiData);
 
+  // Creamos este state para almacenar la info de contaminación
+  const [pollutionData, setPollutionData] = useState({});
+
+  // Llamamos a la api de contaminación
+  useEffect(() => {
+    // Llamamos a la función Api
+    ApiFetch(pollutionURL)
+      // Obtenemos la info de la api
+      .then((data) => setPollutionData(data));
+    // Esta info es importante que se actualice cada vez que se cambia la localización
+  }, [latitude, longitude]);
+
+  console.log(pollutionData?.list?.[0]?.main?.aqi);
+
   // Invocamos el template de error si la api está saturada
   if (apiDataError) {
     return <Error />;
@@ -77,21 +98,12 @@ function Api({ weather }) {
     return <Loader />;
   }
 
-  // useEffect(() => {
-  //   if (weather === 'yesterday') {
-  //     const rainingElement = document.querySelector('.raining');
-  //     if (rainingElement) {
-  //       rainingElement.style.display = 'none';
-  //     }
-  //   }
-  // }, [weather]);
-
   // Creamos la función para obtener la fecha, nos ayudamos de la biblioteca moment
   function date(timestamp) {
     return moment.unix(timestamp).format('DD/MM/YY');
   }
 
-// Creamos la función para obtener la hora, nos ayudamos de la biblioteca moment
+  // Creamos la función para obtener la hora, nos ayudamos de la biblioteca moment
   function hour(timestamp) {
     return moment.unix(timestamp).format('HH:mm');
   }
@@ -111,18 +123,16 @@ function Api({ weather }) {
       return apiData.daily && apiData.daily.length > 0 ? (
         <Weather
           city={'city'}
-          icon={'icon'}
-          iconAlt={'iconAlt'}
+          icon={weatherIcons?.[apiData?.current?.weather?.[0]?.icon].icon}
+          iconAlt={weatherIcons?.[apiData?.current?.weather?.[0]?.icon].name}
           timestamp={date(apiData?.current.dt)}
           temp={Math.round(apiData?.current?.temp ?? 0)}
           feeling={Math.round(apiData?.current?.feels_like ?? 0)}
           min={Math.round(apiData?.daily?.[0]?.temp.min ?? 0)}
-          minDifference={'midif'}
           max={Math.round(apiData?.daily?.[0]?.temp.max ?? 0)}
-          maxDifference={'madif'}
           wind={Math.round(apiData?.daily?.[0]?.wind_speed ?? 0)}
           humidity={Math.round(apiData?.daily?.[0]?.humidity ?? 0)}
-          polution={'polution'}
+          polution={pollutionData?.list?.[0]?.main?.aqi}
           raining={`${Math.round((apiData?.daily?.[0]?.pop ?? 0) * 100)}%`}
           uv={Math.round(apiData?.daily?.[0]?.uvi ?? 0)}
           cloudiness={Math.round(apiData?.daily?.[0]?.clouds ?? 0)}
@@ -141,7 +151,10 @@ function Api({ weather }) {
       // Escribimos la siguiente condición para evitar fallos
       return apiData.data && apiData.data.length > 0 ? (
         <Weather
-          timestamp={date(apiData?.data[0].dt)}
+          // Declaramos none para quitar aquellos elementos que no podemos obtener por la api
+          display="none"
+          timestamp={date(apiData?.data?.[0]?.dt)}
+          temp={apiData?.data?.[0]?.temp}
           // raining={`${Math.round(apiData?.daily[0].pop * 100)}%`}
         />
       ) : (
