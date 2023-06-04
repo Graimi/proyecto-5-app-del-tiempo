@@ -84,6 +84,10 @@
   text-align: right;
 }
 
+/* .raining {
+  display: flex
+} */
+
 .danger {
   background-color: var(--wt-color-danger);
 }

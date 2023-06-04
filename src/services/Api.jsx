@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Current from '../components/Current/Current';
-import Historical from '../components/Historical/Historical';
+// import Current from '../components/Current/Current';
+// import Historical from '../components/Historical/Historical';
 import Error from '../components/Error/Error';
 import Loader from '../components/Loader/Loader';
+import Weather from '../components/Weather/Weather';
+import moment from 'moment/moment';
 
 function Api({ weather }) {
   const [latitude, setLatitude] = useState(null);
@@ -54,13 +56,13 @@ function Api({ weather }) {
     setApiDataLoading(true);
     // Llamamos a la función Api
     ApiFetch()
-      // Obtenemos la info de la api del rover curiosity
+      // Obtenemos la info de la api
       .then((data) => setApiData(data))
       // Si aparece un error damos valor positivo al state
       .catch(() => setApiDataError(true))
       // Una vez se ha solventado bien la solicitud de la api se quita la ventana de loading
       .finally(() => setApiDataLoading(false));
-    // Esta info es importante que se actualice cada vez que se cambia la fecha
+    // Esta info es importante que se actualice cada vez que se cambia la localización
   }, [latitude, longitude]);
 
   console.log(apiData);
@@ -75,13 +77,43 @@ function Api({ weather }) {
     return <Loader />;
   }
 
+  // useEffect(() => {
+  //   if (weather === 'yesterday') {
+  //     const rainingElement = document.querySelector('.raining');
+  //     if (rainingElement) {
+  //       rainingElement.style.display = 'none';
+  //     }
+  //   }
+  // }, [weather]);
+
+  // Creamos la función para obtener la fecha, nos ayudamos de la biblioteca moment
+  function date(prop) {
+    return moment.unix(prop).format('DD/MM/YY');
+  }
+
+  // const rainingElement = document.querySelector('.raining');
   // Añadimos el switch con los diferentes resultados posibles
   switch (weather) {
     case 'current':
-      return apiData.daily && apiData.daily.length > 0 ? <Current prop={apiData} /> : <Loader />;
+      return apiData.daily && apiData.daily.length > 0 ? (
+        <Weather
+          timestamp={date(apiData?.current.dt)}
+          raining={`${Math.round(apiData?.daily[0].pop * 100)}%`}
+        />
+      ) : (
+        <Loader />
+      );
+    // return apiData.daily && apiData.daily.length > 0 ? <Current prop={apiData} /> : <Loader />;
     case 'yesterday':
+      // {
+      //   const rainingElement = document.querySelector('.raining');
+      //   rainingElement.style.display = 'none';
+      // }
       return apiData.data && apiData.data.length > 0 ? (
-        <Historical apiData={apiData} />
+        <Weather
+          timestamp={date(apiData?.data[0].dt)}
+          // raining={`${Math.round(apiData?.daily[0].pop * 100)}%`}
+        />
       ) : (
         <Loader />
       );
