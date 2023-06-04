@@ -20,6 +20,7 @@
 
 .wt-temp-celsius {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   text-align: right;
 }
@@ -111,10 +112,12 @@
 .wt-sunrise-sunset {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
   gap: 5px;
 }
 
+/* Cambiamos la fuente por defecto para adaptarlo mejor */
 .wt-sunrise-sunset h3 {
   font-size: 20px;
 }

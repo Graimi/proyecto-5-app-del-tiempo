@@ -87,18 +87,47 @@ function Api({ weather }) {
   // }, [weather]);
 
   // Creamos la función para obtener la fecha, nos ayudamos de la biblioteca moment
-  function date(prop) {
-    return moment.unix(prop).format('DD/MM/YY');
+  function date(timestamp) {
+    return moment.unix(timestamp).format('DD/MM/YY');
   }
+
+// Creamos la función para obtener la hora, nos ayudamos de la biblioteca moment
+  function hour(timestamp) {
+    return moment.unix(timestamp).format('HH:mm');
+  }
+
+  // function date(timestamp) {
+  //   const dateMiliseconds = timestamp * 1000;
+  //   const dateMoment = moment(dateMiliseconds);
+  //   const dateEurFormat = dateMoment.format('DD/MM/YYYY');
+  //   return dateEurFormat;
+  // }
 
   // const rainingElement = document.querySelector('.raining');
   // Añadimos el switch con los diferentes resultados posibles
   switch (weather) {
     case 'current':
+      // Escribimos la siguiente condición para evitar fallos
       return apiData.daily && apiData.daily.length > 0 ? (
         <Weather
+          city={'city'}
+          icon={'icon'}
+          iconAlt={'iconAlt'}
           timestamp={date(apiData?.current.dt)}
-          raining={`${Math.round(apiData?.daily[0].pop * 100)}%`}
+          temp={Math.round(apiData?.current?.temp ?? 0)}
+          feeling={Math.round(apiData?.current?.feels_like ?? 0)}
+          min={Math.round(apiData?.daily?.[0]?.temp.min ?? 0)}
+          minDifference={'midif'}
+          max={Math.round(apiData?.daily?.[0]?.temp.max ?? 0)}
+          maxDifference={'madif'}
+          wind={Math.round(apiData?.daily?.[0]?.wind_speed ?? 0)}
+          humidity={Math.round(apiData?.daily?.[0]?.humidity ?? 0)}
+          polution={'polution'}
+          raining={`${Math.round((apiData?.daily?.[0]?.pop ?? 0) * 100)}%`}
+          uv={Math.round(apiData?.daily?.[0]?.uvi ?? 0)}
+          cloudiness={Math.round(apiData?.daily?.[0]?.clouds ?? 0)}
+          sunrise={hour(apiData?.daily?.[0]?.sunrise)}
+          sunset={hour(apiData?.daily?.[0]?.sunset)}
         />
       ) : (
         <Loader />
@@ -109,6 +138,7 @@ function Api({ weather }) {
       //   const rainingElement = document.querySelector('.raining');
       //   rainingElement.style.display = 'none';
       // }
+      // Escribimos la siguiente condición para evitar fallos
       return apiData.data && apiData.data.length > 0 ? (
         <Weather
           timestamp={date(apiData?.data[0].dt)}
