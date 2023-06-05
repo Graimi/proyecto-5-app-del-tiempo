@@ -86,7 +86,11 @@ function Api({ weather }) {
     // Esta info es importante que se actualice cada vez que se cambia la localización
   }, [latitude, longitude]);
 
-  console.log(pollutionData?.list?.[0]?.main?.aqi);
+  function BackgroundChanger(id) {
+    const backgroundUrl = weatherIcons[id]?.background;
+    const body = document.querySelector('body');
+    body.style.backgroundImage = `url(${backgroundUrl})`;
+  }
 
   // Invocamos el template de error si la api está saturada
   if (apiDataError) {
@@ -108,19 +112,13 @@ function Api({ weather }) {
     return moment.unix(timestamp).format('HH:mm');
   }
 
-  // function date(timestamp) {
-  //   const dateMiliseconds = timestamp * 1000;
-  //   const dateMoment = moment(dateMiliseconds);
-  //   const dateEurFormat = dateMoment.format('DD/MM/YYYY');
-  //   return dateEurFormat;
-  // }
-
-  // const rainingElement = document.querySelector('.raining');
   // Añadimos el switch con los diferentes resultados posibles
   switch (weather) {
     case 'current':
+      // Aplicamos el background al fondo
+      BackgroundChanger(apiData?.current?.weather?.[0]?.icon);
       // Escribimos la siguiente condición para evitar fallos
-      return apiData.daily && apiData.daily.length > 0 ? (
+      return (
         <Weather
           city={'city'}
           icon={weatherIcons?.[apiData?.current?.weather?.[0]?.icon].icon}
@@ -130,24 +128,40 @@ function Api({ weather }) {
           feeling={Math.round(apiData?.current?.feels_like ?? 0)}
           min={Math.round(apiData?.daily?.[0]?.temp.min ?? 0)}
           max={Math.round(apiData?.daily?.[0]?.temp.max ?? 0)}
-          wind={Math.round(apiData?.daily?.[0]?.wind_speed ?? 0)}
-          humidity={Math.round(apiData?.daily?.[0]?.humidity ?? 0)}
+          wind={Math.round(apiData?.current?.wind_speed ?? 0)}
+          humidity={Math.round(apiData?.current?.humidity ?? 0)}
           polution={pollutionData?.list?.[0]?.main?.aqi}
-          raining={`${Math.round((apiData?.daily?.[0]?.pop ?? 0) * 100)}%`}
-          uv={Math.round(apiData?.daily?.[0]?.uvi ?? 0)}
-          cloudiness={Math.round(apiData?.daily?.[0]?.clouds ?? 0)}
+          raining={`${Math.round((apiData?.hourly?.[0]?.pop ?? 0) * 100)}%`}
+          uv={Math.round(apiData?.current?.uvi ?? 0)}
+          cloudiness={Math.round(apiData?.current?.clouds ?? 0)}
           sunrise={hour(apiData?.daily?.[0]?.sunrise)}
           sunset={hour(apiData?.daily?.[0]?.sunset)}
         />
-      ) : (
-        <Loader />
       );
+    // apiData.daily && apiData.daily.length > 0 ? (
+    //   <Weather
+    //     city={'city'}
+    //     icon={weatherIcons?.[apiData?.current?.weather?.[0]?.icon].icon}
+    //     iconAlt={weatherIcons?.[apiData?.current?.weather?.[0]?.icon].name}
+    //     timestamp={date(apiData?.current.dt)}
+    //     temp={Math.round(apiData?.current?.temp ?? 0)}
+    //     feeling={Math.round(apiData?.current?.feels_like ?? 0)}
+    //     min={Math.round(apiData?.daily?.[0]?.temp.min ?? 0)}
+    //     max={Math.round(apiData?.daily?.[0]?.temp.max ?? 0)}
+    //     wind={Math.round(apiData?.daily?.[0]?.wind_speed ?? 0)}
+    //     humidity={Math.round(apiData?.daily?.[0]?.humidity ?? 0)}
+    //     polution={pollutionData?.list?.[0]?.main?.aqi}
+    //     raining={`${Math.round((apiData?.daily?.[0]?.pop ?? 0) * 100)}%`}
+    //     uv={Math.round(apiData?.daily?.[0]?.uvi ?? 0)}
+    //     cloudiness={Math.round(apiData?.daily?.[0]?.clouds ?? 0)}
+    //     sunrise={hour(apiData?.daily?.[0]?.sunrise)}
+    //     sunset={hour(apiData?.daily?.[0]?.sunset)}
+    //   />
+    // ) : (
+    //   <Loader />
+    // );
     // return apiData.daily && apiData.daily.length > 0 ? <Current prop={apiData} /> : <Loader />;
     case 'yesterday':
-      // {
-      //   const rainingElement = document.querySelector('.raining');
-      //   rainingElement.style.display = 'none';
-      // }
       // Escribimos la siguiente condición para evitar fallos
       return apiData.data && apiData.data.length > 0 ? (
         <Weather
@@ -155,7 +169,6 @@ function Api({ weather }) {
           display="none"
           timestamp={date(apiData?.data?.[0]?.dt)}
           temp={apiData?.data?.[0]?.temp}
-          // raining={`${Math.round(apiData?.daily[0].pop * 100)}%`}
         />
       ) : (
         <Loader />
