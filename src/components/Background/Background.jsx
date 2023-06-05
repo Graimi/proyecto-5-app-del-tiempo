@@ -1,13 +1,9 @@
-// import { useState } from 'react';
-//   const [backgroundUrl, setBackgroundUrl] = useState(
-//     'https://res.cloudinary.com/dwsffp1eq/image/upload/v1685521497/App%20Tiempo/cloudy_l0lf5j.jpg'
-//   );
+import weatherIcons from '../../data/weatherIcons';
 
-// function Background() {
-//   console.log('Eii')
-//   const backgroundUrl = 'https://res.cloudinary.com/dwsffp1eq/image/upload/v1685696630/App%20Tiempo/background/clear_sky_-_copia_wajbhx.jpg';
-//   const body = document.querySelector('body');
-//   body.style.backgroundImage = `url(${backgroundUrl})`;
-// }
+function BackgroundChanger(id) {
+  const backgroundUrl = weatherIcons[id]?.background;
+  const body = document.querySelector('body');
+  body.style.backgroundImage = `url(${backgroundUrl})`;
+}
 
-// export default Background;
+export default BackgroundChanger;

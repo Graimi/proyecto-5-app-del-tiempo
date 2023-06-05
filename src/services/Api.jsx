@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 // import Current from '../components/Current/Current';
 // import Historical from '../components/Historical/Historical';
+import moment from 'moment/moment';
 import Error from '../components/Error/Error';
 import Loader from '../components/Loader/Loader';
 import Weather from '../components/Weather/Weather';
-import moment from 'moment/moment';
 import weatherIcons from '../data/weatherIcons';
+import BackgroundChanger from '../components/Background/Background';
+import Historical from '../components/Historical/Historical';
+import Current from '../components/Current/Current';
 
 function Api({ weather }) {
   const [latitude, setLatitude] = useState(null);
@@ -86,12 +89,6 @@ function Api({ weather }) {
     // Esta info es importante que se actualice cada vez que se cambia la localización
   }, [latitude, longitude]);
 
-  function BackgroundChanger(id) {
-    const backgroundUrl = weatherIcons[id]?.background;
-    const body = document.querySelector('body');
-    body.style.backgroundImage = `url(${backgroundUrl})`;
-  }
-
   // Invocamos el template de error si la api está saturada
   if (apiDataError) {
     return <Error />;
@@ -114,65 +111,19 @@ function Api({ weather }) {
 
   // Añadimos el switch con los diferentes resultados posibles
   switch (weather) {
+    case 'yesterday':
+      // Llamamos a la plantilla de datos históricos con la siguiente condición para evitar fallos
+      return apiData.data && apiData.data.length > 0 ? Historical(apiData) : <Loader />;
     case 'current':
       // Aplicamos el background al fondo
       BackgroundChanger(apiData?.current?.weather?.[0]?.icon);
-      // Escribimos la siguiente condición para evitar fallos
-      return (
-        <Weather
-          city={'city'}
-          icon={weatherIcons?.[apiData?.current?.weather?.[0]?.icon].icon}
-          iconAlt={weatherIcons?.[apiData?.current?.weather?.[0]?.icon].name}
-          timestamp={date(apiData?.current.dt)}
-          temp={Math.round(apiData?.current?.temp ?? 0)}
-          feeling={Math.round(apiData?.current?.feels_like ?? 0)}
-          min={Math.round(apiData?.daily?.[0]?.temp.min ?? 0)}
-          max={Math.round(apiData?.daily?.[0]?.temp.max ?? 0)}
-          wind={Math.round(apiData?.current?.wind_speed ?? 0)}
-          humidity={Math.round(apiData?.current?.humidity ?? 0)}
-          polution={pollutionData?.list?.[0]?.main?.aqi}
-          raining={`${Math.round((apiData?.hourly?.[0]?.pop ?? 0) * 100)}%`}
-          uv={Math.round(apiData?.current?.uvi ?? 0)}
-          cloudiness={Math.round(apiData?.current?.clouds ?? 0)}
-          sunrise={hour(apiData?.daily?.[0]?.sunrise)}
-          sunset={hour(apiData?.daily?.[0]?.sunset)}
-        />
-      );
-    // apiData.daily && apiData.daily.length > 0 ? (
-    //   <Weather
-    //     city={'city'}
-    //     icon={weatherIcons?.[apiData?.current?.weather?.[0]?.icon].icon}
-    //     iconAlt={weatherIcons?.[apiData?.current?.weather?.[0]?.icon].name}
-    //     timestamp={date(apiData?.current.dt)}
-    //     temp={Math.round(apiData?.current?.temp ?? 0)}
-    //     feeling={Math.round(apiData?.current?.feels_like ?? 0)}
-    //     min={Math.round(apiData?.daily?.[0]?.temp.min ?? 0)}
-    //     max={Math.round(apiData?.daily?.[0]?.temp.max ?? 0)}
-    //     wind={Math.round(apiData?.daily?.[0]?.wind_speed ?? 0)}
-    //     humidity={Math.round(apiData?.daily?.[0]?.humidity ?? 0)}
-    //     polution={pollutionData?.list?.[0]?.main?.aqi}
-    //     raining={`${Math.round((apiData?.daily?.[0]?.pop ?? 0) * 100)}%`}
-    //     uv={Math.round(apiData?.daily?.[0]?.uvi ?? 0)}
-    //     cloudiness={Math.round(apiData?.daily?.[0]?.clouds ?? 0)}
-    //     sunrise={hour(apiData?.daily?.[0]?.sunrise)}
-    //     sunset={hour(apiData?.daily?.[0]?.sunset)}
-    //   />
-    // ) : (
-    //   <Loader />
-    // );
-    // return apiData.daily && apiData.daily.length > 0 ? <Current prop={apiData} /> : <Loader />;
-    case 'yesterday':
-      // Escribimos la siguiente condición para evitar fallos
-      return apiData.data && apiData.data.length > 0 ? (
-        <Weather
-          // Declaramos none para quitar aquellos elementos que no podemos obtener por la api
-          display="none"
-          timestamp={date(apiData?.data?.[0]?.dt)}
-          temp={apiData?.data?.[0]?.temp}
-        />
+      // Llamamos a la plantilla de datos actuales con la siguiente condición para evitar fallos
+      return apiData.daily && apiData.daily.length > 0 ? (
+        Current(apiData, pollutionData)
       ) : (
         <Loader />
       );
+    // return apiData.daily && apiData.daily.length > 0 ? <Current prop={apiData} /> : <Loader />;
     case 'forecast':
       // Ver que añadir cuando lo tengamos
       return <h1>Forecast</h1>;

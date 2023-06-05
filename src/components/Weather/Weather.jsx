@@ -38,10 +38,10 @@ function Weather(props) {
         </div>
         <div className="wt-temp-celsius">
           <h2>{temp}º</h2>
-          <p>Feels like{feeling}º</p>
+          <p>Feels like {feeling}º</p>
         </div>
       </article>
-      <article className="wt-temp-max-min-container">
+      <article className={`wt-temp-max-min-container ${display}`}>
         <div className="wt-temp-max-min">
           <h3>min {min}º</h3>
         </div>
@@ -66,7 +66,7 @@ function Weather(props) {
           />
           <p>{humidity}%</p>
         </div>
-        <div className={`wt-weather-info polution caution ${display}`}>
+        <div className="wt-weather-info polution caution">
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685786807/App%20Tiempo/icons/icons8-pollution-64_2_jjzhjy.png"
             alt="pollution"
@@ -74,7 +74,7 @@ function Weather(props) {
           />
           <p>{polution}/5</p>
         </div>
-        <div className={`wt-weather-info raining danger ${display}`}>
+        <div className="wt-weather-info raining danger">
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788117/App%20Tiempo/icons/icons8-rainy-weather-64_nreo9p.png"
             alt="raining"
