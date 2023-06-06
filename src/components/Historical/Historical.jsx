@@ -14,11 +14,8 @@ function Historical(apiData) {
       timestamp={date(apiData?.data?.[0]?.dt)}
       temp={Math.round(apiData?.data?.[0]?.temp)}
       feeling={Math.round(apiData?.data?.[0]?.feels_like ?? 0)}
-      // min={Math.round(apiData?.daily?.[0]?.temp.min ?? 0)}
-      // max={Math.round(apiData?.daily?.[0]?.temp.max ?? 0)}
       wind={Math.round(apiData?.data?.[0]?.wind_speed ?? 0)}
       humidity={Math.round(apiData?.data?.[0]?.humidity ?? 0)}
-      raining={`${Math.round((apiData?.data?.[0]?.rain ?? 0) * 100)}%`}
       uv={Math.round(apiData?.data?.[0]?.uvi ?? 0)}
       cloudiness={Math.round(apiData?.data?.[0]?.clouds ?? 0)}
       sunrise={hour(apiData?.data?.[0]?.sunrise)}

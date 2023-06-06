@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
-// import Current from '../components/Current/Current';
-// import Historical from '../components/Historical/Historical';
-import moment from 'moment/moment';
 import Error from '../components/Error/Error';
 import Loader from '../components/Loader/Loader';
-import Weather from '../components/Weather/Weather';
-import weatherIcons from '../data/weatherIcons';
 import BackgroundChanger from '../components/Background/Background';
 import Historical from '../components/Historical/Historical';
 import Current from '../components/Current/Current';
+import Forecast from '../components/Forecast/Forecast';
 
 function Api({ weather }) {
   const [latitude, setLatitude] = useState(null);
@@ -65,7 +61,7 @@ function Api({ weather }) {
   useEffect(() => {
     setApiDataLoading(true);
     // Llamamos a la función Api
-    ApiFetch(weather === 'current' ? weatherURL : historicalURL)
+    ApiFetch(weather === ('current' || 'forecast') ? weatherURL : historicalURL)
       // Obtenemos la info de la api
       .then((data) => setApiData(data))
       // Si aparece un error damos valor positivo al state
@@ -99,16 +95,6 @@ function Api({ weather }) {
     return <Loader />;
   }
 
-  // Creamos la función para obtener la fecha, nos ayudamos de la biblioteca moment
-  function date(timestamp) {
-    return moment.unix(timestamp).format('DD/MM/YY');
-  }
-
-  // Creamos la función para obtener la hora, nos ayudamos de la biblioteca moment
-  function hour(timestamp) {
-    return moment.unix(timestamp).format('HH:mm');
-  }
-
   // Añadimos el switch con los diferentes resultados posibles
   switch (weather) {
     case 'yesterday':
@@ -126,7 +112,7 @@ function Api({ weather }) {
     // return apiData.daily && apiData.daily.length > 0 ? <Current prop={apiData} /> : <Loader />;
     case 'forecast':
       // Ver que añadir cuando lo tengamos
-      return <h1>Forecast</h1>;
+      return Forecast();
     default:
       return <Error />;
   }

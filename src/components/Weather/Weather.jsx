@@ -56,17 +56,21 @@ function Weather(props) {
             alt="wind"
             className="wt-sunrise-sunset-icon"
           />
-          <p>{wind}m/s</p>
+          <p>{wind}m/s current</p>
+          <p> | {wind}m/s day</p>
         </div>
         <div className="wt-weather-info humidity danger">
-          <img
-            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788356/App%20Tiempo/icons/icons8-wet-64_mbmzea.png"
-            alt="humidity"
-            className="wt-sunrise-sunset-icon"
-          />
-          <p>{humidity}%</p>
+          <p className="title">Humidity</p>
+          <div className="wt-weather-content">
+            <img
+              src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788356/App%20Tiempo/icons/icons8-wet-64_mbmzea.png"
+              alt="humidity"
+              className="wt-sunrise-sunset-icon"
+            />
+            <p>{humidity}%</p>
+          </div>
         </div>
-        <div className="wt-weather-info polution caution">
+        <div className={`wt-weather-info polution caution ${display}`}>
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685786807/App%20Tiempo/icons/icons8-pollution-64_2_jjzhjy.png"
             alt="pollution"
@@ -74,7 +78,7 @@ function Weather(props) {
           />
           <p>{polution}/5</p>
         </div>
-        <div className="wt-weather-info raining danger">
+        <div className={`wt-weather-info raining danger ${display}`}>
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788117/App%20Tiempo/icons/icons8-rainy-weather-64_nreo9p.png"
             alt="raining"

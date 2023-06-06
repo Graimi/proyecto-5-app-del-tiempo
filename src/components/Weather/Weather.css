@@ -75,21 +75,30 @@ justify-content: center;
 .wt-weather-info {
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
   align-items: center;
-  width: 75px;
-  height: 45px;
+  width: auto;
+  height: auto;
   /* gap: 5px; */
   padding: 5px;
   margin: auto;
   border-radius: 10px;
   /* background-color: #b6b6b670; */
   box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226);
-
   /* backdrop-filter: blur(50px); */
 }
 
 .wt-weather-info p {
   text-align: right;
+}
+
+.title {
+  font-weight: 400;
+}
+
+.wt-weather-content {
+  display: flex;
+  flex-direction: row;
 }
 
 .danger {
