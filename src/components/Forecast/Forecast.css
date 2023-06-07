@@ -1,0 +1,59 @@
+.wt-forecast {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.wt-forecast-container {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--wt-color-light);
+    align-items: center;
+    width: 100%;
+    /* width: auto;
+    height: auto; */
+    /* gap: 5px; */
+    padding: 5px;
+    margin: auto;
+    border-radius: 10px;
+    /* background-color: #b6b6b670; */
+    /* box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226); */
+    backdrop-filter: blur(50px);
+}
+
+.wt-forecast-day-details {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.wt-forecast-info {
+    display: flex;
+    flex-direction: column;
+    /* flex-direction: row; */
+}
+
+.wt-forecast-icon {
+    width: 32px;
+}
+
+.wt-forecast-day-temp-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center
+}
+
+.wt-forecast-day-temp {
+    /* display: flex; */
+}
+
+.wt-forecast-day-temp h3 {
+    display: flex;
+}
+
+.wt-forecast-arrow-icon {
+    width: 24px;
+}
+
+.wt-forecast-weather-icon {
+    width: 45px;
+}
