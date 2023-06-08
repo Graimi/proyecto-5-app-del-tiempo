@@ -1,19 +1,25 @@
 .wt-forecast {
     display: flex;
     flex-direction: column;
-    align-content: center;
+    /* align-content: center; */
+}
+
+/* Aplicamos una separación entre la fecha y el resto de la información */
+.wt-forecast-date {
+    margin-bottom: 5px;
 }
 
 .wt-forecast-container {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     background-color: var(--wt-color-light);
     align-items: center;
     width: 100%;
     /* width: auto;
     height: auto; */
-    /* gap: 5px; */
-    padding: 5px;
+    gap: 5px;
+    padding: 10px;
     margin: auto;
     border-radius: 10px;
     /* background-color: #b6b6b670; */
@@ -21,29 +27,45 @@
     backdrop-filter: blur(50px);
 }
 
-.wt-forecast-day-details {
+.wt-forecast-details {
     display: flex;
     flex-wrap: wrap;
+    /* padding: 2px; */
+    gap: 15px;
+
 }
 
 .wt-forecast-info {
     display: flex;
     flex-direction: column;
     /* flex-direction: row; */
+    justify-content: space-around;
+    align-items: center;
+    width: 50px;
+    height: auto;
+    gap: 5px;
+    padding: 5px;
+    margin: auto;
+    border-radius: 10px;
+    /* border: 1px solid white; */
+    /* background-color: #b6b6b670; */
+    box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226);
+    /* backdrop-filter: blur(50px); */
+}
+
+.max {
+    /* flex-direction: row; */
+    border: none;
 }
 
 .wt-forecast-icon {
     width: 32px;
 }
 
-.wt-forecast-day-temp-icon {
+.wt-forecast-temp {
     display: flex;
     flex-direction: row;
     align-items: center
-}
-
-.wt-forecast-day-temp {
-    /* display: flex; */
 }
 
 .wt-forecast-day-temp h3 {
@@ -54,6 +76,6 @@
     width: 24px;
 }
 
-.wt-forecast-weather-icon {
-    width: 45px;
+.wt-forecast-icon {
+    width: 75px;
 }
