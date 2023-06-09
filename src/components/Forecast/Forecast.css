@@ -39,6 +39,7 @@
   margin: auto;
   backdrop-filter: blur(400px);
   border-radius: 10px;
+    /* box-shadow: 0 5px 8px 1px rgba(43, 42, 42, 0.062); */
 }
 
 .wt-forecast-details {
@@ -62,16 +63,24 @@
   border-radius: 10px;
   /* border: 1px solid white; */
   /* background-color: #b6b6b670; */
-  box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.13);
+  /* box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.13); */
   /* backdrop-filter: blur(50px); */
 }
 
+.wt-forecast-info p {
+  /* font-weight: 500; */
+  color: white;
+  opacity: 100%;
+}
+
 .forecast-safe {
-  border: 3px solid rgba(0, 255, 34, 0.548);
+  border: 1px solid whitesmoke;
+  /* background-color: var(--wt-color-safe); */
 }
 
 .forecast-danger {
-  border: 3px solid rgba(255, 0, 0, 0.315);
+  border: 1px solid whitesmoke;
+  /* background-color: var(--wt-color-danger); */
 }
 
 .max {
@@ -86,7 +95,7 @@
 .wt-forecast-temp {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: center;
 }
 

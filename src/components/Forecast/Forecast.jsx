@@ -28,7 +28,7 @@ function Forecast(props) {
                   alt="raining"
                   className="wt-forecast-icon"
                 />
-                <p>{Math.round((item.pop ?? 0) * 100)}</p>
+                <p>{Math.round((item.pop ?? 0) * 100)}%</p>
               </div>
               <div className="wt-forecast-temp">
                 <h3>
