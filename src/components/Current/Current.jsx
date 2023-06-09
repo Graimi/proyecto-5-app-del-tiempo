@@ -9,7 +9,7 @@ function Current(apiData, pollutionData) {
       city={'city'}
       icon={weatherIcons?.[apiData?.current?.weather?.[0]?.icon].icon}
       iconAlt={weatherIcons?.[apiData?.current?.weather?.[0]?.icon].name}
-      timestamp={date(apiData?.current.dt)}
+      timestamp={date(apiData?.current?.dt)}
       temp={Math.round(apiData?.current?.temp ?? 0)}
       feeling={Math.round(apiData?.current?.feels_like ?? 0)}
       min={Math.round(apiData?.daily?.[0]?.temp.min ?? 0)}

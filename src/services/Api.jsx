@@ -5,6 +5,8 @@ import BackgroundChanger from '../components/Background/Background';
 import Historical from '../components/Historical/Historical';
 import Current from '../components/Current/Current';
 import Forecast from '../components/Forecast/Forecast';
+import { date } from '../components/TimeFunctions/TimeFunctions';
+import weatherIcons from '../data/weatherIcons';
 
 function Api({ weather }) {
   const [latitude, setLatitude] = useState(null);
@@ -57,19 +59,79 @@ function Api({ weather }) {
     }
   }
 
-  // Creamos el template para llamar a las apis
+  // // Creamos el template para llamar a las apis
+  // useEffect(() => {
+  //   setApiDataLoading(true);
+  //   // Llamamos a la función Api
+  //   ApiFetch(weather === ('current' || 'forecast') ? weatherURL : historicalURL)
+  //     // Obtenemos la info de la api
+  //     .then((data) => setApiData(data))
+  //     // Si aparece un error damos valor positivo al state
+  //     .catch(() => setApiDataError(true))
+  //     // Una vez se ha solventado bien la solicitud de la api se quita la ventana de loading
+  //     .finally(() => setApiDataLoading(false));
+  //   // Esta info es importante que se actualice cada vez que se cambia la localización
+  // }, [latitude, longitude]);
+
+  // // Creamos el template para llamar a las APIs
+  // function ApiCalling({ api }) {
+  //   useEffect(() => {
+  //     async function fetchData() {
+  //       try {
+  //         const response = await fetch(api);
+  //         const data = await response.json();
+  //         console.log(data);
+  //         // Realiza las acciones necesarias con los datos obtenidos de la API
+  //       } catch (error) {
+  //         console.error(error);
+  //         // Maneja el error de la llamada a la API
+  //       }
+  //     }
+
+  //     fetchData();
+  //     // Esta info es importante que se actualice cada vez que se cambia la localización
+  //   }, [api]);
+
+  //   return null;
+  // }
+
+  // console.log(<ApiCalling api={weatherURL} />);
+
+  // Realiza la llamada a la API correspondiente y almacena los datos
+  async function fetchWeatherData(url) {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setApiData(data);
+    } catch (error) {
+      console.error(error);
+      setApiDataError(true);
+    } finally {
+      setApiDataLoading(false);
+    }
+  }
+
+  // ...
+
+  // Llama a la función para obtener los datos de la API según el caso del switch
   useEffect(() => {
     setApiDataLoading(true);
-    // Llamamos a la función Api
-    ApiFetch(weather === ('current' || 'forecast') ? weatherURL : historicalURL)
-      // Obtenemos la info de la api
-      .then((data) => setApiData(data))
-      // Si aparece un error damos valor positivo al state
-      .catch(() => setApiDataError(true))
-      // Una vez se ha solventado bien la solicitud de la api se quita la ventana de loading
-      .finally(() => setApiDataLoading(false));
-    // Esta info es importante que se actualice cada vez que se cambia la localización
-  }, [latitude, longitude]);
+
+    switch (weather) {
+      case 'yesterday':
+        fetchWeatherData(historicalURL);
+        break;
+      case 'current':
+        fetchWeatherData(weatherURL);
+        break;
+      case 'forecast':
+        fetchWeatherData(weatherURL);
+        break;
+      default:
+        setApiDataError(true);
+        setApiDataLoading(false);
+    }
+  }, [weather, historicalURL, weatherURL]);
 
   console.log(apiData);
 
@@ -111,8 +173,15 @@ function Api({ weather }) {
       );
     // return apiData.daily && apiData.daily.length > 0 ? <Current prop={apiData} /> : <Loader />;
     case 'forecast':
-      // Ver que añadir cuando lo tengamos
-      return Forecast();
+      // Al usar la misma api que current usamos la misma comprobación
+      return apiData.daily && apiData.daily.length > 0 ? (
+        <Forecast
+          city={'city'}
+          api={apiData.daily} // Pasamos todos los datos de la API como prop para usarlos dentro de Forecast si es necesario
+        />
+      ) : (
+        <Loader />
+      );
     default:
       return <Error />;
   }

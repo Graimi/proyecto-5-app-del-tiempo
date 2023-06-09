@@ -1,10 +1,10 @@
 .loader{
-    height: 100px;
-    text-align: center;
+    /* height: 100px; */
+    margin: auto;
     padding: 16px;
     /* margin: 0 auto 1em; */
-    display: inline-block;
-    vertical-align: top;
+    /* display: inline-block; */
+    /* vertical-align:baseline; */
   }
   
   /*
@@ -13,4 +13,5 @@
   svg path,
   svg rect{
     fill: var(--wt-color-primary);
+    width: 200px;
   }

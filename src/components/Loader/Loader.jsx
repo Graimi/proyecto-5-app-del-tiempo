@@ -4,7 +4,7 @@ import './Loader.css';
 // Creamos la función que contendrá el loader
 function Loader() {
   return (
-    <div className="loader loader--style1" title="0">
+    <div className="loader" title="0">
       <svg
         version="1.1"
         id="loader-1"
@@ -12,8 +12,8 @@ function Loader() {
         xmlnsXlink="http://www.w3.org/1999/xlink"
         x="0px"
         y="0px"
-        width="40px"
-        height="40px"
+        width="60px"
+        height="60px"
         viewBox="0 0 40 40"
         enableBackground="new 0 0 40 40"
         xmlSpace="preserve"
