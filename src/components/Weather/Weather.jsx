@@ -59,7 +59,7 @@ function Weather(props) {
           </div>
         </article> */}
       </article>
-      <article className={`wt-temp-max-min-container ${display}`}>
+      {/* <article className={`wt-temp-max-min-container ${display}`}>
         <div className="wt-temp-max-min">
           <img
             className="wt-temp-max-min-icon"
@@ -76,7 +76,7 @@ function Weather(props) {
           />
           <h3>{max}º</h3>
         </div>
-      </article>
+      </article> */}
       {/* <article className="wt-weather">
         <div className="wt-weather-info wind safe">
           <p className="title">Viento</p>
@@ -145,8 +145,84 @@ function Weather(props) {
           </div>
         </div>
       </article> */}
-      <div className="wt-weather-current">
-        <h3>Información actual</h3>
+      {/* <div className="wt-weather-current"> */}
+      {/* <h3>Información actual</h3> */}
+      <article className="wt-weather">
+        <div className="wt-weather-info wind safe">
+          <img
+            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788353/App%20Tiempo/icons/icons8-windsock-64_u9pxth.png"
+            alt="wind"
+            className="wt-sunrise-sunset-icon"
+          />
+          <p>{wind}m/s</p>
+        </div>
+        <div className="wt-weather-info humidity danger">
+          <img
+            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788356/App%20Tiempo/icons/icons8-wet-64_mbmzea.png"
+            alt="humidity"
+            className="wt-sunrise-sunset-icon"
+          />
+          <p>{humidity}%</p>
+        </div>
+        <div className={`wt-weather-info polution caution ${display}`}>
+          <img
+            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685786807/App%20Tiempo/icons/icons8-pollution-64_2_jjzhjy.png"
+            alt="pollution"
+            className="wt-sunrise-sunset-icon"
+          />
+          <p>{polution}/5</p>
+        </div>
+        <div className={`wt-weather-info raining danger ${display}`}>
+          <img
+            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788117/App%20Tiempo/icons/icons8-rainy-weather-64_nreo9p.png"
+            alt="raining"
+            className="wt-sunrise-sunset-icon"
+          />
+          <p>{raining}</p>
+        </div>
+        <div className="wt-weather-info uvi danger">
+          <img
+            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685787979/App%20Tiempo/icons/icons8-summer-64_2_wvrcbs.png"
+            alt="uv"
+            className="wt-sunrise-sunset-icon"
+          />
+          <p>{uv}</p>
+        </div>
+        <div className="wt-weather-info cloudiness safe">
+          <img
+            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685787705/App%20Tiempo/icons/icons8-cloud-64_3_attbeq.png"
+            alt="cloudiness"
+            className="wt-sunrise-sunset-icon"
+          />
+          <p>{cloudiness}%</p>
+        </div>
+      </article>
+      {/* </div> */}
+      <div className={`wt-weather-forecast ${display}`}>
+        <h3 className="wt-weather-forecast-title">Pronóstico del día</h3>
+        <article className={`wt-temp-max-min-container ${display}`}>
+          <div className="wt-temp-max-min">
+            {/* <img
+              className="wt-temp-max-min-icon"
+              src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1686064684/App%20Tiempo/icons/abajo_vxgsjc.png"
+              alt="min"
+            /> */}
+            <h3>{min}º</h3>
+          </div>
+          <img
+          className="wt-temp-max-min-line"
+            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1686480996/App%20Tiempo/icons/linea_fj7mvf.png"
+            alt=""
+          />
+          <div className="wt-temp-max-min">
+            {/* <img
+              className="wt-temp-max-min-icon"
+              src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1686064684/App%20Tiempo/icons/arriba_l0oxbe.png"
+              alt="max"
+            /> */}
+            <h3>{max}º</h3>
+          </div>
+        </article>
         <article className="wt-weather">
           <div className="wt-weather-info wind safe">
             <img
@@ -197,61 +273,26 @@ function Weather(props) {
             <p>{cloudiness}%</p>
           </div>
         </article>
-      </div>
-      <div className={`wt-weather-current" ${display}`}>
-        <h3>Pronóstico del día</h3>
-        <article className="wt-weather">
-          <div className="wt-weather-info wind safe">
+        <article className="wt-sunrise-sunset-container">
+          <div className="wt-sunrise-sunset">
             <img
-              src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788353/App%20Tiempo/icons/icons8-windsock-64_u9pxth.png"
-              alt="wind"
+              src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685790068/App%20Tiempo/icons/icons8-summer-64_3_g9apnb.png"
+              alt="sunrise"
               className="wt-sunrise-sunset-icon"
             />
-            <p>{wind}m/s</p>
+            <h3>{sunrise}</h3>
           </div>
-          <div className="wt-weather-info humidity danger">
+          <div className="wt-sunrise-sunset">
+            <h3>{sunset}</h3>
             <img
-              src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788356/App%20Tiempo/icons/icons8-wet-64_mbmzea.png"
-              alt="humidity"
+              src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685790661/App%20Tiempo/icons/icons8-waning-crescent-64_seivio.png"
+              alt="sunset"
               className="wt-sunrise-sunset-icon"
             />
-            <p>{humidity}%</p>
-          </div>
-          <div className={`wt-weather-info polution caution ${display}`}>
-            <img
-              src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685786807/App%20Tiempo/icons/icons8-pollution-64_2_jjzhjy.png"
-              alt="pollution"
-              className="wt-sunrise-sunset-icon"
-            />
-            <p>{polution}/5</p>
-          </div>
-          <div className={`wt-weather-info raining danger ${display}`}>
-            <img
-              src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788117/App%20Tiempo/icons/icons8-rainy-weather-64_nreo9p.png"
-              alt="raining"
-              className="wt-sunrise-sunset-icon"
-            />
-            <p>{raining}</p>
-          </div>
-          <div className="wt-weather-info uvi danger">
-            <img
-              src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685787979/App%20Tiempo/icons/icons8-summer-64_2_wvrcbs.png"
-              alt="uv"
-              className="wt-sunrise-sunset-icon"
-            />
-            <p>{uv}</p>
-          </div>
-          <div className="wt-weather-info cloudiness safe">
-            <img
-              src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685787705/App%20Tiempo/icons/icons8-cloud-64_3_attbeq.png"
-              alt="cloudiness"
-              className="wt-sunrise-sunset-icon"
-            />
-            <p>{cloudiness}%</p>
           </div>
         </article>
       </div>
-      <article className="wt-sunrise-sunset-container">
+      {/* <article className="wt-sunrise-sunset-container">
         <div className="wt-sunrise-sunset">
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685790068/App%20Tiempo/icons/icons8-summer-64_3_g9apnb.png"
@@ -268,7 +309,7 @@ function Weather(props) {
             className="wt-sunrise-sunset-icon"
           />
         </div>
-      </article>
+      </article> */}
     </div>
   );
 }

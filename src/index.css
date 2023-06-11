@@ -7,9 +7,9 @@
 
   --wt-color-safe: #00ff153a;
   --wt-color-caution: #ffe60046;
-  --wt-color-danger: #ff000065;
+  --wt-color-danger: #ff00005e;
   --wt-color-green: #00ff15;
-  --wt-color-red: #ff0000;
+  --wt-color-red: #ff0000b0;
 
   /* TYPOGRAPHY TYPE */
   --wt-typography-heading: 'Sen', sans-serif;
@@ -105,7 +105,7 @@ h3 {
   font-family: var(--wt-typography-body);
   color: var(--wt-color-primary);
   font-size: var(--wt-typography-h3);
-  font-weight: 300;
+  font-weight: 200;
   /* opacity: 0.8; */
   line-height: var(--wt-typography-h3-leading);
 }
@@ -114,7 +114,7 @@ p {
   font-family: var(--wt-typography-body);
   color: var(--wt-color-primary);
   font-size: var(--wt-typography-p);
-  font-weight: 200;
+  font-weight: 300;
   /* opacity: 0.8; */
   line-height: var(--wt-typography-p-leading);
 }

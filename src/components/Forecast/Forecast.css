@@ -37,7 +37,7 @@
   /* gap: 5px; */
   padding: 15px;
   margin: auto;
-  backdrop-filter: blur(400px);
+  backdrop-filter: blur(20px);
   border-radius: 10px;
     /* box-shadow: 0 5px 8px 1px rgba(43, 42, 42, 0.062); */
 }

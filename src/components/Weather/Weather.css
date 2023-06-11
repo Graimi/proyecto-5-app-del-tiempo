@@ -45,7 +45,9 @@ justify-content: center;
   display: flex;
   flex-direction: row;
   /* flex-direction: column; */
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .wt-temp-max-min {
@@ -64,6 +66,10 @@ justify-content: center;
 .wt-temp-max-min-icon {
   width: 32px;
   height: 32px;
+}
+
+.wt-temp-max-min-line {
+  height: 40px;
 }
 
 .wt-weather {
@@ -105,6 +111,25 @@ justify-content: center;
   /* justify-content: space-around; */
   align-items: center;
   gap: 5px;
+}
+
+.wt-weather-forecast {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* backdrop-filter: blur(20px); */
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226);
+}
+
+.wt-weather-forecast-title{
+  font-weight: 300;
+  text-transform: uppercase;
+  /* text-decoration:wavy; */
+  /* text-shadow: 1px 1px rgba(0, 0, 0, 0.201); */
+  /* font-family: var(--wt-typography-heading); */
+  /* font-style: oblique; */
 }
 
 .danger {
