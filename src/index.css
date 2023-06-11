@@ -106,7 +106,7 @@ h3 {
   color: var(--wt-color-primary);
   font-size: var(--wt-typography-h3);
   font-weight: 200;
-  /* opacity: 0.8; */
+  opacity: 0.9;
   line-height: var(--wt-typography-h3-leading);
 }
 

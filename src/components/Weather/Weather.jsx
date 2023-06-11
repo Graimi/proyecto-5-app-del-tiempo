@@ -32,15 +32,15 @@ function Weather(props) {
         <h1>{city}</h1>
         <h3>{timestamp}</h3>
       </article>
-      <article className="wt-temp">
+      {/* <article className="wt-temp">
         <div>
           <img src={icon} alt={iconAlt} className="wt-temp-icon" />
         </div>
         <div className="wt-temp-celsius">
           <h2>{temp}º</h2>
           <h3>Sensación {feeling}º</h3>
-        </div>
-        {/* <article className={`wt-temp-max-min-container ${display}`}>
+        </div> */}
+      {/* <article className={`wt-temp-max-min-container ${display}`}>
           <div className="wt-temp-max-min">
             <img
               className="wt-temp-max-min-icon"
@@ -58,7 +58,7 @@ function Weather(props) {
             <h3>{min}º</h3>
           </div>
         </article> */}
-      </article>
+      {/* </article> */}
       {/* <article className={`wt-temp-max-min-container ${display}`}>
         <div className="wt-temp-max-min">
           <img
@@ -147,6 +147,17 @@ function Weather(props) {
       </article> */}
       {/* <div className="wt-weather-current"> */}
       {/* <h3>Información actual</h3> */}
+      {/* <div className={`wt-weather-forecast ${display}`}>
+        <h3 className="wt-weather-forecast-title">Pronóstico actual</h3> */}
+      <article className="wt-temp">
+        <div>
+          <img src={icon} alt={iconAlt} className="wt-temp-icon" />
+        </div>
+        <div className="wt-temp-celsius">
+          <h2>{temp}º</h2>
+          <h3>Sensación {feeling}º</h3>
+        </div>
+      </article>
       <article className="wt-weather">
         <div className="wt-weather-info wind safe">
           <img
@@ -156,14 +167,14 @@ function Weather(props) {
           />
           <p>{wind}m/s</p>
         </div>
-        <div className="wt-weather-info humidity danger">
-          <img
-            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788356/App%20Tiempo/icons/icons8-wet-64_mbmzea.png"
-            alt="humidity"
-            className="wt-sunrise-sunset-icon"
-          />
-          <p>{humidity}%</p>
-        </div>
+        {/* <div className="wt-weather-info humidity danger">
+            <img
+              src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788356/App%20Tiempo/icons/icons8-wet-64_mbmzea.png"
+              alt="humidity"
+              className="wt-sunrise-sunset-icon"
+            />
+            <p>{humidity}%</p>
+          </div> */}
         <div className={`wt-weather-info polution caution ${display}`}>
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685786807/App%20Tiempo/icons/icons8-pollution-64_2_jjzhjy.png"
@@ -198,6 +209,7 @@ function Weather(props) {
         </div>
       </article>
       {/* </div> */}
+      {/* </div> */}
       <div className={`wt-weather-forecast ${display}`}>
         <h3 className="wt-weather-forecast-title">Pronóstico del día</h3>
         <article className={`wt-temp-max-min-container ${display}`}>
@@ -210,7 +222,7 @@ function Weather(props) {
             <h3>{min}º</h3>
           </div>
           <img
-          className="wt-temp-max-min-line"
+            className="wt-temp-max-min-line"
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1686480996/App%20Tiempo/icons/linea_fj7mvf.png"
             alt=""
           />
@@ -232,14 +244,14 @@ function Weather(props) {
             />
             <p>{wind}m/s</p>
           </div>
-          <div className="wt-weather-info humidity danger">
+          {/* <div className="wt-weather-info humidity danger">
             <img
               src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788356/App%20Tiempo/icons/icons8-wet-64_mbmzea.png"
               alt="humidity"
               className="wt-sunrise-sunset-icon"
             />
             <p>{humidity}%</p>
-          </div>
+          </div> */}
           <div className={`wt-weather-info polution caution ${display}`}>
             <img
               src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685786807/App%20Tiempo/icons/icons8-pollution-64_2_jjzhjy.png"

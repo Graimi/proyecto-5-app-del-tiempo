@@ -9,8 +9,8 @@ import { date } from '../components/TimeFunctions/TimeFunctions';
 import weatherIcons from '../data/weatherIcons';
 
 function Api({ weather }) {
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
+  const [latitude, setLatitude] = useState('40.500');
+  const [longitude, setLongitude] = useState('-3.667');
   useEffect(() => {
     // Verificar si el navegador es compatible con la geolocalización
     if (navigator.geolocation) {

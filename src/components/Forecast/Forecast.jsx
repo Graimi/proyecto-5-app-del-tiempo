@@ -21,6 +21,7 @@ function Forecast(props) {
                   className="wt-forecast-icon"
                 />
                 <p>{Math.round(item.wind_speed ?? 0)}m/s</p>
+                {/* <p>15m/s</p> */}
               </div>
               <div className="wt-forecast-info raining forecast-danger">
                 <img
@@ -52,7 +53,7 @@ function Forecast(props) {
                 <img
                   src={weatherIcons?.[item.weather?.[0]?.icon]?.icon}
                   alt={weatherIcons?.[item.weather?.[0]?.icon]?.name}
-                  className="wt-forecast-icon"
+                  className="wt-forecast-weather-icon"
                 />
               </div>
             </div>
