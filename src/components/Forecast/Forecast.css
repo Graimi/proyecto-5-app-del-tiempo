@@ -39,7 +39,8 @@
   margin: auto;
   backdrop-filter: blur(1000px);
   border-radius: 10px;
-    box-shadow: 0 5px 5px 1px rgba(43, 42, 42, 0.089);
+    /* box-shadow: 0 5px 5px 1px rgba(43, 42, 42, 0.089); */
+    backdrop-filter: brightness(87%);
 }
 
 .wt-forecast-details {

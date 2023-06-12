@@ -1,7 +1,12 @@
 /* Distribuímos las cards */
 .app {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   gap: 10px;
+}
+
+.wt-app-weather {
+  display: flex;
+  flex-direction: row;
 }

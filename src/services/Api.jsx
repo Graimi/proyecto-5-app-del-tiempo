@@ -9,6 +9,7 @@ import { date } from '../components/TimeFunctions/TimeFunctions';
 import weatherIcons from '../data/weatherIcons';
 
 function Api({ weather }) {
+  // Creamos los state para la posición y seteamos por defecto la posición de Madrid por si el susuario tiene prohibido acceder a la app
   const [latitude, setLatitude] = useState('40.500');
   const [longitude, setLongitude] = useState('-3.667');
   useEffect(() => {

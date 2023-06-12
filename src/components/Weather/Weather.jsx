@@ -223,7 +223,7 @@ function Weather(props) {
           </div>
           <img
             className="wt-temp-max-min-line"
-            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1686480996/App%20Tiempo/icons/linea_fj7mvf.png"
+            src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1686583570/App%20Tiempo/icons/linea_mfl5ne.png"
             alt=""
           />
           <div className="wt-temp-max-min">
