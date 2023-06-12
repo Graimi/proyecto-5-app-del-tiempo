@@ -108,8 +108,10 @@
 
 .wt-forecast-arrow-icon {
   width: 24px;
+  /* opacity: 0.8; */
 }
 
 .wt-forecast-weather-icon {
   width: 60px;
+  opacity: 0.8;
 }

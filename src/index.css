@@ -150,6 +150,7 @@ body {
   align-items: center;
   justify-content: center;
   /* Establecemos el background y le damos estilos */
+  background-image: 'https://res.cloudinary.com/dwsffp1eq/image/upload/v1685696543/App%20Tiempo/background/niebla_f7eqbg.jpg';
   background-size: cover;
   background-position: 50% 10%;
 }

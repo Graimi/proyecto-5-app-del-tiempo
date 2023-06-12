@@ -22,6 +22,10 @@ function Weather(props) {
     raining,
     uv,
     cloudiness,
+    windDay,
+    rainingDay,
+    uvDay,
+    cloudinessDay,
     sunrise,
     sunset
   } = props;
@@ -242,7 +246,7 @@ function Weather(props) {
               alt="wind"
               className="wt-sunrise-sunset-icon"
             />
-            <p>{wind}m/s</p>
+            <p>{windDay}m/s</p>
           </div>
           {/* <div className="wt-weather-info humidity danger">
             <img
@@ -266,7 +270,7 @@ function Weather(props) {
               alt="raining"
               className="wt-sunrise-sunset-icon"
             />
-            <p>{raining}</p>
+            <p>{rainingDay}</p>
           </div>
           <div className="wt-weather-info uvi danger">
             <img
@@ -274,7 +278,7 @@ function Weather(props) {
               alt="uv"
               className="wt-sunrise-sunset-icon"
             />
-            <p>{uv}</p>
+            <p>{uvDay}</p>
           </div>
           <div className="wt-weather-info cloudiness safe">
             <img
@@ -282,7 +286,7 @@ function Weather(props) {
               alt="cloudiness"
               className="wt-sunrise-sunset-icon"
             />
-            <p>{cloudiness}%</p>
+            <p>{cloudinessDay}%</p>
           </div>
         </article>
         <article className="wt-sunrise-sunset-container">

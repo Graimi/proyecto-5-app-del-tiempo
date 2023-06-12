@@ -20,6 +20,10 @@ function Current(apiData, pollutionData) {
       raining={`${Math.round((apiData?.hourly?.[0]?.pop ?? 0) * 100)}%`}
       uv={Math.round(apiData?.current?.uvi ?? 0)}
       cloudiness={Math.round(apiData?.current?.clouds ?? 0)}
+      windDay={Math.round(apiData?.daily?.[0]?.wind_speed ?? 0)}
+      rainingDay={`${Math.round((apiData?.daily?.[0]?.pop ?? 0) * 100)}%`}
+      uvDay={Math.round(apiData?.daily?.[0]?.uvi ?? 0)}
+      cloudinessDay={Math.round(apiData?.daily?.[0]?.clouds ?? 0)}
       sunrise={hour(apiData?.daily?.[0]?.sunrise)}
       sunset={hour(apiData?.daily?.[0]?.sunset)}
     />
