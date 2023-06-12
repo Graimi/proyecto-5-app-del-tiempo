@@ -2,11 +2,23 @@
 .app {
   display: flex;
   flex-direction: column;
+  /* justify-content: space-around; */
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 .wt-app-weather {
   display: flex;
   flex-direction: row;
+}
+
+/* TABLET DISPLAY */
+@media screen and (min-width: 425px) and (max-width: 768px) {
+}
+
+/* MOBILE DISPLAY */
+@media screen and (max-width: 425px) {
+  .wt-app-forecast {
+    display: none;
+  }
 }

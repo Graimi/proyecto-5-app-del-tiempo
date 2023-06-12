@@ -43,6 +43,9 @@ function Api({ weather }) {
   // Almacenamos en una constante la URL de Open Weather dedicada a la contaminación
   const pollutionURL = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${ApiKey}`;
 
+  // Almacenamos la URL para obtener el nombre de una ciudad a partir de las coordenadas
+  const reverseCityUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${ApiKey}`;
+
   // Seteamos la info de la api apiData
   const [apiData, setApiData] = useState({});
   // Seteamos el error de la api si hay, por defecto ho hay
@@ -148,6 +151,20 @@ function Api({ weather }) {
     // Esta info es importante que se actualice cada vez que se cambia la localización
   }, [latitude, longitude]);
 
+  // Creamos este state para almacenar la info de contaminación
+  const [reverseCity, setReverseCity] = useState({});
+
+  // Llamamos a la api de contaminación
+  useEffect(() => {
+    // Llamamos a la función Api
+    ApiFetch(reverseCityUrl)
+      // Obtenemos la info de la api
+      .then((data) => setReverseCity(data));
+    // Esta info es importante que se actualice cada vez que se cambia la localización
+  }, [latitude, longitude]);
+
+  console.log(reverseCity);
+
   // Invocamos el template de error si la api está saturada
   if (apiDataError) {
     return <Error />;
@@ -168,7 +185,7 @@ function Api({ weather }) {
       BackgroundChanger(apiData?.current?.weather?.[0]?.icon);
       // Llamamos a la plantilla de datos actuales con la siguiente condición para evitar fallos
       return apiData.daily && apiData.daily.length > 0 ? (
-        Current(apiData, pollutionData)
+        Current(apiData, pollutionData, reverseCity)
       ) : (
         <Loader />
       );
@@ -177,7 +194,8 @@ function Api({ weather }) {
       // Al usar la misma api que current usamos la misma comprobación
       return apiData.daily && apiData.daily.length > 0 ? (
         <Forecast
-          city={'city'}
+          city={reverseCity?.[0]?.local_names?.es}
+          country={reverseCity?.[0]?.country}
           api={apiData.daily} // Pasamos todos los datos de la API como prop para usarlos dentro de Forecast si es necesario
         />
       ) : (

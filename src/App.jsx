@@ -17,7 +17,10 @@ function App() {
         {/* <Card prop={<Api weather="yesterday" />} /> */}
         {/* <InvisibleCard prop={<Api weather="yesterday" />} /> */}
         <InvisibleCard prop={<Api weather="current" />} />
-        <InvisibleCard prop={<Api weather="forecast" />} />
+        <div className="wt-app-forecast">
+          <InvisibleCard prop={<Api weather="forecast" />} />{' '}
+        </div>
+        {/* <InvisibleCard prop={<Api weather="forecast" />} /> */}
         {/* <InvisibleCard prop={<Weather url="current" />} /> */}
         {/* <Card prop={<Weather url="current" />} /> */}
         {/* <Card prop="Forecast" /> */}

@@ -4,11 +4,13 @@ import { date } from '../TimeFunctions/TimeFunctions';
 import weatherIcons from '../../data/weatherIcons';
 
 function Forecast(props) {
-  const { city, api } = props;
+  const { city, country, api } = props;
   // const { icon, iconAlt } = props;
   return (
     <div className="wt-forecast">
-      <h1 className="wt-forecast-city">{city}</h1>
+      <h1 className="wt-forecast-city">
+        {city}, {country}
+      </h1>
       <article className="wt-forecast-container">
         {api.map((item) => (
           <div className="wt-forecast-day">

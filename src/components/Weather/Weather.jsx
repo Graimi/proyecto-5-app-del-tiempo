@@ -9,6 +9,7 @@ function Weather(props) {
   const {
     display,
     city,
+    country,
     timestamp,
     icon,
     iconAlt,
@@ -33,7 +34,9 @@ function Weather(props) {
   return (
     <div className="wt">
       <article className="wt-location-date">
-        <h1>{city}</h1>
+        <h1>
+          {city}, {country}
+        </h1>
         <h3>{timestamp}</h3>
       </article>
       {/* <article className="wt-temp">

@@ -3,10 +3,11 @@ import Weather from '../Weather/Weather';
 import weatherIcons from '../../data/weatherIcons';
 import { date, hour } from '../TimeFunctions/TimeFunctions';
 
-function Current(apiData, pollutionData) {
+function Current(apiData, pollutionData, reverseCity) {
   return (
     <Weather
-      city={'city'}
+      city={reverseCity?.[0]?.local_names?.es}
+      country={reverseCity?.[0]?.country}
       icon={weatherIcons?.[apiData?.current?.weather?.[0]?.icon].icon}
       iconAlt={weatherIcons?.[apiData?.current?.weather?.[0]?.icon].name}
       timestamp={date(apiData?.current?.dt)}
