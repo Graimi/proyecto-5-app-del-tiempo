@@ -5,8 +5,8 @@ import BackgroundChanger from '../components/Background/Background';
 import Historical from '../components/Historical/Historical';
 import Current from '../components/Current/Current';
 import Forecast from '../components/Forecast/Forecast';
-import { date } from '../components/TimeFunctions/TimeFunctions';
-import weatherIcons from '../data/weatherIcons';
+// import { date } from '../components/TimeFunctions/TimeFunctions';
+// import weatherIcons from '../data/weatherIcons';
 
 function Api({ weather }) {
   // Creamos los state para la posición y seteamos por defecto la posición de Madrid por si el susuario tiene prohibido acceder a la app

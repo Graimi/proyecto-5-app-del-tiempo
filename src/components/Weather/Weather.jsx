@@ -32,7 +32,7 @@ function Weather(props) {
   } = props;
 
   return (
-    <div className="wt">
+    <div className="wt-current">
       <article className="wt-location-date">
         <h1>
           {city}, {country}

@@ -4,6 +4,7 @@ import weatherIcons from '../../data/weatherIcons';
 import { date, hour } from '../TimeFunctions/TimeFunctions';
 
 function Current(apiData, pollutionData, reverseCity) {
+  console.log(apiData?.current?.weather?.[0]?.icon)
   return (
     <Weather
       city={reverseCity?.[0]?.local_names?.es}

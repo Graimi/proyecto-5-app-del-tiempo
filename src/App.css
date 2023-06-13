@@ -10,10 +10,18 @@
 .wt-app-weather {
   display: flex;
   flex-direction: row;
+  gap: 15px;
+}
+
+.wt-app-forecast {
+  display: flex;
 }
 
 /* TABLET DISPLAY */
 @media screen and (min-width: 425px) and (max-width: 768px) {
+  .wt-app-forecast {
+    display: none;
+  }
 }
 
 /* MOBILE DISPLAY */

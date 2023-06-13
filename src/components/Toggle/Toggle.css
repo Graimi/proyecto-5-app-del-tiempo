@@ -1,0 +1,41 @@
+.wt-toggle {
+  display: none;
+  box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226);
+}
+
+.wt-toggle-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  background-color: transparent; 
+  backdrop-filter: brightness(80%);
+  /* border: 1px solid rgba(0, 0, 0, 0.13) !important; */
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.wt-toggle-button-icon {
+  width: 32px;
+  height: 32px;
+  opacity: 0.9;
+}
+
+/* TABLET DISPLAY */
+@media screen and (min-width: 425px) and (max-width: 768px) {
+  .wt-toggle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* MOBILE DISPLAY */
+@media screen and (max-width: 425px) {
+  .wt-toggle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}

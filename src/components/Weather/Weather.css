@@ -3,13 +3,14 @@
   display: none !important;
 }
 
-.wt {
+.wt-current {
   display: flex;
   flex-direction: column;
 justify-content: center;
   /* justify-content: space-between; */
   /* width: max-content; */
   gap: 15px;
+  margin: 20px;
   text-align: center;
   height: min-content;
 }
