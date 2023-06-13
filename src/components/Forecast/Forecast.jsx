@@ -5,7 +5,29 @@ import weatherIcons from '../../data/weatherIcons';
 
 function Forecast(props) {
   const { city, country, api } = props;
-  // const { icon, iconAlt } = props;
+
+  const getBackgroundColor = (value, thresholds) => {
+    if (value <= thresholds[0]) {
+      return { backgroundColor: 'var(--wt-color-safe)' };
+    }
+    if (value <= thresholds[1]) {
+      return { backgroundColor: 'var(--wt-color-caution)' };
+    }
+    if (value <= thresholds[2]) {
+      return { backgroundColor: 'var(--wt-color-warning)' };
+    }
+    return { backgroundColor: 'var(--wt-color-danger)' };
+  };
+
+  // Establecer los estilos de background-color según los valores
+  // const windStyle = {
+  //   backgroundColor: getBackgroundColor(wind, [50, 60, 70])
+  // };
+
+  // const rainingStyle = {
+  //   backgroundColor: getBackgroundColor(raining, [25, 50, 75])
+  // };
+
   return (
     <div className="wt-forecast">
       <h1 className="wt-forecast-city">
@@ -16,16 +38,21 @@ function Forecast(props) {
           <div className="wt-forecast-day">
             <h3 className="wt-forecast-date">{date(item.dt)}</h3>
             <div className="wt-forecast-details">
-              <div className="wt-forecast-info wind forecast-safe">
+              <div
+                className="wt-forecast-info"
+                style={getBackgroundColor(Math.round(item.wind_speed ?? 0), [50, 60, 70])}
+              >
                 <img
                   src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788353/App%20Tiempo/icons/icons8-windsock-64_u9pxth.png"
                   alt="wind"
                   className="wt-forecast-icon"
                 />
                 <p>{Math.round(item.wind_speed ?? 0)}m/s</p>
-                {/* <p>15m/s</p> */}
               </div>
-              <div className="wt-forecast-info raining forecast-danger">
+              <div
+                className="wt-forecast-info"
+                style={getBackgroundColor(Math.round((item.pop ?? 0) * 100), [25, 50, 75])}
+              >
                 <img
                   src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788117/App%20Tiempo/icons/icons8-rainy-weather-64_nreo9p.png"
                   alt="raining"

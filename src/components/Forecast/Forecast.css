@@ -65,6 +65,7 @@
   padding: 8px;
   margin: auto;
   border-radius: 10px;
+  box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226);
   /* border: 1px solid white; */
   /* background-color: #b6b6b670; */
   /* box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.13); */

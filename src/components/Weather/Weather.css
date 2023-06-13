@@ -98,6 +98,7 @@ justify-content: center;
   border-radius: 10px;
   /* background-color: #b6b6b670; */
   box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226);
+  /* box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.13); */
   /* backdrop-filter: blur(50px); */
 }
 

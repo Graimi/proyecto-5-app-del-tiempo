@@ -19,11 +19,11 @@ function Current(apiData, pollutionData, reverseCity) {
       wind={Math.round(apiData?.current?.wind_speed ?? 0)}
       humidity={Math.round(apiData?.current?.humidity ?? 0)}
       polution={pollutionData?.list?.[0]?.main?.aqi}
-      raining={`${Math.round((apiData?.hourly?.[0]?.pop ?? 0) * 100)}%`}
+      raining={Math.round((apiData?.hourly?.[0]?.pop ?? 0) * 100)}
       uv={Math.round(apiData?.current?.uvi ?? 0)}
       cloudiness={Math.round(apiData?.current?.clouds ?? 0)}
       windDay={Math.round(apiData?.daily?.[0]?.wind_speed ?? 0)}
-      rainingDay={`${Math.round((apiData?.daily?.[0]?.pop ?? 0) * 100)}%`}
+      rainingDay={Math.round((apiData?.daily?.[0]?.pop ?? 0) * 100)}
       uvDay={Math.round(apiData?.daily?.[0]?.uvi ?? 0)}
       cloudinessDay={Math.round(apiData?.daily?.[0]?.clouds ?? 0)}
       sunrise={hour(apiData?.daily?.[0]?.sunrise)}
