@@ -41,10 +41,10 @@ function Api({ weather }) {
   const historicalURL = `https://api.openweathermap.org/data/3.0/onecall/timemachine?lat=${latitude}&lon=${longitude}&dt=${yestaerdayUnix}&units=metric&lang=es&appid=${ApiKey}`;
 
   // Almacenamos en una constante la URL de Open Weather dedicada a la contaminación
-  const pollutionURL = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${ApiKey}`;
+  const pollutionURL = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${ApiKey}`;
 
   // Almacenamos la URL para obtener el nombre de una ciudad a partir de las coordenadas
-  const reverseCityUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${ApiKey}`;
+  const reverseCityUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${ApiKey}`;
 
   // Seteamos la info de la api apiData
   const [apiData, setApiData] = useState({});
