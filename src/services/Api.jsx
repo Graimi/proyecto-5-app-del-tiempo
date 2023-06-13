@@ -182,7 +182,7 @@ function Api({ weather }) {
       // Aplicamos el background al fondo
       BackgroundChanger(apiData?.current?.weather?.[0]?.icon);
       // Llamamos a la plantilla de datos actuales con la siguiente condición para evitar fallos
-      return apiData.daily && apiData.daily.length > 0 && reverseCity[0].country ? (
+      return apiData.daily && apiData.daily.length > 0 && reverseCity ? (
         Current(apiData, pollutionData, reverseCity)
       ) : (
         <Loader />
@@ -190,7 +190,7 @@ function Api({ weather }) {
     // return apiData.daily && apiData.daily.length > 0 ? <Current prop={apiData} /> : <Loader />;
     case 'forecast':
       // Al usar la misma api que current usamos la misma comprobación
-      return apiData.daily && apiData.daily.length > 0 && reverseCity[0].country ? (
+      return apiData.daily && apiData.daily.length > 0 && reverseCity ? (
         <Forecast
           city={reverseCity?.[0]?.local_names?.es}
           country={reverseCity?.[0]?.country}
