@@ -1,6 +1,6 @@
 import React from 'react';
 import './Forecast.css';
-import { date } from '../TimeFunctions/TimeFunctions';
+import { date, day } from '../TimeFunctions/TimeFunctions';
 import weatherIcons from '../../data/weatherIcons';
 
 function Forecast(props) {
@@ -36,7 +36,9 @@ function Forecast(props) {
       <article className="wt-forecast-container">
         {api.map((item) => (
           <div className="wt-forecast-day">
-            <h3 className="wt-forecast-date">{date(item.dt)}</h3>
+            <h3 className="wt-forecast-date">
+              {date(item.dt)} {day(item.dt)}
+            </h3>
             <div className="wt-forecast-details">
               <div
                 className="wt-forecast-info"
