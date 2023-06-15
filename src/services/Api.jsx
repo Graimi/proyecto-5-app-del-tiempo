@@ -37,6 +37,24 @@
 //   return null;
 // }
 
+// // Llamamos a la api de contaminación
+// useEffect(() => {
+//   // Llamamos a la función Api
+//   ApiFetch(pollutionURL)
+//     // Obtenemos la info de la api
+//     .then((data) => setPollutionData(data));
+//   // Esta info es importante que se actualice cada vez que se cambia la localización
+// }, [latitude, longitude]);
+
+// // Llamamos a la api de contaminación
+// useEffect(() => {
+//   // Llamamos a la función Api
+//   ApiFetch(reverseCityUrl)
+//     // Obtenemos la info de la api
+//     .then((data) => setReverseCity(data));
+//   // Esta info es importante que se actualice cada vez que se cambia la localización
+// }, [latitude, longitude]);
+
 import React, { useEffect, useState } from 'react';
 import Error from '../components/Error/Error';
 import Loader from '../components/Loader/Loader';
@@ -90,41 +108,49 @@ function Api({ weather }) {
   // Creamos este state para almacenar la info de contaminación
   const [reverseCity, setReverseCity] = useState({});
 
-  async function ApiFetch(url) {
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      return error;
-    }
-  }
-
-  // Realiza la llamada a la API correspondiente y almacena los datos
+  // Creamos la función para llamar a las apis de openWeather
   async function fetchWeatherData(url) {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setApiData(data);
+      // setApiData(data);
+      return url === weatherURL ? setApiData(data) : data;
     } catch (error) {
       console.error(error);
-      setApiDataError(true);
+      // setApiDataError(true);
+      return url === weatherURL ? setApiDataError(true) : error;
     } finally {
       setApiDataLoading(false);
     }
   }
-  
 
-  // Llama a la función para obtener los datos de la API según el caso del switch
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        // Llamamos a la función Api para obtener la info de contaminación
+        const pollutionResponse = await fetchWeatherData(pollutionURL);
+        setPollutionData(pollutionResponse);
+
+        // Llamamos a la función Api para obtener el nombre de la ciudad
+        const reverseCityResponse = await fetchWeatherData(reverseCityUrl);
+        setReverseCity(reverseCityResponse);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, [latitude, longitude, weather]);
+
   useEffect(() => {
     setApiDataLoading(true);
-
     switch (weather) {
       case 'yesterday':
         fetchWeatherData(historicalURL);
         break;
       case 'current':
         fetchWeatherData(weatherURL);
+        // Aplicamos el background al fondo
+        BackgroundChanger(apiData?.current?.weather?.[0]?.icon);
         break;
       case 'forecast':
         fetchWeatherData(weatherURL);
@@ -136,42 +162,6 @@ function Api({ weather }) {
   }, [weather, historicalURL, weatherURL]);
 
   console.log(apiData);
-
-  // // Llamamos a la api de contaminación
-  // useEffect(() => {
-  //   // Llamamos a la función Api
-  //   ApiFetch(pollutionURL)
-  //     // Obtenemos la info de la api
-  //     .then((data) => setPollutionData(data));
-  //   // Esta info es importante que se actualice cada vez que se cambia la localización
-  // }, [latitude, longitude]);
-
-  // // Llamamos a la api de contaminación
-  // useEffect(() => {
-  //   // Llamamos a la función Api
-  //   ApiFetch(reverseCityUrl)
-  //     // Obtenemos la info de la api
-  //     .then((data) => setReverseCity(data));
-  //   // Esta info es importante que se actualice cada vez que se cambia la localización
-  // }, [latitude, longitude]);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        // Llamamos a la función Api para obtener la info de contaminación
-        const pollutionResponse = await ApiFetch(pollutionURL);
-        setPollutionData(pollutionResponse);
-
-        // Llamamos a la función Api para obtener el nombre de la ciudad
-        const reverseCityResponse = await ApiFetch(reverseCityUrl);
-        setReverseCity(reverseCityResponse);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    fetchData();
-  }, [latitude, longitude, weather, apiData]);
 
   // Invocamos el template de error si la api está saturada
   if (apiDataError) {
