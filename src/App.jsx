@@ -12,7 +12,8 @@ import Toggle from './components/Toggle/Toggle';
 function App() {
   return (
     <div className="app">
-      <InvisibleCard prop={<SearchCity />} />
+      {/* <InvisibleCard prop={<SearchCity />} /> */}
+      <SearchCity />
       <article className="wt-app-weather">
         {/* <Card prop={<Api weather="yesterday" />} /> */}
         {/* <InvisibleCard prop={<Api weather="yesterday" />} /> */}
@@ -27,8 +28,8 @@ function App() {
         {/* <Card prop={<Weather url="current" />} /> */}
         {/* <Card prop="Forecast" /> */}
       </article>
-      <InvisibleCard prop={<Toggle />} />
-      {/* <Toggle /> */}
+      {/* <InvisibleCard prop={<Toggle />} /> */}
+      <Toggle />
     </div>
   );
 }

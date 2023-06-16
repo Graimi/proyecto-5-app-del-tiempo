@@ -1,29 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SearchCity.css';
 
 function SearchCity() {
+  const [city, setCity] = useState('');
+
   return (
     <div className="wt-search-container">
-      {/* <img
-        className="wt-search-icon"
-        src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1686580940/App%20Tiempo/icons/buscar_vyhbas.png"
-        alt="lupa"
-      /> */}
-      {/* <p>Busca otra ciudad</p> */}
       <input
         type="text"
         name="wt-search-city"
         id="wt-search-city"
         placeholder="Busca otra ciudad"
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
       />
-      <button type="submit">
+      <button className="wt-search-button" type="submit" onClick={() => console.log(city)}>
         <img
           className="wt-search-icon"
           src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1686580940/App%20Tiempo/icons/buscar_vyhbas.png"
           alt="lupa"
         />
       </button>
-      {/* <h3>Busca otra ciudad</h3> */}
     </div>
   );
 }

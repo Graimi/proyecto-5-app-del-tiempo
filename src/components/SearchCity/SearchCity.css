@@ -1,35 +1,16 @@
 .wt-search-container {
-    display: flex;
-    flex-direction: row;
-    /* justify-content: space-between; */
-    gap: 20px;
-    align-items: center;
-    width: max-content;
-    margin: 15px;
-}
-
-.wt-search-icon {
-    width: 24px;
-    opacity: 0.9;
-}
-
-#wt-search-city {
-    border: none;
-    border-radius: 10px;
-    padding: 5px;
-    font-family: var(--wt-typography-body);
-    backdrop-filter: blur(1000px);
-    /* border: 1px solid white; */
-    /* color: black; */
-    background-color: transparent;
-    /* text-align: ce; */
-    /* opacity: 0.; */
-    color: var(--wt-color-primary);
-    font-size:large;
-    font-weight: 200;
-    padding-left: 15px;
-      /* background-color: #b6b6b670; */
-  box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* margin: 15px; */
+  /* border: none; */
+  border-radius: 10px;
+  /* padding: 10px; */
+  
+  backdrop-filter: blur(1000px);
+  /* background-color: transparent; */
+  /* background-color: #b6b6b670; */
+  /* box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226); */
   /* backdrop-filter: blur(400px); */
   backdrop-filter: brightness(80%);
   /* backdrop-filter: contrast(35%); */
@@ -38,6 +19,38 @@
   /* backdrop-filter: saturate(60%); */
 }
 
+#wt-search-city {
+  background-color: transparent;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  /* width: max-content; */
+  width: 230px;
+  color: var(--wt-color-primary);
+  font-family: var(--wt-typography-body);
+  font-size: large;
+  font-weight: 200;
+  /* overflow: auto; */
+  /* box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226); */
+  /* backdrop-filter: blur(1000px); */
+  /* backdrop-filter: brightness(80%); */
+}
+
 #wt-search-city::placeholder {
-    color: var(--wt-color-primary);
-  }
+  color: var(--wt-color-primary);
+}
+
+.wt-search-button {
+  padding: 10px;
+  margin: 10px;
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+  /* border: 1px solid white; */
+  box-shadow: 1px 1px 30px 8px rgba(43, 42, 42, 0.548);
+}
+
+.wt-search-icon {
+  width: 16px;
+  opacity: 0.9;
+}
