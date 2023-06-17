@@ -55,18 +55,26 @@
 //   // Esta info es importante que se actualice cada vez que se cambia la localización
 // }, [latitude, longitude]);
 
-import React, { useEffect, useState } from 'react';
+// useEffect(() => {
+//   const cityTag = document.querySelector('#wt-search-city');
+//   const texto = cityTag?.value;
+//   console.log(`texto ${texto}`);
+// }, []);
+
+import React, { useContext, useEffect, useState } from 'react';
 import Error from '../components/Error/Error';
 import Loader from '../components/Loader/Loader';
 import BackgroundChanger from '../components/Background/Background';
 import Historical from '../components/Historical/Historical';
 import Current from '../components/Current/Current';
 import Forecast from '../components/Forecast/Forecast';
+// import SearchCity, { UserContext } from '../components/SearchCity/SearchCity';
 
 function Api({ weather }) {
   // Creamos los state para la posición y seteamos por defecto la posición de Madrid por si el susuario tiene prohibido acceder a la app
   const [latitude, setLatitude] = useState('40.500');
   const [longitude, setLongitude] = useState('-3.667');
+  const [city, setCity] = useState('');
   useEffect(() => {
     // Verificar si el navegador es compatible con la geolocalización
     if (navigator.geolocation) {
@@ -96,6 +104,8 @@ function Api({ weather }) {
   const pollutionURL = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${ApiKey}`;
   // Almacenamos la URL para obtener el nombre de una ciudad a partir de las coordenadas
   const reverseCityUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${ApiKey}`;
+  // Almacenamos la URL para obtener las coordenadas de una ciudad a partir de su nombre
+  const directCityUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${ApiKey}`;
 
   // Seteamos la info de la api apiData
   const [apiData, setApiData] = useState({});
@@ -107,6 +117,8 @@ function Api({ weather }) {
   const [pollutionData, setPollutionData] = useState({});
   // Creamos este state para almacenar la info de contaminación
   const [reverseCity, setReverseCity] = useState({});
+  // Creamos este state para almacenar la info de contaminación
+  const [directCity, setDirectCity] = useState({});
 
   // Creamos la función para llamar a las apis de openWeather
   async function fetchWeatherData(url) {
@@ -140,6 +152,31 @@ function Api({ weather }) {
     }
     fetchData();
   }, [latitude, longitude, weather]);
+
+  const fetchDirectCityData = async () => {
+    try {
+      const response = await fetch(directCityUrl);
+      const data = await response.json();
+      setDirectCity(data);
+
+      console.log(data[0].lat);
+      console.log(data[0].lon);
+      setLatitude(data[0].lat);
+      setLongitude(data[0].lon);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDirectCityData();
+    // }, []);
+  }, [city]);
+
+  function test() {
+    console.log(city);
+    setCity('EO');
+  }
 
   useEffect(() => {
     setApiDataLoading(true);
