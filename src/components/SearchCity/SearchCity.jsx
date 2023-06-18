@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './SearchCity.css';
-import Api from '../../services/Api';
 
 // Probé usando useContext pero nada
 // Crear el contexto

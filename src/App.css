@@ -2,9 +2,10 @@
 .app {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
+  justify-content: center;
   align-items: center;
   gap: 15px;
+  height: 100vh;
 }
 
 .wt-app-weather {

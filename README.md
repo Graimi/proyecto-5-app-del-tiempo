@@ -91,9 +91,9 @@ navigator.geolocation.getCurrentPosition((position) => {
 <br>
 
 <li> [] Componentes finalizados y comentados </li>
-[] Background <br>
-[] Cards? <br>
-[] Current <br>
+[✅] Background <br>
+[] CityContext? <br>
+[✅] Current <br>
 [] Error <br>
 [] Forecast <br>
 [] Historical? <br>

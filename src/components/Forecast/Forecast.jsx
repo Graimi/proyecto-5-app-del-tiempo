@@ -3,9 +3,8 @@ import './Forecast.css';
 import { date, day } from '../TimeFunctions/TimeFunctions';
 import weatherIcons from '../../data/weatherIcons';
 
-function Forecast(props) {
-  const { city, country, api } = props;
-
+function Forecast({ city, country, api }) {
+  // Usamos la siguiente función para cambiar el color de los elementos según sus datos
   const getBackgroundColor = (value, thresholds) => {
     if (value <= thresholds[0]) {
       return { backgroundColor: 'var(--wt-color-safe)' };
@@ -19,23 +18,17 @@ function Forecast(props) {
     return { backgroundColor: 'var(--wt-color-danger)' };
   };
 
-  // Establecer los estilos de background-color según los valores
-  // const windStyle = {
-  //   backgroundColor: getBackgroundColor(wind, [50, 60, 70])
-  // };
-
-  // const rainingStyle = {
-  //   backgroundColor: getBackgroundColor(raining, [25, 50, 75])
-  // };
-
+  // Devolvemos el template para el forecast
   return (
     <div className="wt-forecast">
       <h1 className="wt-forecast-city">
         {city}, {country}
       </h1>
       <article className="wt-forecast-container">
-        {api.map((item) => (
-          <div className="wt-forecast-day">
+        {/* Usamos un map para recorrer todos los elementos */}
+        {/* Usamos el slice porque el primer elemento es el día actual */}
+        {api.slice(1).map((item) => (
+          <div className="wt-forecast-day" key={date(item.dt)}>
             <h3 className="wt-forecast-date">
               {date(item.dt)} {day(item.dt)}
             </h3>

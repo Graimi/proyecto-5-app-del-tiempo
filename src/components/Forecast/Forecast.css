@@ -1,48 +1,28 @@
 .wt-forecast {
   display: flex;
   flex-direction: column;
-  /* align-content: center; */
-  margin: 20px;
-  gap: 5px;
-}
-
-/* Aplicamos una separación entre la fecha y el resto de la información */
-.wt-forecast-date {
-  margin-bottom: 5px;
+  padding: var(--wt-padding-container);
+  gap: var(--wt-gap-card);
 }
 
 .wt-forecast-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* background-color: var(--wt-color-light); */
-  /* background-color: rgba(255, 255, 255, 0.11); */
   align-items: center;
-  width: 100%;
-  /* width: auto;
-    height: auto; */
-  gap: 5px;
-  /* padding: 15px; */
+  gap: var(--wt-gap-card);
   margin: auto;
-  border-radius: 10px;
-  /* background-color: #b6b6b670; */
-  /* box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226); */
-  /* backdrop-filter: blur(400px); */
-  /* backdrop-filter: brightness(90%); */
-  /* backdrop-filter: contrast(75%); */
-  /* backdrop-filter: invert(15%); */
-  /* backdrop-filter: opacity(50%); */
-  /* backdrop-filter: saturate(100%); */
 }
 
 .wt-forecast-day {
-  /* gap: 5px; */
-  padding: 15px;
-  margin: auto;
-  backdrop-filter: blur(1000px);
-  border-radius: 10px;
-    /* box-shadow: 0 5px 5px 1px rgba(43, 42, 42, 0.089); */
-    backdrop-filter: brightness(87%);
+  display: flex;
+  flex-direction: column;
+  width: 290px;
+  gap: var(--wt-gap-card);
+  padding: var(--wt-padding-card);
+  border-radius: var(--wt-radius-general);
+  /* box-shadow: 0 5px 5px 1px rgba(43, 42, 42, 0.089); */
+  backdrop-filter: var(--wt-backdrop-filter-brightness);
 }
 
 .wt-forecast-details {
@@ -64,7 +44,7 @@
   gap: 5px;
   padding: 8px;
   margin: auto;
-  border-radius: 10px;
+  border-radius: var(--wt-radius-card);
   box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226);
   /* border: 1px solid white; */
   /* background-color: #b6b6b670; */
@@ -77,21 +57,6 @@
   color: white;
   opacity: 100%;
   font-size: small;
-}
-
-.forecast-safe {
-  border: 1px solid whitesmoke;
-  /* background-color: var(--wt-color-safe); */
-}
-
-.forecast-danger {
-  border: 1px solid whitesmoke;
-  /* background-color: var(--wt-color-danger); */
-}
-
-.max {
-  /* flex-direction: row; */
-  border: none;
 }
 
 .wt-forecast-icon {

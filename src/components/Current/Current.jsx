@@ -3,8 +3,8 @@ import Weather from '../Weather/Weather';
 import weatherIcons from '../../data/weatherIcons';
 import { date, hour } from '../TimeFunctions/TimeFunctions';
 
+// Creamos la siguiente función para llamar a los datos que conformarán el tiempo actual a partir del template de weather
 function Current(apiData, pollutionData, reverseCity) {
-  console.log(apiData?.current?.weather?.[0]?.icon)
   return (
     <Weather
       city={reverseCity?.[0]?.local_names?.es}

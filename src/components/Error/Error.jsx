@@ -1,6 +1,7 @@
 import React from 'react';
 import './Error.css';
 
+// Si el código da error lanzaremos el siguiente template
 function Error() {
   return (
     <div className="wt-error">
