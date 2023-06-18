@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './SearchCity.css';
+import Api from '../../services/Api';
 
 // Probé usando useContext pero nada
 // Crear el contexto
@@ -13,6 +14,7 @@ function SearchCity() {
   // Con esta función tendremos que lanzar el valor de city, ver como hacer
   const handleSearch = (cityName) => {
     console.log('Ciudad buscada:', cityName);
+    // return <Api weather="current" city={city} />;
   };
 
   // Creamos el template para la barra

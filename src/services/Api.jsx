@@ -159,6 +159,7 @@ function Api({ weather }) {
   switch (weather) {
     // Debido a las limitaciones de la api para días anteriores hemos deprecado yesterday
     // case 'yesterday':
+    // fetchWeatherData(historicalURL);
     //   // Llamamos a la plantilla de datos históricos con la siguiente condición para evitar fallos
     //   return apiData.data && apiData.data.length > 0 ? Historical(apiData) : <Loader />;
 
