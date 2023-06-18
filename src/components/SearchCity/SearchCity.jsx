@@ -1,18 +1,22 @@
-import React, { createContext, useState } from 'react';
+import React, { useState } from 'react';
 import './SearchCity.css';
 
-// export const UserContext = createContext();
+// Probé usando useContext pero nada
+// Crear el contexto
+// export const CityContext = createContext();
 
+// Con la siguiente función creamos la barra de búsqueda de la ciudad que quiera buscar el usuario
 function SearchCity() {
   const [city, setCity] = useState('');
+  // const { city, setCity } = useContext(CityContext);
 
-  const handleSearch = (e) => {
-    // Aquí puedes realizar alguna acción con la ciudad ingresada, como actualizar el estado global de la aplicación, enviar una solicitud HTTP, etc.
-    console.log('Ciudad buscada:', e);
+  // Con esta función tendremos que lanzar el valor de city, ver como hacer
+  const handleSearch = (cityName) => {
+    console.log('Ciudad buscada:', cityName);
   };
 
+  // Creamos el template para la barra
   return (
-    // <UserContext.Provider value={city}>
     <div className="wt-search-container">
       <input
         type="text"
@@ -30,38 +34,7 @@ function SearchCity() {
         />
       </button>
     </div>
-    // {/* </UserContext.Provider> */}
   );
 }
-
-// function SearchCity({ newLocation }) {
-//   const [city, setCity] = useState('');
-
-//   const onSubmit = (e) => {
-//     e.preventDefault();
-//     console.log({ city });
-//     if (city === '' || !city) return;
-
-//     newLocation(city);
-//   };
-
-//   return (
-//     <div className="container">
-//       <form onSubmit={onSubmit}>
-//         <div className="input-group mb-3 mx-auto">
-//           <input
-//             type="text"
-//             className="form-control"
-//             placeholder="Ciudad"
-//             onChange={(e) => setCity(e.target.value)}
-//           />
-//           <button className="btn btn-primary input-group-text" type="submit">
-//             Buscar
-//           </button>
-//         </div>
-//       </form>
-//     </div>
-//   );
-// }
 
 export default SearchCity;

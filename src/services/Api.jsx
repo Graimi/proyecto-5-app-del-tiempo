@@ -1,82 +1,23 @@
-// import { date } from '../components/TimeFunctions/TimeFunctions';
-// import weatherIcons from '../data/weatherIcons';
-
-// // Creamos el template para llamar a las apis
-// useEffect(() => {
-//   setApiDataLoading(true);
-//   // Llamamos a la función Api
-//   ApiFetch(weather === ('current' || 'forecast') ? weatherURL : historicalURL)
-//     // Obtenemos la info de la api
-//     .then((data) => setApiData(data))
-//     // Si aparece un error damos valor positivo al state
-//     .catch(() => setApiDataError(true))
-//     // Una vez se ha solventado bien la solicitud de la api se quita la ventana de loading
-//     .finally(() => setApiDataLoading(false));
-//   // Esta info es importante que se actualice cada vez que se cambia la localización
-// }, [latitude, longitude]);
-
-// // Creamos el template para llamar a las APIs
-// function ApiCalling({ api }) {
-//   useEffect(() => {
-//     async function fetchData() {
-//       try {
-//         const response = await fetch(api);
-//         const data = await response.json();
-//         console.log(data);
-//         // Realiza las acciones necesarias con los datos obtenidos de la API
-//       } catch (error) {
-//         console.error(error);
-//         // Maneja el error de la llamada a la API
-//       }
-//     }
-
-//     fetchData();
-//     // Esta info es importante que se actualice cada vez que se cambia la localización
-//   }, [api]);
-
-//   return null;
-// }
-
-// // Llamamos a la api de contaminación
-// useEffect(() => {
-//   // Llamamos a la función Api
-//   ApiFetch(pollutionURL)
-//     // Obtenemos la info de la api
-//     .then((data) => setPollutionData(data));
-//   // Esta info es importante que se actualice cada vez que se cambia la localización
-// }, [latitude, longitude]);
-
-// // Llamamos a la api de contaminación
-// useEffect(() => {
-//   // Llamamos a la función Api
-//   ApiFetch(reverseCityUrl)
-//     // Obtenemos la info de la api
-//     .then((data) => setReverseCity(data));
-//   // Esta info es importante que se actualice cada vez que se cambia la localización
-// }, [latitude, longitude]);
-
-// useEffect(() => {
-//   const cityTag = document.querySelector('#wt-search-city');
-//   const texto = cityTag?.value;
-//   console.log(`texto ${texto}`);
-// }, []);
-
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Error from '../components/Error/Error';
 import Loader from '../components/Loader/Loader';
 import BackgroundChanger from '../components/Background/Background';
 import Historical from '../components/Historical/Historical';
 import Current from '../components/Current/Current';
 import Forecast from '../components/Forecast/Forecast';
-// import SearchCity, { UserContext } from '../components/SearchCity/SearchCity';
+// import { CityContext } from '../components/SearchCity/SearchCity';
 
+// Creamos la función Api para almacenar todo lo referentes a las apis y para lanzar la información
 function Api({ weather }) {
-  // Creamos los state para la posición y seteamos por defecto la posición de Madrid por si el susuario tiene prohibido acceder a la app
+  // Creamos los state para la posición y seteamos por defecto la posición de Madrid por si el susuario tiene prohibido
+  // acceder a la app
   const [latitude, setLatitude] = useState('40.500');
   const [longitude, setLongitude] = useState('-3.667');
-  const [city, setCity] = useState('');
+  // const [city, setCity] = useState('');
+
+  // Con el siguiente useEffect obtenemos la ubicación del usuario
   useEffect(() => {
-    // Verificar si el navegador es compatible con la geolocalización
+    // Verificamos si el navegador es compatible con la geolocalización
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -93,10 +34,14 @@ function Api({ weather }) {
     //   VER CUANDO RECARGAR
   }, []);
 
+  // const { city } = useContext(CityContext) ?? {};
+
+  // Añadimos todas las url con las que trabajaremos
   // Almacenamos en una constante nuestra API Key
   const ApiKey = 'cb658f072db01ec164fb8a14cc6d9da9';
   // Almacenamos en una constante la URL de Open Weather dedicada al tiempo presente y futuro
   const weatherURL = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&units=metric&lang=es&appid=${ApiKey}`;
+  // Creamos la siguiente variable destinada a almacenar el valor de ayer para historicalURL
   const yestaerdayUnix = Math.floor(Date.now() / 1000) - 24 * 60 * 60;
   // Almacenamos en una constante la URL de Open Weather dedicada al tiempo pasado
   const historicalURL = `https://api.openweathermap.org/data/3.0/onecall/timemachine?lat=${latitude}&lon=${longitude}&dt=${yestaerdayUnix}&units=metric&lang=es&appid=${ApiKey}`;
@@ -105,8 +50,10 @@ function Api({ weather }) {
   // Almacenamos la URL para obtener el nombre de una ciudad a partir de las coordenadas
   const reverseCityUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${ApiKey}`;
   // Almacenamos la URL para obtener las coordenadas de una ciudad a partir de su nombre
-  const directCityUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${ApiKey}`;
+  // EN CÁCERES TENDRÍA QUE IR CITY
+  const directCityUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${'Cáceres'}&limit=1&appid=${ApiKey}`;
 
+  // Añadimos todos los useState con los que trabajaremos
   // Seteamos la info de la api apiData
   const [apiData, setApiData] = useState({});
   // Seteamos el error de la api si hay, por defecto ho hay
@@ -120,7 +67,7 @@ function Api({ weather }) {
   // Creamos este state para almacenar la info de contaminación
   const [directCity, setDirectCity] = useState({});
 
-  // Creamos la función para llamar a las apis de openWeather
+  // Creamos la función común para llamar a las apis de openWeather
   async function fetchWeatherData(url) {
     try {
       const response = await fetch(url);
@@ -136,6 +83,8 @@ function Api({ weather }) {
     }
   }
 
+  // Este es el useEffect destinado a tomar los valores de la api de pulución y de geocoding inverso
+  // para obtener el nombre de la ciudad
   useEffect(() => {
     async function fetchData() {
       try {
@@ -153,31 +102,27 @@ function Api({ weather }) {
     fetchData();
   }, [latitude, longitude, weather]);
 
-  const fetchDirectCityData = async () => {
-    try {
-      const response = await fetch(directCityUrl);
-      const data = await response.json();
-      setDirectCity(data);
-
-      console.log(data[0].lat);
-      console.log(data[0].lon);
-      setLatitude(data[0].lat);
-      setLongitude(data[0].lon);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
+  // Esta será la función que se encargué de cambiar la ubicación según el valor que le demos a city
+  // Pendiente de mejorar
   useEffect(() => {
+    async function fetchDirectCityData() {
+      try {
+        const response = await fetch(directCityUrl);
+        const data = await response.json();
+        setDirectCity(data);
+
+        console.log(data?.[0]?.lat);
+        console.log(data?.[0]?.lon);
+        setLatitude(data?.[0]?.lat);
+        setLongitude(data?.[0]?.lon);
+      } catch (error) {
+        console.error(error);
+      }
+    }
     fetchDirectCityData();
-    // }, []);
-  }, [city]);
+  }, []);
 
-  function test() {
-    console.log(city);
-    setCity('EO');
-  }
-
+  // Creamos el siguiente useEffect con los diferentes valor que se almacenan según lo que seleccionemos
   useEffect(() => {
     setApiDataLoading(true);
     switch (weather) {
@@ -187,7 +132,7 @@ function Api({ weather }) {
       case 'current':
         fetchWeatherData(weatherURL);
         // Aplicamos el background al fondo
-        BackgroundChanger(apiData?.current?.weather?.[0]?.icon);
+        // BackgroundChanger(apiData?.current?.weather?.[0]?.icon);
         break;
       case 'forecast':
         fetchWeatherData(weatherURL);
@@ -197,8 +142,6 @@ function Api({ weather }) {
         setApiDataLoading(false);
     }
   }, [weather, historicalURL, weatherURL]);
-
-  console.log(apiData);
 
   // Invocamos el template de error si la api está saturada
   if (apiDataError) {
@@ -210,25 +153,32 @@ function Api({ weather }) {
     return <Loader />;
   }
 
-  // Añadimos el switch con los diferentes resultados posibles
-  switch (weather) {
-    case 'yesterday':
-      // Llamamos a la plantilla de datos históricos con la siguiente condición para evitar fallos
-      return apiData.data && apiData.data.length > 0 ? Historical(apiData) : <Loader />;
+  console.log(apiData);
 
+  // Añadimos el return lanzando un switch con los diferentes resultados posibles
+  switch (weather) {
+    // Debido a las limitaciones de la api para días anteriores hemos deprecado yesterday
+    // case 'yesterday':
+    //   // Llamamos a la plantilla de datos históricos con la siguiente condición para evitar fallos
+    //   return apiData.data && apiData.data.length > 0 ? Historical(apiData) : <Loader />;
+
+    // En el caso que se refiera al tiempo actual
     case 'current':
-      // Aplicamos el background al fondo
+      // Aplicamos el background al fondo según el tiempo
       BackgroundChanger(apiData?.current?.weather?.[0]?.icon);
-      // Llamamos a la plantilla de datos actuales con la siguiente condición para evitar fallos
+      // Comprobamos que los datos son correctos
       return apiData.daily && apiData.daily.length > 0 && reverseCity ? (
+        // Llamamos a la plantilla de tiempo actual
         Current(apiData, pollutionData, reverseCity)
       ) : (
         <Loader />
       );
 
+    // En el caso de previsión
     case 'forecast':
       // Al usar la misma api que current usamos la misma comprobación
       return apiData.daily && apiData.daily.length > 0 && reverseCity ? (
+        // Llamamos a la plantilla de previsión
         <Forecast
           city={reverseCity?.[0]?.local_names?.es}
           country={reverseCity?.[0]?.country}
