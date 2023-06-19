@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Error from '../components/Error/Error';
 import Loader from '../components/Loader/Loader';
 import BackgroundChanger from '../components/Background/Background';
 import Historical from '../components/Historical/Historical';
 import Current from '../components/Current/Current';
 import Forecast from '../components/Forecast/Forecast';
-// import { CityContext } from '../components/SearchCity/SearchCity';
 
 // Creamos la función Api para almacenar todo lo referentes a las apis y para lanzar la información
-function Api({ weather }) {
+function Api({ weather, city }) {
   // Creamos los state para la posición y seteamos por defecto la posición de Madrid por si el susuario tiene prohibido
   // acceder a la app
-  const [latitude, setLatitude] = useState('40.500');
-  const [longitude, setLongitude] = useState('-3.667');
-  // const [city, setCity] = useState('');
+  const [latitude, setLatitude] = useState('');
+  const [longitude, setLongitude] = useState('');
+  // const [latitude, setLatitude] = useState('40.500');
+  // const [longitude, setLongitude] = useState('-3.667');
 
   // Con el siguiente useEffect obtenemos la ubicación del usuario
   useEffect(() => {
@@ -34,8 +34,6 @@ function Api({ weather }) {
     //   VER CUANDO RECARGAR
   }, []);
 
-  // const { city } = useContext(CityContext) ?? {};
-
   // Añadimos todas las url con las que trabajaremos
   // Almacenamos en una constante nuestra API Key
   const ApiKey = 'cb658f072db01ec164fb8a14cc6d9da9';
@@ -51,7 +49,7 @@ function Api({ weather }) {
   const reverseCityUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${ApiKey}`;
   // Almacenamos la URL para obtener las coordenadas de una ciudad a partir de su nombre
   // EN CÁCERES TENDRÍA QUE IR CITY
-  const directCityUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${'Cáceres'}&limit=1&appid=${ApiKey}`;
+  const directCityUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${ApiKey}`;
 
   // Añadimos todos los useState con los que trabajaremos
   // Seteamos la info de la api apiData
@@ -120,7 +118,7 @@ function Api({ weather }) {
       }
     }
     fetchDirectCityData();
-  }, []);
+  }, [city]);
 
   // Creamos el siguiente useEffect con los diferentes valor que se almacenan según lo que seleccionemos
   useEffect(() => {

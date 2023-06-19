@@ -1,11 +1,11 @@
 import React, { createContext, useState } from 'react';
 
-// Crear el contexto
 export const CityContext = createContext();
 
-// Componente proveedor del contexto
-export function CityProvider({ children }) {
-  const [city, setCity] = useState('');
+const CityProvider = ({ children }) => {
+  const [city, setCity] = useState('Madrid'); // Ejemplo: valor inicial es 'Madrid'
 
   return <CityContext.Provider value={{ city, setCity }}>{children}</CityContext.Provider>;
-}
+};
+
+export default CityProvider

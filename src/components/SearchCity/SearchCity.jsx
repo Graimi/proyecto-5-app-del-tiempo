@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
 import './SearchCity.css';
 
-// Probé usando useContext pero nada
-// Crear el contexto
-// export const CityContext = createContext();
-
 // Con la siguiente función creamos la barra de búsqueda de la ciudad que quiera buscar el usuario
-function SearchCity() {
+function SearchCity({ onCityChange }) {
   const [city, setCity] = useState('');
-  // const { city, setCity } = useContext(CityContext);
 
   // Con esta función tendremos que lanzar el valor de city, ver como hacer
   const handleSearch = (cityName) => {
     console.log('Ciudad buscada:', cityName);
+    onCityChange(city);
     // return <Api weather="current" city={city} />;
   };
 
