@@ -5,11 +5,9 @@ import './SearchCity.css';
 function SearchCity({ onCityChange }) {
   const [city, setCity] = useState('');
 
-  // Con esta función tendremos que lanzar el valor de city, ver como hacer
+  // Con esta función lanzamos el valor de city a la función onCityChange en App
   const handleSearch = (cityName) => {
-    console.log('Ciudad buscada:', cityName);
-    onCityChange(city);
-    // return <Api weather="current" city={city} />;
+    onCityChange(cityName);
   };
 
   // Creamos el template para la barra

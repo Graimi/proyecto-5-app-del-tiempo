@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Error from '../components/Error/Error';
 import Loader from '../components/Loader/Loader';
 import BackgroundChanger from '../components/Background/Background';
-import Historical from '../components/Historical/Historical';
 import Current from '../components/Current/Current';
 import Forecast from '../components/Forecast/Forecast';
 

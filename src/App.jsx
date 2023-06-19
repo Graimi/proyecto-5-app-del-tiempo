@@ -8,19 +8,21 @@ import SearchCity from './components/SearchCity/SearchCity';
 import Toggle from './components/Toggle/Toggle';
 
 function App() {
+  // Almacenamos aquí el valor de city
+  // Hay algunos dispositivos que directamente no permiten acceder a la ubicación (como mi móvil)
+  // Por ello he puesto de base Madrid
   const [city, setCity] = useState('Madrid');
 
+  // Usamos la siguiente función para obtener el valor de city desde SearchCity
   const handleCityChange = (cityName) => {
     setCity(cityName);
-    console.log('Machine', city);
   };
 
+  // Creamos la template de App
   return (
     <div className="app">
-      {/* <SearchCity /> */}
       <SearchCity onCityChange={handleCityChange} />
       <article className="wt-app-weather">
-        {/* <InvisibleCard prop={<Api weather="yesterday" />} /> */}
         <div className="wt-app-current">
           <InvisibleCard prop={<Api weather="current" city={city} />} />
         </div>

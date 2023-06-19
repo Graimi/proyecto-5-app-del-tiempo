@@ -1,24 +1,15 @@
+/* Establecemos los estilos generales de la invisibleCard */
 .invisible-card {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    /* gap: 100px; */
     align-content: space-between;
-/* justify-content: space-between; */
-    /* Color de fondo semi-transparente */
-    background-color: #86868631; 
-    /* Aplicar un desenfoque al fondo */
-    /* backdrop-filter: blur(8px);  */
-    /* border: 1px white solid; */
-    border-radius: 10px;
-    /* padding: 15px; */
     width: 350px;
-    /* max-width: 350px; */
-    height: auto;
     max-height: 550px;
+    /* Color de fondo semi-transparente */
+    background-color: var(--wt-color-container);
+    box-shadow: var(--wt-box-shadow-container);
+    border-radius: var(--wt-radius-general);
     overflow: auto;
-    /* height: min-content; */
-    box-shadow: 0 0 30px 1px rgba(43, 42, 42, 0.3);
-    /* margin: 15px; */
   }

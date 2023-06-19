@@ -92,12 +92,12 @@ justify-content: center;
   width: auto;
   /* width: 90px; */
   height: auto;
-  /* gap: 5px; */
+  /* gap: 2px; */
   padding: 5px;
   margin: auto;
   border-radius: 10px;
   /* background-color: #b6b6b670; */
-  box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226);
+  box-shadow: var(--wt-box-shadow-mini-card);
   /* box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.13); */
   /* backdrop-filter: blur(50px); */
 }
