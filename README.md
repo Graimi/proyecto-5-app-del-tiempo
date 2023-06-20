@@ -95,11 +95,11 @@ navigator.geolocation.getCurrentPosition((position) => {
 [✅] Current <br>
 [✅] Error <br>
 [✅] Forecast <br>
-[] InisibleCard <br>
-[] Loader <br>
-[] SearchCity <br>
-[] TimeFunctions <br>
-[] Toggle <br>
+[✅] InvisibleCard <br>
+[✅] Loader <br>
+[✅] SearchCity <br>
+[✅] TimeFunctions <br>
+[✅] Toggle <br>
 [] Weather <br>
 [] data <br>
 [] pages? <br>

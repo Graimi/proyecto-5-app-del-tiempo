@@ -10,7 +10,7 @@ function SearchCity({ onCityChange }) {
     onCityChange(cityName);
   };
 
-  // Creamos el template para la barra
+  // Creamos el template para la barra de búsqueda
   return (
     <div className="wt-search-container">
       <input

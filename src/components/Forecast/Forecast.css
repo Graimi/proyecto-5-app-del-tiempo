@@ -6,6 +6,10 @@
   gap: var(--wt-gap-card);
 }
 
+.wt-forecast h1 {
+  text-align: center;
+}
+
 /* Definimos la clase para el contenedor de la predicción meteorológica */
 .wt-forecast-container {
   display: flex;
@@ -24,7 +28,7 @@
   padding: var(--wt-padding-card);
   gap: var(--wt-gap-container);
   border-radius: var(--wt-radius-general);
-  backdrop-filter: var(--wt-backdrop-filter-brightness);
+  backdrop-filter: var(--wt-backdrop-filter-brightness-card);
 }
 
 /* Definimos la clase para los detalles de la predicción */
@@ -85,3 +89,5 @@
   width: var(--wt-img-big);
   opacity: var(--wt-opacity-general);
 }
+
+

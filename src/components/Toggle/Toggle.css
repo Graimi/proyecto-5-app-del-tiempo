@@ -1,30 +1,32 @@
+/* Damos el formato general al toggle */
 .wt-toggle {
   display: none;
-  /* box-shadow: 0 3px 8px 1px rgba(43, 42, 42, 0.055); */
-  border-radius: 10px;
+  border-radius: var(--wt-radius-general);
+  border-radius: var(--wt-radius-general);
+  backdrop-filter: var(--wt-backdrop-filter-brightness-cta);
 }
 
+/* Estilamos el botón de toggle */
 .wt-toggle-button {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 15px;
-  background-color: transparent; 
-  backdrop-filter: brightness(80%);
-  /* border: 1px solid rgba(0, 0, 0, 0.13) !important; */
+  margin: var(--wt-margin-cta);
+  gap: var(--wt-gap-cta);
   border: none;
-  border-radius: 10px;
-  padding: 10px;
+  background-color: transparent; 
 }
 
+/* Estilamos el icono del toggle */
 .wt-toggle-button-icon {
-  width: 32px;
-  height: 32px;
-  opacity: 0.9;
+  width: var(--wt-img-small);
+  height: var(--wt-img-small);
+  opacity: var(--wt-opacity-general);
 }
 
 /* TABLET DISPLAY */
 @media screen and (min-width: 425px) and (max-width: 768px) {
+  /* Hacemos visible el cta del toggle */
   .wt-toggle {
     display: flex;
     flex-direction: row;
@@ -34,6 +36,7 @@
 
 /* MOBILE DISPLAY */
 @media screen and (max-width: 425px) {
+  /* Hacemos visible el cta del toggle */
   .wt-toggle {
     display: flex;
     flex-direction: row;

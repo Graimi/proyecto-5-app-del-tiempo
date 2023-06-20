@@ -1,56 +1,41 @@
+/* Definimos los estilos generales de la barra de búsqueda */
 .wt-search-container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* margin: 15px; */
-  /* border: none; */
-  border-radius: 10px;
-  /* padding: 10px; */
-  
-  backdrop-filter: blur(1000px);
-  /* background-color: transparent; */
-  /* background-color: #b6b6b670; */
-  /* box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226); */
-  /* backdrop-filter: blur(400px); */
-  backdrop-filter: brightness(80%);
-  /* backdrop-filter: contrast(35%); */
-  /* backdrop-filter: invert(15%); */
-  /* backdrop-filter: opacity(90%); */
-  /* backdrop-filter: saturate(60%); */
+  border-radius: var(--wt-radius-general);
+  backdrop-filter: var(--wt-backdrop-filter-brightness-cta);
 }
 
+/* Establecemos los estilos del input */
 #wt-search-city {
-  background-color: transparent;
+  padding: var(--wt-padding-cta);
   border: none;
-  padding: 15px;
-  border-radius: 10px;
-  /* width: max-content; */
-  width: 230px;
+  border-radius: var(--wt-radius-general);
+  background-color: transparent;
   color: var(--wt-color-primary);
   font-family: var(--wt-typography-body);
   font-size: large;
   font-weight: 200;
-  /* overflow: auto; */
-  /* box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226); */
-  /* backdrop-filter: blur(1000px); */
-  /* backdrop-filter: brightness(80%); */
 }
 
+/* Definimos el estilo del campo de entrada del input */
 #wt-search-city::placeholder {
   color: var(--wt-color-primary);
 }
 
+/* Definimos el estilo del botón de búsqueda. */
 .wt-search-button {
-  padding: 10px;
-  margin: 10px;
-  background-color: transparent;
+  padding: var(--wt-padding-mini-card);
+  margin: var(--wt-margin-cta);
   border: none;
-  border-radius: 10px;
-  /* border: 1px solid white; */
+  border-radius: var(--wt-radius-general);
+  background-color: transparent;
   box-shadow: 1px 1px 30px 8px rgba(43, 42, 42, 0.548);
 }
 
+/* Establecemos el estilo del icono de búsqueda. */
 .wt-search-icon {
-  width: 16px;
-  opacity: 0.9;
+  width: var(--wt-img-micro);
+  opacity: var(--wt-opacity-general);
 }

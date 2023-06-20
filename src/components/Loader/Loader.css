@@ -1,17 +1,16 @@
-.loader{
-    /* height: 100px; */
-    margin: auto;
-    padding: 16px;
-    /* margin: 0 auto 1em; */
-    /* display: inline-block; */
-    /* vertical-align:baseline; */
-  }
-  
-  /*
-    Set the color of the icon
-  */
-  svg path,
-  svg rect{
-    fill: var(--wt-color-primary);
-    width: 200px;
-  }
+/* Damos los estilos a la clase del loader */
+.loader {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 16px;
+  width: 350px;
+  height: 550px;
+  align-items: center;
+}
+
+/* Establecemos el color para el loader */
+svg path,
+svg rect {
+  fill: var(--wt-color-primary);
+}
