@@ -4,6 +4,7 @@ import Loader from '../components/Loader/Loader';
 import BackgroundChanger from '../components/Background/Background';
 import Current from '../components/Current/Current';
 import Forecast from '../components/Forecast/Forecast';
+import InvisibleCard from '../components/InvisibleCard/InvisibleCard';
 
 // Creamos la función Api para almacenar todo lo referentes a las apis y para lanzar la información
 function Api({ weather, city }) {
@@ -142,15 +143,21 @@ function Api({ weather, city }) {
 
   // Invocamos el template de error si la api está saturada
   if (apiDataError) {
-    return <Error />;
+    return <InvisibleCard prop={<Error />} />;
   }
 
   // Invocamos el template de loading si la api no se ha cargado todavía
   if (apiDataLoading) {
-    return <Loader />;
+    // return <Loader />;
+    return <InvisibleCard prop={<Loader />} />;
   }
 
   console.log(apiData);
+
+  // Con la siguiente condición prevenimos que ocurra un error al buscar la ciudad
+  if (!reverseCity?.[0]?.local_names) {
+    return <InvisibleCard prop={<h1>Elige una ciudad válida</h1>} />;
+  }
 
   // Añadimos el return lanzando un switch con los diferentes resultados posibles
   switch (weather) {

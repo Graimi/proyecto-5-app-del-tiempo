@@ -1,3 +1,4 @@
+// Almacenamos los datos de iconos de tiempo y fonde en base a la identificación de OpenWeather
 const weatherIcons = {
   '01d': {
     name: 'clear sky',

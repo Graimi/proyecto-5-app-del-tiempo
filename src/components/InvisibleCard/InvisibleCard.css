@@ -5,8 +5,10 @@
     flex-wrap: wrap;
     justify-content: center;
     align-content: space-between;
+    align-items: center;
+    text-align: center;
     width: 350px;
-    max-height: 550px;
+    height: 550px;
     /* Color de fondo semi-transparente */
     background-color: var(--wt-color-container);
     box-shadow: var(--wt-box-shadow-container);

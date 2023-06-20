@@ -22,6 +22,12 @@
   --wt-typography-heading: 'Sen', sans-serif;
   --wt-typography-body: 'Albert Sans', sans-serif;
 
+  /* FONT WEIGHT */
+  --wt-weight-h1: 700;
+  --wt-weight-h2: 400;
+  --wt-weight-h3: 200;
+  --wt-weight-p: 200;
+
   /* FONT SIZE */
   --wt-typography-h1: 40px;
   --wt-typography-h2: 32px;
@@ -53,7 +59,6 @@
 
   --wt-padding-list: 15px;
   --wt-padding-title: 12px;
-  /* --wt-padding-cta: 10px; */
 
   /* GAP */
   --wt-gap-container: 10px;
@@ -105,40 +110,40 @@ dd {
 }
 
 h1 {
-  font-family: var(--wt-typography-heading);
   color: var(--wt-color-primary);
-  font-weight: 700;
+  font-family: var(--wt-typography-heading);
   font-size: var(--wt-typography-h1);
+  font-weight: var(--wt-weight-h1);
   text-transform: uppercase;
   line-height: var(--wt-typography-h1-leading);
-  opacity: 0.9;
+  opacity: var(--wt-opacity-general);
 }
 
 h2 {
-  font-family: var(--wt-typography-heading);
   color: var(--wt-color-primary);
+  font-family: var(--wt-typography-heading);
   font-size: var(--wt-typography-h2);
-  font-weight: 400;
-  opacity: 0.9;
+  font-weight: var(--wt-weight-h2);
   line-height: var(--wt-typography-h2-leading);
+  opacity: var(--wt-opacity-general);
 }
 
 h3 {
-  font-family: var(--wt-typography-body);
   color: var(--wt-color-primary);
+  font-family: var(--wt-typography-body);
   font-size: var(--wt-typography-h3);
-  font-weight: 200;
-  opacity: 0.9;
+  font-weight: var(--wt-weight-h3);
   line-height: var(--wt-typography-h3-leading);
+  opacity: var(--wt-opacity-general);
 }
 
 p {
-  font-family: var(--wt-typography-body);
   color: var(--wt-color-primary);
+  font-family: var(--wt-typography-body);
   font-size: var(--wt-typography-p);
-  font-weight: 200;
-  opacity: 0.9;
+  font-weight: var(--wt-weight-p);
   line-height: var(--wt-typography-p-leading);
+  opacity: var(--wt-opacity-general);
 }
 
 /* Aplicamos el efecto de transparencia a las fuentes */

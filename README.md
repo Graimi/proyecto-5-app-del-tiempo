@@ -101,9 +101,12 @@ navigator.geolocation.getCurrentPosition((position) => {
 [✅] TimeFunctions <br>
 [✅] Toggle <br>
 [] Weather <br>
-[] data <br>
+[✅] data <br>
 [] pages? <br>
 [] services <br>
+[] App <br>
+[] Main <br>
+[] Index <br>
 <br>
 
 <li> [] Diseño </li>

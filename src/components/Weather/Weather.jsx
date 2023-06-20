@@ -1,6 +1,7 @@
 import React from 'react';
 import './Weather.css';
 
+// Creamos la función weather con el template del tiempo con los siguientes props
 function Weather(props) {
   const {
     city,
@@ -25,12 +26,13 @@ function Weather(props) {
     sunset
   } = props;
 
-  // Tenemos los siguientes valores
+  // Tenemos los siguientes valores para organizar los fondos de los elementos
   // El valor más bajo será verde, el siguiende amarillo, el siguiente naranja y el ultimmo rojo
   // polution (<=1 >1&&<=2,5 >2,5&&<=4 >4)
   // raining, rainingDay, cloudiness, cloudinessDay (<=25 >25&&<=50 >50&&<=75 >75)
   // wind, windDay (<=50 51-60 61-70 71+)
   // uv, uvDay (<=3 >3&&<=6 >6&&<=9 >9)
+
   // Función para obtener el color del fondo según el valor proporcionado
   const getBackgroundColor = (value, thresholds) => {
     if (value <= thresholds[0]) {
@@ -82,6 +84,7 @@ function Weather(props) {
     backgroundColor: getBackgroundColor(cloudinessDay, [25, 50, 75])
   };
 
+  // Devolvemos el template
   return (
     <div className="wt-current">
       <article className="wt-location-date">
