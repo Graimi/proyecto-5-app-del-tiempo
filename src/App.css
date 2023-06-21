@@ -8,6 +8,17 @@
   height: 100vh;
 }
 
+
+.wt-app-weather {
+  display: flex;
+  flex-direction: row;
+  gap: var(--wt-gap-card);
+}
+
+.wt-app-forecast {
+  display: flex;
+}
+
 /* TABLET DISPLAY */
 @media screen and (min-width: 425px) and (max-width: 768px) {
 /* Eliminamos la card del forecast para darle paso por toggle */
@@ -18,7 +29,7 @@
 
 /* MOBILE DISPLAY */
 @media screen and (max-width: 425px) {
-  /* Eliminamos la card del forecast para darle paso por toggle */
+/* Eliminamos la card del forecast para darle paso por toggle */
   .wt-app-forecast {
     display: none;
   }
