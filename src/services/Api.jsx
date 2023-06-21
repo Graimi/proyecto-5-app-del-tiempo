@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Error from '../components/Error/Error';
+import Error, { BadCity } from '../components/Error/Error';
 import Loader from '../components/Loader/Loader';
 import BackgroundChanger from '../components/Background/Background';
 import Current from '../components/Current/Current';
@@ -7,13 +7,13 @@ import Forecast from '../components/Forecast/Forecast';
 import InvisibleCard from '../components/InvisibleCard/InvisibleCard';
 
 // Creamos la función Api para almacenar todo lo referentes a las apis y para lanzar la información
-function Api({ weather, city }) {
+function Api(props) {
+  const { weather, city } = props;
+
   // Creamos los state para la posición y seteamos por defecto la posición de Madrid por si el susuario tiene prohibido
   // acceder a la app
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
-  // const [latitude, setLatitude] = useState('40.500');
-  // const [longitude, setLongitude] = useState('-3.667');
 
   // Con el siguiente useEffect obtenemos la ubicación del usuario
   useEffect(() => {
@@ -109,10 +109,8 @@ function Api({ weather, city }) {
         const data = await response.json();
         setDirectCity(data);
 
-        console.log(data?.[0]?.lat);
-        console.log(data?.[0]?.lon);
-        setLatitude(data?.[0]?.lat);
-        setLongitude(data?.[0]?.lon);
+        setLatitude(data?.[0]?.lat ?? {});
+        setLongitude(data?.[0]?.lon ?? {});
       } catch (error) {
         console.error(error);
       }
@@ -156,7 +154,7 @@ function Api({ weather, city }) {
 
   // Con la siguiente condición prevenimos que ocurra un error al buscar la ciudad
   if (!reverseCity?.[0]?.local_names) {
-    return <InvisibleCard prop={<h1>Elige una ciudad válida</h1>} />;
+    return <InvisibleCard prop={<BadCity />} />;
   }
 
   // Añadimos el return lanzando un switch con los diferentes resultados posibles
@@ -170,7 +168,7 @@ function Api({ weather, city }) {
     // En el caso que se refiera al tiempo actual
     case 'current':
       // Aplicamos el background al fondo según el tiempo
-      BackgroundChanger(apiData?.current?.weather?.[0]?.icon);
+      BackgroundChanger(apiData?.current?.weather?.[0]?.icon ?? {});
       // Comprobamos que los datos son correctos
       return apiData.daily && apiData.daily.length > 0 && reverseCity ? (
         // Llamamos a la plantilla de tiempo actual
@@ -185,9 +183,9 @@ function Api({ weather, city }) {
       return apiData.daily && apiData.daily.length > 0 && reverseCity ? (
         // Llamamos a la plantilla de previsión
         <Forecast
-          city={reverseCity?.[0]?.local_names?.es}
-          country={reverseCity?.[0]?.country}
-          api={apiData.daily} // Pasamos todos los datos de la API como prop para usarlos dentro de Forecast si es necesario
+          city={reverseCity?.[0]?.local_names?.es ?? {}}
+          country={reverseCity?.[0]?.country ?? {}}
+          api={apiData.daily ?? {}} // Pasamos todos los datos de la API como prop para usarlos dentro de Forecast si es necesario
         />
       ) : (
         <Loader />

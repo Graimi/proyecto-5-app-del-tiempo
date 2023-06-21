@@ -18,4 +18,8 @@ function Error() {
   );
 }
 
+export function BadCity() {
+  return <h1 className="wt-error-city">Escoge una ciudad válida</h1>;
+}
+
 export default Error;

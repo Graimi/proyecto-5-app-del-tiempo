@@ -1,154 +1,106 @@
-/* Añadimos esta clase para quitar la visualización de aquellos elementos que deseemos */
-.none {
-  display: none !important;
-}
-
-.wt-current {
+/* Damos estilos a la clase general de weather */
+.wt-weather {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   height: min-content;
-  margin: 20px;
-  gap: 15px;
+  padding: var(--wt-padding-container);
+  gap: var(--wt-gap-card);
 }
 
-.wt-temp {
+/* Damos estilos a la clase de la info de temperatura del momento */
+.wt-weather-temp {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
 }
 
-.wt-temp-icon {
-  width: 80px;
-  opacity: 0.7;
-  /* background-color: rgba(0, 0, 0, 0.5); */
+/* Estilamos el icono de la temperatura */
+.wt-weather-temp-icon {
+  width: var(--wt-img-big);
+  height: var(--wt-img-big);
+  opacity: var(--wt-opacity-general);
 }
 
-.wt-temp-celsius {
+/* Estilamos la visualización del texto de la temperatura */
+.wt-weather-temp-celsius {
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: right;
 }
 
-.wt-temp-celsius h2 {
-  font-size: var(--wt-typography-h1);
-}
-
-.wt-temp-celsius p {
-  font-weight: 700;
-}
-
-.wt-temp-max-min-container {
-  display: flex;
-  flex-direction: row;
-  /* flex-direction: column; */
-  justify-content: space-around;
-  align-items: center;
-  gap: 10px;
-}
-
-.wt-temp-max-min {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-  text-shadow: 1px;
-  font-weight: 700;
-}
-
-.wt-temp-max-min h3 {
-  text-shadow: 1px;
-}
-
-.wt-temp-max-min-line {
-  height: 11px;
-  opacity: 0.6;
-}
-
-.wt-weather {
+/* Estilamos el bloque de información del tiempo actual */
+.wt-weather-info {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 10px;
 }
 
-.wt-weather-info {
+/* Diseñamos cada detalla de info */
+.wt-weather-details {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
   width: auto;
-  /* width: 90px; */
   height: auto;
-  /* gap: 2px; */
-  padding: 5px;
   margin: auto;
-  border-radius: 10px;
-  /* background-color: #b6b6b670; */
+  padding: var(--wt-padding-mini-card);
+  gap: var(--wt-gap-mini-card);
+  border-radius: var(--wt-radius-general);
   box-shadow: var(--wt-box-shadow-mini-card);
-  /* box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.13); */
-  /* backdrop-filter: blur(50px); */
 }
 
-.wt-weather-info p {
-  text-align: right;
+/* Damos tamaño a los iconos */
+.wt-weather-details-icon {
+  width: var(--wt-img-mini);
+  height: var(--wt-img-mini);
+  opacity: var(--wt-opacity-general);
 }
 
-.title {
-  font-weight: 400;
-}
-
-.wt-weather-content {
-  display: flex;
-  flex-direction: row;
-  /* justify-content: space-around; */
-  align-items: center;
-  gap: 5px;
-}
-
+/* Estilamos el bloque de previsión */
 .wt-weather-forecast {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  backdrop-filter: blur(20px);
-  backdrop-filter: brightness(87%);
-  border-radius: 10px;
-  padding: 20px;
-  /* box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226); */
+  padding: var(--wt-padding-container);
+  gap: var(--wt-gap-card);
+  border-radius: var(--wt-radius-general);
+  backdrop-filter: var(--wt-backdrop-filter-brightness-card);
 }
 
+/* Diseñamos el título de la previsión */
 .wt-weather-forecast-title {
   font-weight: 300;
   text-transform: uppercase;
-  /* text-decoration:wavy; */
-  /* text-shadow: 1px 1px rgba(0, 0, 0, 0.201); */
-  /* font-family: var(--wt-typography-heading); */
-  /* font-style: oblique; */
 }
 
-.danger {
-  background-color: var(--wt-color-danger);
+/* Estilamos el bloque de temperatura */
+.wt-weather-forecast-temp {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.caution {
-  background-color: var(--wt-color-caution);
+/* Personalizamos la imagen del bloque de temperatura */
+.wt-weather-forecast-temp-icon {
+  height: 10px;
+  opacity: 0.6;
 }
 
-.safe {
-  background-color: var(--wt-color-safe);
-}
-
-.wt-sunrise-sunset-container {
+/* Damos estilos al bloque de hora de amanecer y anochecer */
+.wt-weather-sunrise {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* box-shadow: 0 3px 9px 1px rgba(43, 42, 42, 0.226); */
-  /* backdrop-filter: blur(100px); */
 }
 
-.wt-sunrise-sunset {
+/* Diseñamos los detalles del bloque de hora de amanecer y anochecer */
+.wt-weather-sunrise-details {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -156,13 +108,9 @@
   gap: 5px;
 }
 
-/* Cambiamos la fuente por defecto para adaptarlo mejor */
-.wt-sunrise-sunset h3 {
-  /* font-size: 20px; */
-}
-
-.wt-sunrise-sunset-icon {
-  width: 32px;
-  height: 32px;
-  opacity: 0.8;
+/* Estilamos las imágenes del bloque de hora de amanecer y anochecer */
+.wt-weather-sunrise-icon {
+  width: var(--wt-img-small);
+  height: var(--wt-img-small);
+  opacity: var(--wt-opacity-general);
 }

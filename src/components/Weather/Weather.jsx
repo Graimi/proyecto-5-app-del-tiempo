@@ -33,7 +33,7 @@ function Weather(props) {
   // wind, windDay (<=50 51-60 61-70 71+)
   // uv, uvDay (<=3 >3&&<=6 >6&&<=9 >9)
 
-  // Función para obtener el color del fondo según el valor proporcionado
+  // Usamos la siguiente función para cambiar el color de los elementos según sus datos
   const getBackgroundColor = (value, thresholds) => {
     if (value <= thresholds[0]) {
       return 'var(--wt-color-safe)';
@@ -86,136 +86,132 @@ function Weather(props) {
 
   // Devolvemos el template
   return (
-    <div className="wt-current">
-      <article className="wt-location-date">
+    <div className="wt-weather">
+      <article className="wt-weather-location-date">
         <h1>
           {city}, {country}
         </h1>
         <h3>{timestamp}</h3>
       </article>
-      <article className="wt-temp">
-        <div>
-          <img src={icon} alt={iconAlt} className="wt-temp-icon" />
-        </div>
-        <div className="wt-temp-celsius">
+      <article className="wt-weather-temp">
+        {/* <div> */}
+        <img src={icon} alt={iconAlt} className="wt-weather-temp-icon" />
+        {/* </div> */}
+        <div className="wt-weather-temp-celsius">
           <h2>{temp}º</h2>
           <h3>Sensación {feeling}º</h3>
         </div>
       </article>
-      <article className="wt-weather">
-        <div className="wt-weather-info" style={windStyle}>
+      <article className="wt-weather-info">
+        <div className="wt-weather-details" style={windStyle}>
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788353/App%20Tiempo/icons/icons8-windsock-64_u9pxth.png"
             alt="wind"
-            className="wt-sunrise-sunset-icon"
+            className="wt-weather-details-icon"
           />
           <p>{wind}m/s</p>
         </div>
-        <div className="wt-weather-info" style={polutionStyle}>
+        <div className="wt-weather-details" style={polutionStyle}>
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685786807/App%20Tiempo/icons/icons8-pollution-64_2_jjzhjy.png"
             alt="pollution"
-            className="wt-sunrise-sunset-icon"
+            className="wt-weather-details-icon"
           />
           <p>{polution}/5</p>
         </div>
-        <div className="wt-weather-info" style={rainingStyle}>
+        <div className="wt-weather-details" style={rainingStyle}>
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788117/App%20Tiempo/icons/icons8-rainy-weather-64_nreo9p.png"
             alt="raining"
-            className="wt-sunrise-sunset-icon"
+            className="wt-weather-details-icon"
           />
           <p>{raining}%</p>
         </div>
-        <div className="wt-weather-info" style={uvStyle}>
+        <div className="wt-weather-details" style={uvStyle}>
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685787979/App%20Tiempo/icons/icons8-summer-64_2_wvrcbs.png"
             alt="uv"
-            className="wt-sunrise-sunset-icon"
+            className="wt-weather-details-icon"
           />
           <p>{uv}</p>
         </div>
-        <div className="wt-weather-info" style={cloudinessStyle}>
+        <div className="wt-weather-details" style={cloudinessStyle}>
           <img
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685787705/App%20Tiempo/icons/icons8-cloud-64_3_attbeq.png"
             alt="cloudiness"
-            className="wt-sunrise-sunset-icon"
+            className="wt-weather-details-icon"
           />
           <p>{cloudiness}%</p>
         </div>
       </article>
       <div className="wt-weather-forecast">
         <h3 className="wt-weather-forecast-title">Pronóstico del día</h3>
-        <article className="wt-temp-max-min-container">
-          <div className="wt-temp-max-min">
-            <h3>{min}º</h3>
-          </div>
+        <article className="wt-weather-forecast-temp">
+          <h3>{min}º</h3>
           <img
-            className="wt-temp-max-min-line"
+            className="wt-weather-forecast-temp-icon"
             src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1686583570/App%20Tiempo/icons/linea_mfl5ne.png"
             alt=""
           />
-          <div className="wt-temp-max-min">
-            <h3>{max}º</h3>
-          </div>
+          <h3>{max}º</h3>
         </article>
-        <article className="wt-weather">
-          <div className="wt-weather-info" style={windDayStyle}>
+        <article className="wt-weather-info">
+          <div className="wt-weather-details" style={windDayStyle}>
             <img
               src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788353/App%20Tiempo/icons/icons8-windsock-64_u9pxth.png"
               alt="wind"
-              className="wt-sunrise-sunset-icon"
+              className="wt-weather-details-icon"
             />
             <p>{windDay}m/s</p>
           </div>
-          <div className="wt-weather-info" style={polutionStyle}>
+          <div className="wt-weather-details" style={polutionStyle}>
             <img
               src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685786807/App%20Tiempo/icons/icons8-pollution-64_2_jjzhjy.png"
               alt="pollution"
-              className="wt-sunrise-sunset-icon"
+              className="wt-weather-details-icon"
             />
             <p>{polution}/5</p>
           </div>
-          <div className="wt-weather-info" style={rainingDayStyle}>
+          <div className="wt-weather-details" style={rainingDayStyle}>
             <img
               src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685788117/App%20Tiempo/icons/icons8-rainy-weather-64_nreo9p.png"
               alt="raining"
-              className="wt-sunrise-sunset-icon"
+              className="wt-weather-details-icon"
             />
             <p>{rainingDay}%</p>
           </div>
-          <div className="wt-weather-info" style={uvDayStyle}>
+          <div className="wt-weather-details" style={uvDayStyle}>
             <img
               src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685787979/App%20Tiempo/icons/icons8-summer-64_2_wvrcbs.png"
               alt="uv"
-              className="wt-sunrise-sunset-icon"
+              className="wt-weather-details-icon"
             />
             <p>{uvDay}</p>
           </div>
-          <div className="wt-weather-info" style={cloudinessDayStyle}>
+          <div className="wt-weather-details" style={cloudinessDayStyle}>
             <img
               src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685787705/App%20Tiempo/icons/icons8-cloud-64_3_attbeq.png"
               alt="cloudiness"
-              className="wt-sunrise-sunset-icon"
+              className="wt-weather-details-icon"
             />
             <p>{cloudinessDay}%</p>
           </div>
         </article>
-        <article className="wt-sunrise-sunset-container">
-          <div className="wt-sunrise-sunset">
+        <article className="wt-weather-sunrise">
+          <div className="wt-weather-sunrise-details">
             <img
               src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685790068/App%20Tiempo/icons/icons8-summer-64_3_g9apnb.png"
               alt="sunrise"
-              className="wt-sunrise-sunset-icon"
+              className="wt-weather-sunrise-icon"
             />
             <h3>{sunrise}</h3>
           </div>
-          <div className="wt-sunrise-sunset">
+          <div className="wt-weather-sunrise-details">
             <h3>{sunset}</h3>
             <img
               src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1685790661/App%20Tiempo/icons/icons8-waning-crescent-64_seivio.png"
               alt="sunset"
-              className="wt-sunrise-sunset-icon"
+              className="wt-weather-sunrise-icon"
             />
           </div>
         </article>

@@ -32,7 +32,7 @@
 }
 
 /* Definimos la clase para los detalles de la predicción */
-.wt-forecast-details {
+.wt-forecast-info {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -40,7 +40,7 @@
 }
 
 /* Definimos la clase para la información en la predicción meteorológica */
-.wt-forecast-info {
+.wt-forecast-details {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -55,13 +55,14 @@
 }
 
 /* Declaramos un espacio más pequeño que el normal para adaptarlo */
-.wt-forecast-info p {
+.wt-forecast-details p {
   font-size: small;
 }
 
 /* Definimos la clase para el icono en la predicción meteorológica */
 .wt-forecast-icon {
   width: var(--wt-img-mini);
+  height: var(--wt-img-mini);
   opacity: var(--wt-opacity-general);
 }
 

@@ -7,16 +7,14 @@
   --wt-color-warning: #ff880048;
   --wt-color-danger: #ff000044;
 
-  --wt-color-light: #c4c3c3;
-  --wt-color-light-propose: rgba(196, 195, 195, 0.322);
-  --wt-color-medium: #f5f5f5;
-
   /* BACKDROP FILTER */
   --wt-backdrop-filter-brightness-card: brightness(87%);
   --wt-backdrop-filter-brightness-cta: brightness(80%);
 
   /* OPACITY */
   --wt-opacity-general: 0.9;
+  --wt-opacity-text: 0.9;
+  --wt-opacity-img: 0.7;
 
   /* TYPOGRAPHY TYPE */
   --wt-typography-heading: 'Sen', sans-serif;
@@ -31,7 +29,7 @@
   /* FONT SIZE */
   --wt-typography-h1: 40px;
   --wt-typography-h2: 32px;
-  --wt-typography-h3: 24px;
+  --wt-typography-h3: 25px;
   --wt-typography-p: 16px;
 
   /* LEADING */
@@ -42,9 +40,8 @@
 
   /* IMG SIZE */
   --wt-img-big: 64px;
-  --wt-img-medium: 40px;
   --wt-img-small: 32px;
-  --wt-img-mini: 24px;
+  --wt-img-mini: 25px;
   --wt-img-micro: 16px;
 
   /* MARGIN */
@@ -53,12 +50,9 @@
 
   /* PADDING */
   --wt-padding-container: 20px;
+  --wt-padding-cta: 17px; 
   --wt-padding-card: 15px;
-  --wt-padding-cta: 15px;
-  --wt-padding-mini-card: 8px;
-
-  --wt-padding-list: 15px;
-  --wt-padding-title: 12px;
+  --wt-padding-mini-card: 7px;
 
   /* GAP */
   --wt-gap-container: 10px;
@@ -67,9 +61,7 @@
   --wt-gap-mini-card: 5px;
 
   /* BORDER RADIUS */
-  /* --wt-radius-container: 32px; */
   --wt-radius-general: 10px;
-  /* --wt-radius-img: 5px; */
 
   /* BORDER WIDTH */
   --wt-border-width-card: 2px;
@@ -80,12 +72,6 @@
   /* BOX SHADOW */
   --wt-box-shadow-container: 0 0 20px 1px rgba(43, 42, 42, 0.3);
   --wt-box-shadow-mini-card: 0 3px 9px 1px rgba(43, 42, 42, 0.3);
-
-
-  --wt-box-shadow-deep: none;
-  --wt-box-shadow-light: none;
-  --wt-box-shadow-card: none;
-  --wt-box-shadow-input: none;
 }
 
 /* Box sizing rules */

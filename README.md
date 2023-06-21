@@ -67,26 +67,20 @@ navigator.geolocation.getCurrentPosition((position) => {
 <ol>
 <li> [] HTML </li>
 [] Metadatos <br>
-[] Código redactado en REACT <br>
+[✅] Código redactado en REACT <br>
 
 <li> [] CSS </li>
 [] General <br>
 [] Componentes <br>
-[] Pages? <br>
 [] Root limpio <br>
 [] Propiedades de acuerdo al root <br>
 [] Medias queries <br>
 [] <br>
 
 <li> [] REACT </li>
-[] General <br>
-[] Componentes <br>
-[] Pages? <br>
+[✅] General <br>
+[✅] Componentes <br>
 [] React Router <br>
-[] Investigar hooks <br>
-[] Aplicar un setRef al nombre de búsqueda <br>
-[] Ver si aplicar useMemo o reactMemo al nombre de la ciudad cuando este no cambia <br>
-[] Añadir lazy/suspense a las cards que no se usan <br>
 [✅] Añadir filter y ver si añadir useContext para vincular y mejorar la carga de los estados del tiempo en relación a los iconos y background<br>
 <br>
 
@@ -102,14 +96,13 @@ navigator.geolocation.getCurrentPosition((position) => {
 [✅] Toggle <br>
 [] Weather <br>
 [✅] data <br>
-[] pages? <br>
-[] services <br>
+[] Services <br>
 [] App <br>
 [] Main <br>
 [] Index <br>
 <br>
 
-<li> [] Diseño </li>
+<li> [✅] Diseño </li>
 [✅] Iconos estados <br>
 [✅] Background estados <br>
 [✅] Ver en https://openweathermap.org/weather-conditions los códigos de los estados para elegir los iconos y background <br>
@@ -122,8 +115,8 @@ navigator.geolocation.getCurrentPosition((position) => {
 [✅] Ver si usar api call 3.0 o la básica <br>
 [✅] En la previsión a 5 días ver si la api te da opción de seleccionar otro día o solo hace forecast <br>
 [✅] Las cinco ciudades que mencionan, ¿por qué hay que añadirlas? no es mejor búsqueda libre? <br>
-[] Carpetas organizadas <br>
-[] Componentes separados <br>
+[✅] Carpetas organizadas <br>
+[✅] Componentes separados <br>
 [] Código comentado <br>
 [] Data comentado y repasado <br>
 [] Repasar app, main e index <br>

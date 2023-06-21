@@ -11,3 +11,8 @@
 .wt-error-img {
     width: 100px;
 }
+
+/* Damos formato cuando la ciudad seleccionada no es válida */
+.wt-error-city {
+    margin: 40px;
+}

@@ -32,9 +32,9 @@ function Forecast({ city, country, api }) {
             <h3 className="wt-forecast-date">
               {date(item.dt)} {day(item.dt)}
             </h3>
-            <div className="wt-forecast-details">
+            <div className="wt-forecast-info">
               <div
-                className="wt-forecast-info"
+                className="wt-forecast-details"
                 style={getBackgroundColor(Math.round(item.wind_speed ?? 0), [50, 60, 70])}
               >
                 <img
@@ -45,7 +45,7 @@ function Forecast({ city, country, api }) {
                 <p>{Math.round(item.wind_speed ?? 0)}m/s</p>
               </div>
               <div
-                className="wt-forecast-info"
+                className="wt-forecast-details"
                 style={getBackgroundColor(Math.round((item.pop ?? 0) * 100), [25, 50, 75])}
               >
                 <img
