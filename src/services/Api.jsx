@@ -159,7 +159,7 @@ function Api(props) {
 
   // Añadimos el return lanzando un switch con los diferentes resultados posibles
   switch (weather) {
-    // Debido a las limitaciones de la api para días anteriores hemos deprecado yesterday
+    // Debido a las limitaciones de la api para días anteriores he deprecado yesterday
     // case 'yesterday':
     // fetchWeatherData(historicalURL);
     //   // Llamamos a la plantilla de datos históricos con la siguiente condición para evitar fallos

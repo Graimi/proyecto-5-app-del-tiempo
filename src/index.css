@@ -70,7 +70,7 @@
   --wt-border-card-style: var(--wt-border-width-card) solid var(--wt-color-light);
 
   /* BOX SHADOW */
-  --wt-box-shadow-container: 0 0 20px 1px rgba(43, 42, 42, 0.3);
+  --wt-box-shadow-container: 0 0 20px 1px rgba(43, 42, 42, 0.2);
   --wt-box-shadow-mini-card: 0 3px 9px 1px rgba(43, 42, 42, 0.3);
 }
 

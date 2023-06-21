@@ -3,7 +3,7 @@
 ## PROYECTO 5: App del tiempo - EN PROCESO
 ## Descripción
 Este proyecto de React te permitirá poner a prueba lo que sabes de React Router y tendrás que investigar (con un poco de nuestra ayuda) como utilizar la localización de un usuario para conectar con la API del tiempo de su zona para cargar las previsiones a través del uso de la API de Open Weather en https://openweathermap.org/api.
-## <a href="">- ENLACE DE VISUALIZACIÓN </a>
+## <a href="https://app-tiempo.netlify.app/">- ENLACE DE VISUALIZACIÓN </a>
 
 <br>
 
@@ -51,31 +51,37 @@ navigator.geolocation.getCurrentPosition((position) => {
 
 
 <li> [] CRITERIOS DE ACEPTACIÓN </li>
-[✅]  Cuando abra la aplicación, veré el tiempo actual en el lugar en el que me encuentro. Esto cargará la información de Open Weather API. <br>
-[] HE USADO GEOCODING PARA ESCRIBIR LA CIUDAD DIRECTAMENTE Tendré un link en algún punto de la vista que me permita acceder a una nueva ruta. En esta ruta podré ver el tiempo actual en al menos cinco ciudades distintas a mi elección. <br>
-[] AL SELECCIONAR LA CIUDAD SE CARGARÁ LA PREVISIÓN TB Tendré un link que me permita visitar una ruta que muestre la previsión del tiempo a cinco días vista en mi posición actual. <br>
-[] A 8 DÍAS EN VEZ DE 5 De la misma forma, habrá una última ruta que me permita ver la previsión del tiempo a cinco días vista en una de las ciudades que seleccione. <br>
-[✅] La información del tiempo se presentará en grados Celsius. <br>
-[✅] EL FONDO TB CAMBIA Veré un icono del tiempo para cada estado que haya (soleado, lluvioso…). <br>
-[✅] Veré un indicador de carga (loader) mientras la respuesta de la API está cargando. <br>
-[] EN MI MOVIL POR EJEMPLO TENGO DIRECTAMENTE DESACTIVADA LA OPCIÓN, HE CREIDO MÁS CONVENIENTE QUE EL USUARIO PUEDA ELEGIR UNA CIUDAD DE SU ELECCIÓN DIRECTAMENTE Si no doy los permisos de geolocación en mi navegador, veré un mensaje en pantalla indicádome que debo activarlos para poder utilizar la aplicación. <br>
+[✅]  1. Cuando abra la aplicación, veré el tiempo actual en el lugar en el que me encuentro. Esto cargará la información de Open Weather API. <br>
+[] 2. Tendré un link en algún punto de la vista que me permita acceder a una nueva ruta. En esta ruta podré ver el tiempo actual en al menos cinco ciudades distintas a mi elección. <br>
+[✅] 3. Tendré un link que me permita visitar una ruta que muestre la previsión del tiempo a cinco días vista en mi posición actual. <br>
+[✅] 4. De la misma forma, habrá una última ruta que me permita ver la previsión del tiempo a cinco días vista en una de las ciudades que seleccione. <br>
+[✅] 5. La información del tiempo se presentará en grados Celsius. <br>
+[✅] 6. EL FONDO TB CAMBIA Veré un icono del tiempo para cada estado que haya (soleado, lluvioso…). <br>
+[✅] 7. Veré un indicador de carga (loader) mientras la respuesta de la API está cargando. <br>
+[] 8. Si no doy los permisos de geolocación en mi navegador, veré un mensaje en pantalla indicádome que debo activarlos para poder utilizar la aplicación. <br>
+</ul>
+<br>
 
+<li> [] COMENTARIOS A LOS CRITERIOS DE ACEPTACIÓN </li>
+[] 2. He usado geocoding para escribir la ciudad directamente ¿válido? <br>
+[✅] 3. Al seleccionar la ciudad se cargará la previsión tb <br>
+[✅] 4. A 7 días en este caso, he usado la API 3.0 <br>
+[] 8. En mi móvil, por ejemplo, tengo directamente desactivada la opción, he creído más conveniente que el usuario pueda elegir una ciudad de su elección directamente ¿válido? <br>
+[] Además de lo anterior, empecé a realizar la app sin React Router y se me olvidó, ¿está bien así o es necesario que lo cambie? <br>
 </ul>
 <br>
 
 ## Pasos
 <ol>
-<li> [] HTML </li>
-[] Metadatos <br>
+<li> [✅] HTML </li>
 [✅] Código redactado en REACT <br>
 
-<li> [] CSS </li>
-[] General <br>
-[] Componentes <br>
-[] Root limpio <br>
-[] Propiedades de acuerdo al root <br>
-[] Medias queries <br>
-[] <br>
+<li> [✅] CSS </li>
+[✅] General <br>
+[✅] Componentes <br>
+[✅] Root limpio <br>
+[✅] Propiedades de acuerdo al root <br>
+[✅] Medias queries <br>
 
 <li> [] REACT </li>
 [✅] General <br>
@@ -84,7 +90,7 @@ navigator.geolocation.getCurrentPosition((position) => {
 [✅] Añadir filter y ver si añadir useContext para vincular y mejorar la carga de los estados del tiempo en relación a los iconos y background<br>
 <br>
 
-<li> [] Componentes finalizados y comentados </li>
+<li> [✅] Componentes finalizados y comentados </li>
 [✅] Background <br>
 [✅] Current <br>
 [✅] Error <br>
@@ -94,12 +100,12 @@ navigator.geolocation.getCurrentPosition((position) => {
 [✅] SearchCity <br>
 [✅] TimeFunctions <br>
 [✅] Toggle <br>
-[] Weather <br>
+[✅] Weather <br>
 [✅] data <br>
-[] Services <br>
-[] App <br>
-[] Main <br>
-[] Index <br>
+[✅] Services <br>
+[✅] App <br>
+[✅] Main <br>
+[✅] Index <br>
 <br>
 
 <li> [✅] Diseño </li>
@@ -117,8 +123,8 @@ navigator.geolocation.getCurrentPosition((position) => {
 [✅] Las cinco ciudades que mencionan, ¿por qué hay que añadirlas? no es mejor búsqueda libre? <br>
 [✅] Carpetas organizadas <br>
 [✅] Componentes separados <br>
-[] Código comentado <br>
-[] Data comentado y repasado <br>
-[] Repasar app, main e index <br>
+[✅] Código comentado <br>
+[✅] Data comentado y repasado <br>
+[✅] Repasar app, main e index <br>
 [] README final <br>
 </ol>
