@@ -23,10 +23,10 @@
 /* Definimos la clase para cada día en la predicción meteorológica */
 .wt-forecast-day {
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: var(--wt-padding-card);
-  gap: var(--wt-gap-container);
+  align-items: center;
+  /* Aplicamos un padding determinado */
+  padding: 9px;
+  gap: var(--wt-gap-card);
   border-radius: var(--wt-radius-general);
   backdrop-filter: var(--wt-backdrop-filter-brightness-card);
 }
@@ -34,9 +34,37 @@
 /* Definimos la clase para los detalles de la predicción */
 .wt-forecast-info {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--wt-gap-mini-card);
+}
+
+/* Acentuamos la fuente */
+.wt-forecast-date {
+  font-weight: var(--wt-weight-h2);
+}
+
+/* Definimos la clase para la temperatura en la predicción */
+.wt-forecast-temp {
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  gap: var(--wt-gap-mini-card);
+}
+
+/* Definimos la clase para el elemento h3 en la temperatura de la predicción */
+.wt-forecast-temp p {
+  display: flex;
   align-items: center;
-  gap: var(--wt-gap-card);
+  /* Le aplicamos un tamaño personalizado */
+  font-size: 14px;
+}
+
+/* Definimos la clase para el icono de flecha en la predicción */
+.wt-forecast-arrow-icon {
+  width: var(--wt-img-micro);
+  height: var(--wt-img-micro);
+  opacity: var(--wt-opacity-general);
 }
 
 /* Definimos la clase para la información en la predicción meteorológica */
@@ -45,50 +73,29 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: auto;
-  height: auto;
-  margin: auto;
+  min-width: 40px;
   padding: var(--wt-padding-mini-card);
   gap: var(--wt-gap-mini-card);
   border-radius: var(--wt-radius-general);
-  box-shadow: var(--wt-box-shadow-mini-card);
-}
-
-/* Declaramos un espacio más pequeño que el normal para adaptarlo */
-.wt-forecast-details p {
-  font-size: small;
+  box-shadow: var(--wt-box-shadow-container);
 }
 
 /* Definimos la clase para el icono en la predicción meteorológica */
 .wt-forecast-icon {
-  width: var(--wt-img-mini);
-  height: var(--wt-img-mini);
+  /* Aplicamos un tamaño personalizado */
+  width: 18px;
+  height: 18px;
   opacity: var(--wt-opacity-general);
 }
 
-/* Definimos la clase para la temperatura en la predicción */
-.wt-forecast-temp {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: center;
-}
-
-/* Definimos la clase para el elemento h3 en la temperatura de la predicción */
-.wt-forecast-temp h3 {
-  display: flex;
-}
-
-/* Definimos la clase para el icono de flecha en la predicción */
-.wt-forecast-arrow-icon {
-  width: var(--wt-img-mini);
-  opacity: var(--wt-opacity-general);
+/* Declaramos un espacio más pequeño que el normal para adaptarlo */
+.wt-forecast-details p {
+  font-size: 14px;
 }
 
 /* Definimos la clase para el icono del clima en la predicción */
 .wt-forecast-weather-icon {
-  width: var(--wt-img-big);
+  /* Le aplicamos un tamaño personalizado */
+  width: 40px;
   opacity: var(--wt-opacity-general);
 }
-
-

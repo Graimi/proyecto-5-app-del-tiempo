@@ -71,8 +71,8 @@ navigator.geolocation.getCurrentPosition((position) => {
 <br>
 
 <li> [] CORRECCIONES </li>
-[] Que aparezca el tiempo de los 5 días, veo que se corta a los 3 <br>
 [] Añadir un filtro select, para poder elegir el tiempo de la ciudad a elegir <br>
+[✅] Que aparezca el tiempo de los 5 días, veo que se corta a los 3 <br>
 <br>
 
 
