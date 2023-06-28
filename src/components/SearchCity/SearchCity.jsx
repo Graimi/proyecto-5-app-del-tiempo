@@ -1,33 +1,54 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
 import './SearchCity.css';
 
-// Con la siguiente función creamos la barra de búsqueda de la ciudad que quiera buscar el usuario
-function SearchCity({ onCityChange }) {
-  const [city, setCity] = useState('');
+async function fetchCityOptions(searchValue, apiKey) {
+  const directCityUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${searchValue}&limit=5&appid=${apiKey}`;
+  const response = await fetch(directCityUrl);
+  const data = await response.json();
+  return Array.isArray(data) ? data : [];
+}
 
-  // Con esta función lanzamos el valor de city a la función onCityChange en App
-  const handleSearch = (cityName) => {
-    onCityChange(cityName);
+function SearchCity({ onCityChange }) {
+  const [searchValue, setSearchValue] = useState('');
+  const [options, setOptions] = useState([]);
+
+  const apiKey = 'cb658f072db01ec164fb8a14cc6d9da9';
+
+  const handleChange = async (event) => {
+    const { value } = event.target;
+    setSearchValue(value);
+
+    const cityOptions = await fetchCityOptions(value, apiKey);
+    setOptions(cityOptions);
   };
 
-  // Creamos el template para la barra de búsqueda
+  const handleOptionClick = (option) => {
+    onCityChange(option);
+    setSearchValue('');
+    setOptions([]);
+  };
+
   return (
     <div className="wt-search-container">
       <input
-        type="text"
-        name="wt-search-city"
         id="wt-search-city"
-        placeholder="Busca otra ciudad"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
+        type="text"
+        value={searchValue}
+        onChange={handleChange}
+        placeholder="Escribe una ciudad"
       />
-      <button className="wt-search-button" type="submit" onClick={() => handleSearch(city)}>
-        <img
-          className="wt-search-icon"
-          src="https://res.cloudinary.com/dwsffp1eq/image/upload/v1686580940/App%20Tiempo/icons/buscar_vyhbas.png"
-          alt="lupa"
-        />
-      </button>
+
+      {options.length > 0 && (
+        <ul id="wt-search-list">
+          {options.map((option) => (
+            <li key={option.geonameid} onClick={() => handleOptionClick(option.name)}>
+              {option.name}, {option.state} {option.country}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

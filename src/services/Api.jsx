@@ -60,10 +60,16 @@ function Api(props) {
   const [apiDataLoading, setApiDataLoading] = useState(true);
   // Creamos este state para almacenar la info de contaminación
   const [pollutionData, setPollutionData] = useState({});
-  // Creamos este state para almacenar la info de contaminación
+  // Creamos este state para almacenar la info de latitud y longitud y aplicarla a esta api
   const [reverseCity, setReverseCity] = useState({});
-  // Creamos este state para almacenar la info de contaminación
+  // Creamos este state para almacenar la info de la ciudad y aplicarla a esta api
   const [directCity, setDirectCity] = useState({});
+
+  // useEffect(() => {
+  //   console.log(lat);
+  //   setLatitude(lat);
+  //   setLongitude(lon);
+  // }, [lat]);
 
   // Creamos la función común para llamar a las apis de openWeather
   async function fetchWeatherData(url) {
@@ -107,10 +113,14 @@ function Api(props) {
       try {
         const response = await fetch(directCityUrl);
         const data = await response.json();
+        // const cityOptions = data.map((cityData) => cityData);
         setDirectCity(data);
-
-        setLatitude(data?.[0]?.lat ?? {});
-        setLongitude(data?.[0]?.lon ?? {});
+        if (data.length > 0) {
+          console.log(data);
+          setLatitude(data?.[0]?.lat ?? {});
+          // setLatitude(data?.[0]?.lat ? data?.[0]?.lat : '');
+          setLongitude(data?.[0]?.lon ?? {});
+        }
       } catch (error) {
         console.error(error);
       }
@@ -157,6 +167,8 @@ function Api(props) {
     return <InvisibleCard prop={<BadCity />} />;
   }
 
+  console.log(directCity);
+
   // Añadimos el return lanzando un switch con los diferentes resultados posibles
   switch (weather) {
     // Debido a las limitaciones de la api para días anteriores he deprecado yesterday
@@ -169,6 +181,7 @@ function Api(props) {
     case 'current':
       // Aplicamos el background al fondo según el tiempo
       BackgroundChanger(apiData?.current?.weather?.[0]?.icon ?? {});
+      console.log('current', apiData);
       // Comprobamos que los datos son correctos
       return apiData.daily && apiData.daily.length > 0 && reverseCity ? (
         // Llamamos a la plantilla de tiempo actual
@@ -183,7 +196,11 @@ function Api(props) {
       return apiData.daily && apiData.daily.length > 0 && reverseCity ? (
         // Llamamos a la plantilla de previsión
         <Forecast
-          city={reverseCity?.[0]?.local_names?.es ?? {}}
+          city={
+            reverseCity?.[0]?.local_names?.es ??
+            reverseCity?.[0]?.local_names?.en ??
+            reverseCity?.[0]?.name
+          }
           country={reverseCity?.[0]?.country ?? {}}
           api={apiData.daily ?? {}} // Pasamos todos los datos de la API como prop para usarlos dentro de Forecast si es necesario
         />

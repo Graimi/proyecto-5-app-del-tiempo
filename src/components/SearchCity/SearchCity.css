@@ -1,7 +1,7 @@
 /* Definimos los estilos generales de la barra de búsqueda */
 .wt-search-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   border-radius: var(--wt-radius-general);
   backdrop-filter: var(--wt-backdrop-filter-brightness-cta);
@@ -22,6 +22,10 @@
 /* Definimos el estilo del campo de entrada del input */
 #wt-search-city::placeholder {
   color: var(--wt-color-primary);
+}
+
+#wt-search-list {
+  
 }
 
 /* Definimos el estilo del botón de búsqueda. */

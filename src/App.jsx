@@ -16,13 +16,16 @@ function App() {
     setCity(cityName);
   };
 
+  console.log('Ciudad:', city);
+
   // Creamos la template de App
   return (
     <div className="app">
+      <h1>{city}</h1>
       <SearchCity onCityChange={handleCityChange} />
       <article className="wt-app-weather">
         <div className="wt-app-current">
-          <InvisibleCard prop={<Api weather="current" city={city} />} />
+          <InvisibleCard prop={<Api weather="current" city={city ? city : {}} />} />
         </div>
         <div className="wt-app-forecast">
           <InvisibleCard prop={<Api weather="forecast" city={city} />} />

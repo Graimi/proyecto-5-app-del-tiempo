@@ -7,7 +7,11 @@ import { date, hour } from '../TimeFunctions/TimeFunctions';
 function Current(apiData, pollutionData, reverseCity) {
   return (
     <Weather
-      city={reverseCity?.[0]?.local_names?.es}
+      city={
+        reverseCity?.[0]?.local_names?.es ??
+        reverseCity?.[0]?.local_names?.en ??
+        reverseCity?.[0]?.name
+      }
       country={reverseCity?.[0]?.country}
       icon={weatherIcons?.[apiData?.current?.weather?.[0]?.icon].icon}
       iconAlt={weatherIcons?.[apiData?.current?.weather?.[0]?.icon].name}
