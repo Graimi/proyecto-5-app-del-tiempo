@@ -4,15 +4,11 @@ import weatherIcons from '../../data/weatherIcons';
 import { date, hour } from '../TimeFunctions/TimeFunctions';
 
 // Creamos la siguiente función para llamar a los datos que conformarán el tiempo actual a partir del template de weather
-function Current(apiData, pollutionData, reverseCity) {
+function Current(apiData, pollutionData, cityData) {
   return (
     <Weather
-      city={
-        reverseCity?.[0]?.local_names?.es ??
-        reverseCity?.[0]?.local_names?.en ??
-        reverseCity?.[0]?.name
-      }
-      country={reverseCity?.[0]?.country}
+      city={cityData?.[0]?.local_names?.es ?? cityData?.[0]?.local_names?.en ?? cityData?.[0]?.name}
+      country={cityData?.[0]?.country}
       icon={weatherIcons?.[apiData?.current?.weather?.[0]?.icon].icon}
       iconAlt={weatherIcons?.[apiData?.current?.weather?.[0]?.icon].name}
       timestamp={date(apiData?.current?.dt)}

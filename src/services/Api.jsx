@@ -8,7 +8,8 @@ import InvisibleCard from '../components/InvisibleCard/InvisibleCard';
 
 // Creamos la función Api para almacenar todo lo referentes a las apis y para lanzar la información
 function Api(props) {
-  const { weather, city } = props;
+  const { weather, lat, lon } = props;
+  // city
 
   // Creamos los state para la posición y seteamos por defecto la posición de Madrid por si el susuario tiene prohibido
   // acceder a la app
@@ -34,6 +35,11 @@ function Api(props) {
     //   VER CUANDO RECARGAR
   }, []);
 
+  useEffect(() => {
+    setLatitude(lat);
+    setLongitude(lon);
+  }, [lat, lon]);
+
   // Añadimos todas las url con las que trabajaremos
   // Almacenamos en una constante nuestra API Key
   const ApiKey = 'cb658f072db01ec164fb8a14cc6d9da9';
@@ -48,8 +54,7 @@ function Api(props) {
   // Almacenamos la URL para obtener el nombre de una ciudad a partir de las coordenadas
   const reverseCityUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${ApiKey}`;
   // Almacenamos la URL para obtener las coordenadas de una ciudad a partir de su nombre
-  // EN CÁCERES TENDRÍA QUE IR CITY
-  const directCityUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${ApiKey}`;
+  // const directCityUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${ApiKey}`;
 
   // Añadimos todos los useState con los que trabajaremos
   // Seteamos la info de la api apiData
@@ -63,13 +68,7 @@ function Api(props) {
   // Creamos este state para almacenar la info de latitud y longitud y aplicarla a esta api
   const [reverseCity, setReverseCity] = useState({});
   // Creamos este state para almacenar la info de la ciudad y aplicarla a esta api
-  const [directCity, setDirectCity] = useState({});
-
-  // useEffect(() => {
-  //   console.log(lat);
-  //   setLatitude(lat);
-  //   setLongitude(lon);
-  // }, [lat]);
+  // const [directCity, setDirectCity] = useState({});
 
   // Creamos la función común para llamar a las apis de openWeather
   async function fetchWeatherData(url) {
@@ -99,34 +98,43 @@ function Api(props) {
         // Llamamos a la función Api para obtener el nombre de la ciudad
         const reverseCityResponse = await fetchWeatherData(reverseCityUrl);
         setReverseCity(reverseCityResponse);
+        // setLastUpdate(reverseCityResponse);
       } catch (error) {
         console.error(error);
       }
     }
     fetchData();
-  }, [latitude, longitude, weather]);
+  }, [lat]);
 
   // Esta será la función que se encargué de cambiar la ubicación según el valor que le demos a city
   // Pendiente de mejorar
-  useEffect(() => {
-    async function fetchDirectCityData() {
-      try {
-        const response = await fetch(directCityUrl);
-        const data = await response.json();
-        // const cityOptions = data.map((cityData) => cityData);
-        setDirectCity(data);
-        if (data.length > 0) {
-          console.log(data);
-          setLatitude(data?.[0]?.lat ?? {});
-          // setLatitude(data?.[0]?.lat ? data?.[0]?.lat : '');
-          setLongitude(data?.[0]?.lon ?? {});
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    fetchDirectCityData();
-  }, [city]);
+  // useEffect(() => {
+  //   async function fetchDirectCityData() {
+  //     try {
+  //       const response = await fetch(directCityUrl);
+  //       const data = await response.json();
+  //       // const cityOptions = data.map((cityData) => cityData);
+  //       setDirectCity(data);
+  //       // setLastUpdate(data);
+  //       if (data.length > 0) {
+  //         console.log('fetch', data);
+  //         setLatitude(data?.[0]?.lat ?? {});
+  //         // setLatitude(data?.[0]?.lat ? data?.[0]?.lat : '');
+  //         setLongitude(data?.[0]?.lon ?? {});
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  //   fetchDirectCityData();
+  //   console.log('Api:', city);
+  // }, [city]);
+
+  //   useEffect(() => {
+  //   console.log(lat);
+  //   setLatitude(lat);
+  //   setLongitude(lon);
+  // }, [lat]);
 
   // Creamos el siguiente useEffect con los diferentes valor que se almacenan según lo que seleccionemos
   useEffect(() => {
@@ -160,16 +168,10 @@ function Api(props) {
     return <InvisibleCard prop={<Loader />} />;
   }
 
-  console.log(apiData);
+  // Variable para almacenar el último valor actualizado
+  // let lastUpdatedCity = reverseCity;
+  console.log('reverseCity', apiData);
 
-  // Con la siguiente condición prevenimos que ocurra un error al buscar la ciudad
-  if (!reverseCity?.[0]?.local_names) {
-    return <InvisibleCard prop={<BadCity />} />;
-  }
-
-  console.log(directCity);
-
-  // Añadimos el return lanzando un switch con los diferentes resultados posibles
   switch (weather) {
     // Debido a las limitaciones de la api para días anteriores he deprecado yesterday
     // case 'yesterday':
@@ -179,6 +181,9 @@ function Api(props) {
 
     // En el caso que se refiera al tiempo actual
     case 'current':
+      // if (directCity) {
+      //   lastUpdatedCity = directCity;
+      // }
       // Aplicamos el background al fondo según el tiempo
       BackgroundChanger(apiData?.current?.weather?.[0]?.icon ?? {});
       console.log('current', apiData);
@@ -192,6 +197,9 @@ function Api(props) {
 
     // En el caso de previsión
     case 'forecast':
+      // if (directCity) {
+      //   lastUpdatedCity = directCity;
+      // }
       // Al usar la misma api que current usamos la misma comprobación
       return apiData.daily && apiData.daily.length > 0 && reverseCity ? (
         // Llamamos a la plantilla de previsión
@@ -202,7 +210,7 @@ function Api(props) {
             reverseCity?.[0]?.name
           }
           country={reverseCity?.[0]?.country ?? {}}
-          api={apiData.daily ?? {}} // Pasamos todos los datos de la API como prop para usarlos dentro de Forecast si es necesario
+          api={apiData.daily ?? {}}
         />
       ) : (
         <Loader />
@@ -211,6 +219,57 @@ function Api(props) {
     default:
       return <Error />;
   }
+
+  // console.log(apiData);
+
+  // Añadimos el return lanzando un switch con los diferentes resultados posibles
+  // function returnCity(cityApi) {
+  //   // Con la siguiente condición prevenimos que ocurra un error al buscar la ciudad
+  //   if (!cityApi?.[0]?.name) {
+  //     return <InvisibleCard prop={<BadCity />} />;
+  //   }
+
+  //   switch (weather) {
+  //     // Debido a las limitaciones de la api para días anteriores he deprecado yesterday
+  //     // case 'yesterday':
+  //     // fetchWeatherData(historicalURL);
+  //     //   // Llamamos a la plantilla de datos históricos con la siguiente condición para evitar fallos
+  //     //   return apiData.data && apiData.data.length > 0 ? Historical(apiData) : <Loader />;
+
+  //     // En el caso que se refiera al tiempo actual
+  //     case 'current':
+  //       // Aplicamos el background al fondo según el tiempo
+  //       BackgroundChanger(apiData?.current?.weather?.[0]?.icon ?? {});
+  //       console.log('current', apiData);
+  //       // Comprobamos que los datos son correctos
+  //       return apiData.daily && apiData.daily.length > 0 && cityApi ? (
+  //         // Llamamos a la plantilla de tiempo actual
+  //         Current(apiData, pollutionData, cityApi)
+  //       ) : (
+  //         <Loader />
+  //       );
+
+  //     // En el caso de previsión
+  //     case 'forecast':
+  //       // Al usar la misma api que current usamos la misma comprobación
+  //       return apiData.daily && apiData.daily.length > 0 && cityApi ? (
+  //         // Llamamos a la plantilla de previsión
+  //         <Forecast
+  //           city={
+  //             cityApi?.[0]?.local_names?.es ?? cityApi?.[0]?.local_names?.en ?? cityApi?.[0]?.name
+  //           }
+  //           country={cityApi?.[0]?.country ?? {}}
+  //           api={apiData.daily ?? {}}
+  //         />
+  //       ) : (
+  //         <Loader />
+  //       );
+
+  //     default:
+  //       return <Error />;
+  //   }
+  // }
+  // returnCity(reverseCity);
 }
 
 export default Api;
