@@ -1,126 +1,68 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-// import React, { useState } from 'react';
-// import './SearchCity.css';
-
-// async function fetchCityOptions(searchValue, apiKey) {
-//   const directCityUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${searchValue}&limit=5&appid=${apiKey}`;
-//   const response = await fetch(directCityUrl);
-//   const data = await response.json();
-//   return Array.isArray(data) ? data : [];
-// }
-
-// function SearchCity({ onCityChange }) {
-//   const [searchValue, setSearchValue] = useState('');
-//   const [options, setOptions] = useState([]);
-
-//   const apiKey = 'cb658f072db01ec164fb8a14cc6d9da9';
-
-//   const handleChange = async (event) => {
-//     const { value } = event.target;
-//     setSearchValue(value);
-
-//     const cityOptions = await fetchCityOptions(value, apiKey);
-//     setOptions(cityOptions);
-//   };
-
-//   const handleOptionClick = (option) => {
-//     onCityChange(option);
-//     setSearchValue('');
-//     setOptions([]);
-//   };
-
-//   return (
-//     <div className="wt-search-container">
-//       <input
-//         id="wt-search-city"
-//         type="text"
-//         value={searchValue}
-//         onChange={handleChange}
-//         placeholder="Escribe una ciudad"
-//       />
-
-//       {options.length > 0 && (
-//         <ul id="wt-search-list">
-//           {options.map((option) => (
-//             <li key={option.geonameid} onClick={() => handleOptionClick(option.name)}>
-//               {option.name}, {option.state} {option.country}
-//             </li>
-//           ))}
-//         </ul>
-//       )}
-//     </div>
-//   );
-// }
-
-// export default SearchCity;
-
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './SearchCity.css';
 
+// Creamos la siguiente función para obtener posteriormente el valor de las ciudades buscadas al escribir
 async function fetchCityOptions(searchValue, apiKey) {
+  // Es importante establecer el límite en 5 para que aparezcan varias
   const directCityUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${searchValue}&limit=5&appid=${apiKey}`;
   const response = await fetch(directCityUrl);
   const data = await response.json();
   return Array.isArray(data) ? data : [];
 }
 
+// Creamos la función principal de búsqueda de ciudades
 function SearchCity({ onCityChange }) {
+  // Creamos los diferentes estados donde almacenaremos la información
   const [searchValue, setSearchValue] = useState('');
   const [selectedOption, setSelectedOption] = useState(null);
   const [options, setOptions] = useState([]);
 
   const apiKey = 'cb658f072db01ec164fb8a14cc6d9da9';
 
+  // Creamos la función para cuando buscamos una ciudad
   const handleChange = async (event) => {
     const { value } = event.target;
     setSearchValue(value);
-
+    // Invocamos a la función fetch anterior
     const cityOptions = await fetchCityOptions(value, apiKey);
     setOptions(cityOptions);
     setSelectedOption(null);
   };
 
+  // Creamos la función cuando seleccionamos una función
   const handleOptionClick = (option) => {
+    // Hacemos un parse del valor para convertirlo en un array que posteriormente se exportará
     const optionValue = JSON.parse(option);
-    // const { lat, lon } = optionValue;
-    // onCityChange([lat, lon]);
     onCityChange(optionValue);
     setSearchValue('');
     setSelectedOption(option);
     setOptions([]);
   };
 
-  // useEffect(() => {
-  //   onCityChange(searchValue);
-  //   // setSearchValue('');
-  //   // setOptions([]);
-  // }, [searchValue]);
-
+  // Creamos el template de la barra de búsqueda
   return (
     <div className="wt-search-container">
+      {/* En este input se podrá buscar la ciudad que queremos buscar */}
       <input
         id="wt-search-city"
         type="text"
         value={searchValue}
         onChange={handleChange}
-        placeholder="Escribe una ciudad"
+        placeholder="Busca otra ciudad"
       />
-
+      {/* Hacemos una comprobación y desarrollamos el select de ciudades */}
       {options.length > 0 && (
         <select
           id="wt-search-list"
           value={selectedOption ? selectedOption.name : ''}
-          onChange={
-            (event) =>
-              // handleOptionClick(options.find((option) => option.name === event.target.value))
-              handleOptionClick(event.target.value)
-            // console.log(event.target.value)
-            // setSearchValue(event.target.value)
-          }
+          onChange={(event) => handleOptionClick(event.target.value)}
         >
-          <option value="">Selecciona una opción</option>
+          <option value="">Selecciona una ciudad</option>
+          {/* Hacemos un map de los diferentes resultados */}
           {options.map((option) => (
+            // Utilizamos el JSON.stringify para poder exportar correctamente los datos
             <option key={option.lat} value={JSON.stringify({ lat: option.lat, lon: option.lon })}>
               {option.name}, {option.state} {option.country}
             </option>
@@ -132,70 +74,3 @@ function SearchCity({ onCityChange }) {
 }
 
 export default SearchCity;
-
-// import React, { useEffect, useState } from 'react';
-// import './SearchCity.css';
-
-// async function fetchCityOptions(searchValue, apiKey) {
-//   const directCityUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${searchValue}&limit=5&appid=${apiKey}`;
-//   const response = await fetch(directCityUrl);
-//   const data = await response.json();
-//   return Array.isArray(data) ? data : [];
-// }
-
-// function SearchCity({ onCityChange }) {
-//   const [searchValue, setSearchValue] = useState('');
-//   const [selectedOption, setSelectedOption] = useState(null);
-//   const [options, setOptions] = useState([]);
-
-//   const apiKey = 'cb658f072db01ec164fb8a14cc6d9da9';
-
-//   const handleChange = async (event) => {
-//     const { value } = event.target;
-//     setSearchValue(value);
-
-//     const cityOptions = await fetchCityOptions(value, apiKey);
-//     setOptions(cityOptions);
-//     setSelectedOption(null);
-//   };
-
-//   const handleOptionClick = (option) => {
-//     const { lat, lon } = option; // Obtiene latitud y longitud de la opción seleccionada
-//     onCityChange([lat, lon]); // Llama a la función onCityChange con el array [lat, lon]
-//     setSearchValue('');
-//     setSelectedOption(option);
-//     setOptions([]);
-//   };
-
-//   return (
-//     <div className="wt-search-container">
-//       <input
-//         id="wt-search-city"
-//         type="text"
-//         value={searchValue}
-//         onChange={handleChange}
-//         placeholder="Escribe una ciudad"
-//       />
-
-//       {options.length > 0 && (
-//         <select
-//           id="wt-search-list"
-//           value={selectedOption ? selectedOption.name : ''}
-//           onChange={(event) =>
-//             handleOptionClick(options.find((option) => option.name === event.target.value))
-//           }
-//         >
-//           <option value="">Selecciona una opción</option>
-//           {options.map((option) => (
-//             <option key={option.lat} value={option.name}>
-//               {option.name}, {option.state} {option.country}
-//             </option>
-//           ))}
-//         </select>
-//       )}
-//       <h1>{searchValue}</h1>
-//     </div>
-//   );
-// }
-
-// export default SearchCity;
