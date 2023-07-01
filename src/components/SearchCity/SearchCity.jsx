@@ -83,7 +83,7 @@ function SearchCity({ onCityChange }) {
 
   const handleOptionClick = (option) => {
     const optionValue = JSON.parse(option);
-    const { lat, lon } = optionValue;
+    // const { lat, lon } = optionValue;
     // onCityChange([lat, lon]);
     onCityChange(optionValue);
     setSearchValue('');
@@ -127,7 +127,6 @@ function SearchCity({ onCityChange }) {
           ))}
         </select>
       )}
-      <h1>{searchValue}</h1>
     </div>
   );
 }
