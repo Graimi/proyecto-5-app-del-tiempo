@@ -55,16 +55,20 @@ function SearchCity({ onCityChange }) {
       {/* Hacemos una comprobación y desarrollamos el select de ciudades */}
       {options.length > 0 && (
         <select
-          id="wt-search-list"
+          id="wt-search-select"
           value={selectedOption ? selectedOption.name : ''}
           onChange={(event) => handleOptionClick(event.target.value)}
         >
-          <option value="">Selecciona una ciudad</option>
+          <option value="">
+            <p>Selecciona una ciudad</p>
+          </option>
           {/* Hacemos un map de los diferentes resultados */}
           {options.map((option) => (
             // Utilizamos el JSON.stringify para poder exportar correctamente los datos
             <option key={option.lat} value={JSON.stringify({ lat: option.lat, lon: option.lon })}>
-              {option.name}, {option.state} {option.country}
+              <p>
+                {option.name}, {option.state} {option.country}
+              </p>
             </option>
           ))}
         </select>

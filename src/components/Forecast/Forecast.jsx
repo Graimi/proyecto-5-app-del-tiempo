@@ -21,9 +21,9 @@ function Forecast({ city, country, api }) {
   // Devolvemos el template para el forecast
   return (
     <div className="wt-forecast">
-      <h1 className="wt-forecast-city">
+      <h2 className="wt-forecast-city">
         {city}, {country}
-      </h1>
+      </h2>
       <article className="wt-forecast-container">
         {/* Usamos un map para recorrer todos los elementos */}
         {/* Usamos el slice para dejar solo los prox 5 días sin contar el actual */}

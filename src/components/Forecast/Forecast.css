@@ -6,7 +6,7 @@
   gap: var(--wt-gap-card);
 }
 
-.wt-forecast h1 {
+.wt-forecast h2 {
   text-align: center;
 }
 

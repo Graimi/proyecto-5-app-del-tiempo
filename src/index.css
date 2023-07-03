@@ -162,6 +162,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Damos padding al body */
+  padding: 0 50px;
   /* Damos estilos al background */
   background-size: cover;
   background-position: 50% 10%;

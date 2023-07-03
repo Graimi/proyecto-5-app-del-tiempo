@@ -88,9 +88,9 @@ function Weather(props) {
   return (
     <div className="wt-weather">
       <article className="wt-weather-location-date">
-        <h1>
+        <h2>
           {city}, {country}
-        </h1>
+        </h2>
         <h3>{timestamp}</h3>
       </article>
       <article className="wt-weather-temp">

@@ -70,8 +70,8 @@ navigator.geolocation.getCurrentPosition((position) => {
 [✅] Además de lo anterior, empecé a realizar la app sin React Router y se me olvidó, ¿está bien así o es necesario que lo cambie? <br>
 <br>
 
-<li> [] CORRECCIONES </li>
-[] Añadir un filtro select, para poder elegir el tiempo de la ciudad a elegir <br>
+<li> [✅] CORRECCIONES </li>
+[✅] Añadir un filtro select, para poder elegir el tiempo de la ciudad a elegir <br>
 [✅] Que aparezca el tiempo de los 5 días, veo que se corta a los 3 <br>
 <br>
 
@@ -121,7 +121,7 @@ navigator.geolocation.getCurrentPosition((position) => {
 [✅] Código para glass efect https://codepen.io/Graimi/pen/QWZjrJp <br>
 [✅] Código para letras transparentes https://codepen.io/theseventh/pen/LYVqMYb <br>
 
-<li> [] General </li>
+<li> [✅] General </li>
 [✅] Ver si usar api call 3.0 o la básica <br>
 [✅] En la previsión a 5 días ver si la api te da opción de seleccionar otro día o solo hace forecast <br>
 [✅] Las cinco ciudades que mencionan, ¿por qué hay que añadirlas? no es mejor búsqueda libre? <br>
@@ -130,5 +130,5 @@ navigator.geolocation.getCurrentPosition((position) => {
 [✅] Código comentado <br>
 [✅] Data comentado y repasado <br>
 [✅] Repasar app, main e index <br>
-[] README final <br>
+[✅] README final <br>
 </ol>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Error, { BadCity } from '../components/Error/Error';
+import Error from '../components/Error/Error';
 import Loader from '../components/Loader/Loader';
 import BackgroundChanger from '../components/Background/Background';
 import Current from '../components/Current/Current';

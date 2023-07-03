@@ -1,17 +1,20 @@
 /* Establecemos los estilos generales de la invisibleCard */
 .invisible-card {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: space-between;
-    align-items: center;
-    text-align: center;
-    width: 350px;
-    height: 550px;
-    /* Color de fondo semi-transparente */
-    background-color: var(--wt-color-container);
-    box-shadow: var(--wt-box-shadow-container);
-    border-radius: var(--wt-radius-general);
-    overflow: auto;
-  }
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-between;
+  align-items: center;
+  text-align: center;
+  min-width: 350px;
+  max-width: 400px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  /* margin: ; */
+  /* Color de fondo semi-transparente */
+  background-color: var(--wt-color-container);
+  box-shadow: var(--wt-box-shadow-container);
+  border-radius: var(--wt-radius-general);
+  overflow: auto;
+}

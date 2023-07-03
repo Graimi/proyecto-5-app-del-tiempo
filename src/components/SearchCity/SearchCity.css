@@ -9,6 +9,7 @@
 
 /* Establecemos los estilos del input */
 #wt-search-city {
+  width: 100%;
   padding: var(--wt-padding-cta);
   border: none;
   border-radius: var(--wt-radius-general);
@@ -24,22 +25,25 @@
   color: var(--wt-color-primary);
 }
 
-#wt-search-list {
-  
-}
-
-/* Definimos el estilo del botón de búsqueda. */
-.wt-search-button {
+/* Damos estilos al select */
+#wt-search-select {
   padding: var(--wt-padding-mini-card);
   margin: var(--wt-margin-cta);
   border: none;
   border-radius: var(--wt-radius-general);
   background-color: transparent;
+  color: var(--wt-color-primary);
+  font-family: var(--wt-typography-body);
+  font-size: large;
+  font-weight: 200;
   box-shadow: 1px 1px 30px 8px rgba(43, 42, 42, 0.548);
 }
 
-/* Establecemos el estilo del icono de búsqueda. */
-.wt-search-icon {
-  width: var(--wt-img-micro);
-  opacity: var(--wt-opacity-general);
+/* Estilamos los elementos del select y su lista deplegable */
+#wt-search-select option {
+  background-color: #494949;
+  color: var(--wt-color-primary);
+  font-family: var(--wt-typography-body);
+  font-weight: 200;
+  box-shadow: 1px 1px 30px 8px rgba(43, 42, 42, 0.548);
 }
