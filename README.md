@@ -1,6 +1,6 @@
 # App del tiempo
 
-## PROYECTO 5: App del tiempo - EN CORRECCIÓN
+## PROYECTO 5: App del tiempo - FINALIZADO
 ## Descripción
 Este proyecto de React te permitirá poner a prueba lo que sabes de React Router y tendrás que investigar (con un poco de nuestra ayuda) como utilizar la localización de un usuario para conectar con la API del tiempo de su zona para cargar las previsiones a través del uso de la API de Open Weather en https://openweathermap.org/api.
 ## <a href="https://app-tiempo.netlify.app/">- ENLACE DE VISUALIZACIÓN </a>
